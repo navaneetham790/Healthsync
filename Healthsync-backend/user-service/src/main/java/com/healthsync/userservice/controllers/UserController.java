@@ -236,6 +236,10 @@ public class UserController {
         user.put("email", email);
         user.put("fullName", fullName);
         if (workerCode != null) user.put("workerCode", workerCode);
+        if ("doctor".equalsIgnoreCase(role)) {
+            user.put("doctorId", "DR001");
+            user.put("doctorCode", "DR001");
+        }
         return ResponseEntity.ok(Map.of("token", token, "role", role, "user", user));
     }
 

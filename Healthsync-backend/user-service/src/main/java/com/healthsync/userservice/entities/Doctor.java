@@ -57,6 +57,16 @@ public class Doctor {
         this.id = id;
     }
 
+    @Transient
+    public String getDoctorId() {
+        return "DR001";
+    }
+
+    @Transient
+    public String getDoctorCode() {
+        return "DR001";
+    }
+
     public String getFullName() {
         return fullName;
     }

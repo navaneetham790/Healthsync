@@ -11,7 +11,7 @@ function Profile() {
     try {
       const { data } = await DoctorService.getProfile();
       if (data && (data.email || data.fullName)) {
-        const enriched = { ...data, doctorCode: data.doctorCode || `DR${String(data.id || 1).padStart(3, "0")}` };
+        const enriched = { ...data, doctorCode: "DR001" };
         setProfile(enriched);
         setOriginal(enriched);
         setProfilePicture(localStorage.getItem(pictureKey(enriched)) || "");
@@ -43,7 +43,7 @@ function Profile() {
       let enriched = profile;
       try {
         const { data } = await DoctorService.updateProfile({ fullName: profile.fullName, phone: profile.phone, hospitalAddress: profile.hospitalAddress });
-        if (data) enriched = { ...data, doctorCode: data.doctorCode || profile.doctorCode };
+        if (data) enriched = { ...data, doctorCode: "DR001" };
       } catch (_) {}
       setProfile(enriched);
       setOriginal(enriched);

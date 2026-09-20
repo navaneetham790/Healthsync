@@ -136,15 +136,15 @@ function DoctorLogin() {
                         <h4>Demo Credentials</h4>
 
                         <p>
-                            <strong>Doctor ID :</strong> DOC001
+                            <strong>Doctor ID :</strong> DR001
                         </p>
 
                         <p>
-                            <strong>Email :</strong> doctor@healthsync.com
+                            <strong>Email :</strong> 717824i335@kce.ac.in
                         </p>
 
                         <p>
-                            <strong>Password :</strong> doctor123
+                            <strong>Password :</strong> doctornavaneetha
                         </p>
 
                     </div>
