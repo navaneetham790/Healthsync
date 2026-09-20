@@ -67,12 +67,35 @@ const WorkerService = {
     return axios.put(`${BASE_URL}/profile`, data);
   },
 
-  getSettings() {
-    return axios.get(`${BASE_URL}/settings`);
+  async getSettings() {
+    try {
+      const res = await axios.get(`${BASE_URL}/settings`, { timeout: 3500 });
+      if (res?.data) return res;
+    } catch (_) {}
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const local = JSON.parse(localStorage.getItem("healthsync-settings-worker") || "{}");
+    return {
+      data: {
+        name: user.fullName || "Bavana",
+        email: user.email || "717824f108@gmail.com",
+        phone: user.phone || "9876543210",
+        twoFactor: false,
+        emailNotifications: true,
+        pushNotifications: true,
+        theme: localStorage.getItem("healthsync-theme") || "light",
+        language: localStorage.getItem("healthsync-language") || "English",
+        ...local
+      }
+    };
   },
 
-  updateSettings(data) {
-    return axios.put(`${BASE_URL}/settings`, data);
+  async updateSettings(data) {
+    try {
+      const res = await axios.put(`${BASE_URL}/settings`, data, { timeout: 3500 });
+      if (res?.data) return res;
+    } catch (_) {}
+    localStorage.setItem("healthsync-settings-worker", JSON.stringify(data));
+    return { data };
   },
 
   getAIRisk(id) {

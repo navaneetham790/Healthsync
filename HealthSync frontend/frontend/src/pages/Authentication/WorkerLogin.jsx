@@ -40,9 +40,11 @@ function WorkerLogin() {
                 phone: "9876543210",
                 riskLevel: "LOW"
             };
+            const token = "worker-token-" + Date.now();
             localStorage.setItem("user", JSON.stringify(userObj));
             localStorage.setItem("role", "worker");
-            localStorage.setItem("token", "worker-token-" + Date.now());
+            localStorage.setItem("token", token);
+            axios.defaults.headers.common.Authorization = `Bearer ${token}`;
             notify.success("Login Successful");
             navigate("/worker/dashboard");
             return;
