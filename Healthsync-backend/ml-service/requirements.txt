@@ -6,3 +6,5 @@ scikit-learn
 joblib
 google-generativeai
 python-dotenv
+
+Pillow>=10.0.0
