@@ -97,10 +97,11 @@ public class UserController {
             doctorRepository.save(doctor);
         });
 
-        // User requested clean database with 0 workers and 0 doctors
-        doctorRepository.deleteAll();
-        workerRepository.deleteAll();
-
+        // Ensure user's created doctor is preserved and never deleted on server restart
+        if (doctorRepository.count() == 0) {
+            Doctor doc = new Doctor("Navaneetha M", "717824f108@kce.ac.in", passwordEncoder.encode("doctor123"), "9856324710", "Cardiology", "A.M. Hospital");
+            doctorRepository.save(doc);
+        }
     }
 
     private boolean passwordMatches(String rawPassword, String storedPassword) {
