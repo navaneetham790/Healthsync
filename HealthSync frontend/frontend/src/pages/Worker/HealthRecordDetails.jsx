@@ -6,8 +6,8 @@ function HealthRecordDetails() {
   const record = {
     id: "HR001",
     date: "10-03-2025",
-    doctor: "Dr. Kumar",
-    hospital: "Apollo Hospital",
+    doctor: "Dr. Navaneetha M",
+    hospital: "A.M. Hospital",
     diagnosis: "Viral Fever",
     symptoms: "Fever, Headache, Body Pain",
     bloodPressure: "120 / 80 mmHg",

@@ -68,7 +68,7 @@ function Dashboard() {
               <tr key={record.id || record._id}>
                 <td>{record.recordId || record.id || record._id}</td>
                 <td>{record.date || record.visitDate || record.recordedOn || "—"}</td>
-                <td>{record.doctorName || record.doctor || "Dr. Ramesh Kumar"}</td>
+                <td>{record.doctorName || record.doctor || "Dr. Navaneetha M"}</td>
                 <td>{record.diagnosis || record.disease || "—"}</td>
                 <td>
                   <span className={

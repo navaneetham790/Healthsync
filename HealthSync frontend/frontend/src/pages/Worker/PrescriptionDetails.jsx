@@ -5,8 +5,8 @@ function PrescriptionDetails() {
 
   const prescription = {
     id: "PR001",
-    doctor: "Dr. Kumar",
-    hospital: "Apollo Hospital",
+    doctor: "Dr. Navaneetha M",
+    hospital: "A.M. Hospital",
     date: "10-03-2025",
     diagnosis: "Viral Fever",
     medicines: [

@@ -48,7 +48,7 @@ function HealthRecords() {
               <tr key={record.id || record._id}>
                 <td>{record.recordId || record.id || record._id}</td>
                 <td>{record.date || record.visitDate || record.recordedOn || "—"}</td>
-                <td>{record.doctorName || record.doctor || "Dr. Ramesh Kumar"}</td>
+                <td>{record.doctorName || record.doctor || "Dr. Navaneetha M"}</td>
                 <td>{record.diagnosis || record.disease || "—"}</td>
                 <td>
                   <span className={
@@ -71,7 +71,7 @@ function HealthRecords() {
       </div>
 
       <RecordDialog 
-        record={viewing ? { ...viewing, doctorName: viewing.doctorName || viewing.doctor || "Dr. Ramesh Kumar" } : null} 
+        record={viewing ? { ...viewing, doctorName: viewing.doctorName || viewing.doctor || "Dr. Navaneetha M" } : null} 
         title="Health record details" 
         fields={["id", "date", "doctorName", "diagnosis", "summary", "bloodPressure", "sugar", "bmi", "notes"]}
         onClose={() => setViewing(null)} 

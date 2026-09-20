@@ -144,19 +144,39 @@ public class UserController {
             }
         });
 
-        // Ensure Navaneetha M doctor has the exact login email and password entered by user:
+        // Ensure ONLY Navaneetha M doctor exists in the database as requested by user
         doctorRepository.findAll().forEach(doc -> {
-            if ("Navaneetha M".equalsIgnoreCase(doc.getFullName()) || doc.getEmail().contains("kce.ac.in")) {
-                doc.setEmail("717824i335@kce.ac.in");
-                doc.setPassword(passwordEncoder.encode("doctornavaneetha"));
-                doctorRepository.save(doc);
+            boolean isNavaneetha = "717824i335@kce.ac.in".equalsIgnoreCase(doc.getEmail())
+                    || "Navaneetha M".equalsIgnoreCase(doc.getFullName())
+                    || (doc.getEmail() != null && doc.getEmail().contains("kce.ac.in"));
+            if (!isNavaneetha) {
+                try {
+                    doctorRepository.delete(doc);
+                } catch (Exception ignored) {}
             }
         });
 
-        if (doctorRepository.findByEmail("717824i335@kce.ac.in").isEmpty()) {
-            Doctor doc = new Doctor("Navaneetha M", "717824i335@kce.ac.in", passwordEncoder.encode("doctornavaneetha"), "9856324710", "Cardiology", "A.M. Hospital");
-            doctorRepository.save(doc);
-        }
+        // Ensure Navaneetha M doctor has the exact details set by user
+        Doctor navaneetha = doctorRepository.findByEmail("717824i335@kce.ac.in")
+                .or(() -> doctorRepository.findAll().stream().filter(d -> "Navaneetha M".equalsIgnoreCase(d.getFullName())).findFirst())
+                .orElseGet(() -> new Doctor("Navaneetha M", "717824i335@kce.ac.in", passwordEncoder.encode("doctornavaneetha"), "9856324710", "Cardiology", "A.M. Hospital"));
+
+        navaneetha.setFullName("Navaneetha M");
+        navaneetha.setEmail("717824i335@kce.ac.in");
+        navaneetha.setPassword(passwordEncoder.encode("doctornavaneetha"));
+        navaneetha.setPhone("9856324710");
+        navaneetha.setSpecialization("Cardiology");
+        navaneetha.setHospital("A.M. Hospital");
+        doctorRepository.save(navaneetha);
+
+        // Delete any redundant duplicate doctor records
+        doctorRepository.findAll().forEach(doc -> {
+            if (!Objects.equals(doc.getId(), navaneetha.getId())) {
+                try {
+                    doctorRepository.delete(doc);
+                } catch (Exception ignored) {}
+            }
+        });
 
         // Ensure Bavana has health records and prescriptions if none exist
             if (clinicalRecordRepository.findByWorkerId(bavana.getId()).isEmpty()) {

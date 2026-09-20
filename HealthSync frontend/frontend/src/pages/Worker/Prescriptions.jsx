@@ -50,7 +50,7 @@ function Prescriptions() {
                 <tr key={item.id || item._id}>
                   <td>{item.prescriptionId || item.id || item._id}</td>
                   <td>{item.date ? new Date(item.date).toLocaleDateString() : "—"}</td>
-                  <td>{item.doctorName || item.doctor || "Dr. Ramesh Kumar"}</td>
+                  <td>{item.doctorName || item.doctor || "Dr. Navaneetha M"}</td>
                   <td>{item.medicines?.[0]?.name || item.medicine || item.medicineName || "—"}</td>
                   <td>{parsedDuration}</td>
                   <td>
@@ -68,7 +68,7 @@ function Prescriptions() {
       <RecordDialog 
         record={viewing ? { 
           ...viewing, 
-          doctorName: viewing.doctorName || viewing.doctor || "Dr. Ramesh Kumar",
+          doctorName: viewing.doctorName || viewing.doctor || "Dr. Navaneetha M",
           medicine: [viewing.medicine, viewing.dosage !== "-" ? viewing.dosage : "", viewing.frequency !== "-" ? viewing.frequency : ""].filter(Boolean).join("\n") 
         } : null} 
         title="Prescription details" 
