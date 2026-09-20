@@ -1,0 +1,144 @@
+.profile-page{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:8px 0 24px;
+}
+
+.profile-title{
+    font-size:32px;
+    color:#0f766e;
+    margin:0 0 18px;
+}
+
+.profile-card{
+    background:#fff;
+    border-radius:20px;
+    padding:28px;
+    display:grid;
+    grid-template-columns:260px minmax(0,1fr);
+    gap:28px;
+    box-shadow:0 10px 28px rgba(15,23,42,.08);
+    border:1px solid #e6f2f1;
+}
+
+.profile-left{
+    text-align:center;
+    border-right:1px solid #e5eeee;
+    padding:8px 28px 8px 0;
+}
+
+.profile-icon{
+    font-size:140px;
+    color:#0F8F83;
+    margin-bottom:14px;
+}
+
+.profile-left h3{
+    font-size:26px;
+    margin:0 0 7px;
+    color:#0f172a;
+}
+
+.profile-left p{
+    color:#666;
+    margin:0;
+    word-break:break-word;
+}
+
+.profile-picture-actions{display:flex;flex-direction:row;justify-content:center;align-items:center;gap:8px;margin:0 0 16px}.edit-picture-btn,.delete-picture-btn{border:0;border-radius:7px;padding:8px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}.edit-picture-btn{background:#e1f6f3;color:#087f74}.edit-picture-btn input{display:none}.delete-picture-btn{background:#fee2e2;color:#b91c1c}.edit-picture-btn:hover{background:#c8efe9}.delete-picture-btn:hover{background:#fecaca}
+
+.profile-right{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+}
+
+.profile-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:13px 0;
+    border-bottom:1px solid #e9eff0;
+}
+
+.profile-row span{
+    color:#64748b;
+    font-size:16px;
+}
+
+.profile-row strong{
+    color:#222;
+    font-size:17px;
+}
+
+.active{
+    color:#2e7d32;
+}
+
+.profile-buttons{
+    margin-top:20px;
+    display:flex;
+    gap:12px;
+}
+
+.edit-btn,
+.password-btn{
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.edit-btn{
+    background:#0F8F83;
+    color:white;
+}
+
+.password-btn{
+    background:#1565c0;
+    color:white;
+}
+
+.edit-btn:hover{
+    background:#0b756b;
+}
+
+.password-btn:hover{
+    background:#0d47a1;
+}
+
+@media(max-width:900px){
+
+.profile-card{
+    grid-template-columns:1fr;
+}
+
+.profile-left{
+    border-right:none;
+    border-bottom:1px solid #eee;
+    padding-bottom:30px;
+    padding-right:0;
+}
+
+.profile-buttons{
+    flex-direction:column;
+}
+
+.edit-btn,
+.password-btn{
+    width:100%;
+}
+
+}
+
+.profile-avatar-image{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 14px;
+    border:4px solid #d7f5f0;
+}

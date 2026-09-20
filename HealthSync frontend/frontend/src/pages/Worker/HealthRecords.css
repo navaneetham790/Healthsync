@@ -1,0 +1,166 @@
+.health-records{
+
+    width:100%;
+
+}
+
+.page-header{
+
+    margin-bottom:25px;
+
+}
+
+.page-header h2{
+
+    font-size:32px;
+
+    color:#222;
+
+}
+
+.page-header p{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+.records-table{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#0F8F83;
+
+    color:#fff;
+
+}
+
+th{
+
+    padding:16px;
+
+    text-align:left;
+
+}
+
+td{
+
+    padding:16px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr:hover{
+
+    background:#f9f9f9;
+
+}
+
+.healthy{
+
+    background:#d4f6d9;
+
+    color:#188038;
+
+    padding:7px 16px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.follow{
+
+    background:#fff3cd;
+
+    color:#996c00;
+
+    padding:7px 16px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.treatment{
+
+    background:#fde2e2;
+
+    color:#d93025;
+
+    padding:7px 16px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.view-btn{
+
+    background:#0F8F83;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.view-btn:hover{
+
+    background:#0b746b;
+
+}
+
+@media(max-width:768px){
+
+table{
+
+display:block;
+
+overflow-x:auto;
+
+}
+
+}
+
+/* Worker dark layout: never switch to an unreadable white row on hover. */
+.health-records .records-table tbody tr{background:#1a263b!important}.health-records .records-table tbody tr:nth-child(even){background:#22324b!important}.health-records .records-table tbody tr:hover{background:#2d4263!important}.health-records .records-table td{color:#f8fafc!important;border-color:#41516b!important}.health-records .records-table .healthy{background:#d4f6d9!important;color:#166534!important;border:1px solid #86efac;font-weight:800!important}.health-records .records-table .follow{color:#7c5200!important;font-weight:800!important}.health-records .records-table .treatment{color:#b42318!important;font-weight:800!important}

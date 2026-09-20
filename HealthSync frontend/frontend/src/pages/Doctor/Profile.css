@@ -1,0 +1,195 @@
+.doctor-profile-page{
+
+    width:100%;
+    padding-bottom:40px;
+
+}
+
+.doctor-page-header{
+
+    margin-bottom:25px;
+
+}
+
+.doctor-page-header h2{
+
+    font-size:32px;
+
+    color:#1565C0;
+
+}
+
+.doctor-page-header p{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+.doctor-profile-card{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:35px;
+
+    display:grid;
+
+    grid-template-columns:300px 1fr;
+
+    gap:40px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.doctor-profile-image{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+.doctor-avatar-icon{
+
+    font-size:120px;
+
+    color:#1565C0;
+
+    margin-bottom:20px;
+
+}
+
+.doctor-profile-image h3{
+
+    color:#1565C0;
+
+    margin-bottom:8px;
+
+}
+
+.doctor-profile-image p{
+
+    color:#777;
+
+}
+
+.doctor-profile-details{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.doctor-detail-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.doctor-detail-box label{
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.doctor-detail-box input,
+.doctor-detail-box textarea{
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+.doctor-detail-box input:focus,
+.doctor-detail-box textarea:focus{
+
+    outline:none;
+
+    border-color:#1565C0;
+
+}
+
+.doctor-full-width{
+
+    grid-column:1/3;
+
+}
+
+.doctor-save-btn{
+
+    grid-column:1/3;
+
+    padding:15px;
+
+    background:#1565C0;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.doctor-save-btn:hover{
+
+    background:#0D47A1;
+
+}
+
+@media(max-width:768px){
+
+.doctor-profile-card{
+
+grid-template-columns:1fr;
+
+}
+
+.doctor-profile-details{
+
+grid-template-columns:1fr;
+
+}
+
+.doctor-full-width{
+
+grid-column:1;
+
+}
+
+.doctor-save-btn{
+
+grid-column:1;
+
+}
+
+}
+.doctor-profile-picture{width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:12px}.profile-picture-actions{display:flex;justify-content:center;gap:8px;margin:0 0 14px}.edit-picture-btn,.delete-picture-btn{border:0;border-radius:7px;padding:7px 11px;font:inherit;cursor:pointer}.edit-picture-btn{background:#1565c0;color:#fff}.edit-picture-btn input{display:none}.delete-picture-btn{background:#fee2e2;color:#b91c1c}
+
+.doctor-detail-box label small{display:block;margin-top:3px;color:#64748b;font-weight:400;font-size:.75rem}.doctor-detail-box input[readonly],.doctor-detail-box textarea[readonly]{background:#f8fafc;color:#64748b;cursor:not-allowed}.profile-error{margin-top:5px;color:#c0362c}.doctor-edit-btn,.doctor-cancel-btn{border:0;border-radius:10px;padding:15px;cursor:pointer;font-size:16px}.doctor-edit-btn{grid-column:1/3;background:#1565c0;color:#fff;display:flex;justify-content:center;align-items:center;gap:8px}.profile-actions{grid-column:1/3;display:grid;grid-template-columns:1fr 2fr;gap:12px}.doctor-cancel-btn{background:#e2e8f0;color:#1e293b}.doctor-save-btn:disabled{opacity:.65;cursor:wait}

@@ -1,0 +1,11 @@
+/* App.css disables body scrolling for the login screen.  This public form is
+   longer than one screen, so explicitly restore document scrolling here. */
+html:has(.doctor-verification-page),
+body:has(.doctor-verification-page),
+#root:has(.doctor-verification-page) {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow: visible !important;
+}
+body:has(.doctor-verification-page) { overflow-y: auto !important; }
+.doctor-verification-page{min-height:100vh;padding:48px 20px 72px;background:#edf7f6;color:#12303c;overflow:visible}.verification-card{max-width:940px;margin:auto;padding:36px;background:#fff;border-radius:20px;box-shadow:0 16px 42px rgba(14,64,68,.13)}.verification-brand{color:#07877d;font-weight:800;font-size:1.1rem}.verification-card h1{margin:8px 0;font-size:2rem}.verification-subtitle{color:#527078;line-height:1.5}.verification-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:26px}.verification-form label{display:grid;gap:7px;font-weight:700;color:#284650}.verification-form input{height:46px;padding:0 12px;border:1px solid #c9dce0;border-radius:9px;font:inherit}.verification-form input[type=file]{height:auto;padding:10px;background:#f8fbfb}.verification-form small{font-weight:400;color:#61777d}.verification-full{grid-column:1/-1}.verification-form button{grid-column:1/-1;height:48px;border:0;border-radius:9px;background:#078d82;color:#fff;font-weight:800;font-size:1rem;cursor:pointer}.verification-form button:disabled{opacity:.65}.verification-error{padding:12px;border-radius:8px;background:#fee2e2;color:#b42318}.verification-success{padding:15px;border-radius:9px;background:#dcfce7;color:#166534}@media(max-width:650px){.doctor-verification-page{padding:20px 12px 36px}.verification-card{padding:24px 18px}.verification-form{grid-template-columns:1fr}}

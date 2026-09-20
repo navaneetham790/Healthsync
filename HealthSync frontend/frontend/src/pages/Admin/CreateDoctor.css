@@ -1,0 +1,136 @@
+.createDoctor{
+    width:100%;
+    min-height:100%;
+    padding-bottom:50px;
+}
+
+.pageHeader{
+    margin-bottom:25px;
+}
+
+.pageHeader h2{
+    margin:0;
+    font-size:34px;
+    color:#222;
+    font-weight:700;
+}
+
+.pageHeader p{
+    margin-top:8px;
+    color:#666;
+    font-size:17px;
+}
+
+.formContainer{
+    background:#fff;
+    border-radius:16px;
+    padding:30px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    margin-bottom:40px;
+}
+
+.formGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.formGroup{
+    display:flex;
+    flex-direction:column;
+}
+
+.formGroup label{
+    margin-bottom:8px;
+    font-size:16px;
+    font-weight:600;
+    color:#333;
+}
+
+.formGroup input,
+.formGroup select{
+    width:100%;
+    height:52px;
+    padding:0 15px;
+    border:1px solid #d8d8d8;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus{
+    border-color:#0F8F83;
+    box-shadow:0 0 0 3px rgba(15,143,131,.15);
+}
+
+.buttonArea{
+    margin-top:35px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.createBtn{
+    min-width:180px;
+    height:50px;
+    background:#0F8F83;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.createBtn:hover{
+    background:#0b746a;
+}
+
+@media(max-width:992px){
+
+.formGrid{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.formContainer{
+    padding:20px;
+}
+
+.buttonArea{
+    justify-content:center;
+}
+
+.createBtn{
+    width:100%;
+}
+
+}
+.formContainer{
+    padding-bottom:40px;
+}
+
+.buttonArea{
+    margin-top:35px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:flex-end;
+}
+.formGroup.full-width{grid-column:1 / -1}.formGroup input[readonly]{background:#f8fafc;color:#475569}
+
+.hospital-dropdown{position:relative}.hospital-dropdown-trigger{width:100%;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;border:1px solid #d8d8d8;border-radius:10px;background:#fff;color:#222;font:inherit;text-align:left;cursor:pointer}.hospital-dropdown-trigger:focus{border-color:#0f8f83;outline:1px solid #0f8f83}.hospital-dropdown-arrow{font-size:16px}.hospital-dropdown-menu{position:absolute;z-index:1100;top:calc(100% + 3px);left:0;width:100%;max-height:150px;overflow-y:auto;border:1px solid #d8d8d8;border-radius:6px;background:#fff;box-shadow:0 4px 10px rgba(15,23,42,.12)}.hospital-dropdown-menu button{display:block;width:100%;border:0;background:#fff;padding:8px 12px;color:#222;font-size:14px;text-align:left;cursor:pointer}.hospital-dropdown-menu button:hover{background:#f0fdfa;color:#0f766e}
+.hospital-dropdown{position:relative}.hospital-dropdown-trigger{width:100%;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;border:1px solid #d8d8d8;border-radius:10px;background:#fff;color:#222;font:inherit;text-align:left;cursor:pointer}.hospital-dropdown-trigger:focus{border-color:#0f8f83;outline:1px solid #0f8f83}.hospital-dropdown-arrow{font-size:16px}.hospital-dropdown-menu{position:absolute;z-index:1100;top:calc(100% + 3px);left:0;width:100%;max-height:150px;overflow-y:auto;border:1px solid #d8d8d8;border-radius:6px;background:#fff;box-shadow:0 4px 10px rgba(15,23,42,.12)}.hospital-dropdown-menu button{display:block;width:100%;border:0;background:#fff;padding:8px 12px;color:#222;font-size:14px;text-align:left;cursor:pointer}.hospital-dropdown-menu button:hover,.hospital-dropdown-menu button:focus,.hospital-dropdown-menu button:active,.hospital-dropdown-menu button.is-selected{background:#2469c9;color:#fff;outline:none}
+
+
+.password-toggle{position:relative}
+.password-toggle input{padding-right:48px!important}
+.password-toggle button{position:absolute;top:50%;right:12px;transform:translateY(-50%);border:0;background:transparent;color:#64748b;cursor:pointer;font-size:17px;line-height:1}
+
+.required-mark,.field-error{color:#c0362c}.field-error{margin-top:6px;font-size:.82rem}.formGroup input[aria-invalid="true"],.formGroup select[aria-invalid="true"]{border-color:#c0362c}.createBtn:disabled{opacity:.65;cursor:wait}
+.hospital-dropdown-arrow{font-size:14px!important}

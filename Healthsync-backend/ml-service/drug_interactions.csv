@@ -1,0 +1,1038 @@
+drug1,drug2,severity,effect
+Warfarin,Aspirin,Major,Severe risk of increased bleeding. Warfarin and Aspirin both increase bleeding tendency.
+Warfarin,Ibuprofen,Major,Severe risk of increased bleeding. Warfarin and Ibuprofen both increase bleeding tendency.
+Warfarin,Naproxen,Major,Severe risk of increased bleeding. Warfarin and Naproxen both increase bleeding tendency.
+Warfarin,Diclofenac,Major,Severe risk of increased bleeding. Warfarin and Diclofenac both increase bleeding tendency.
+Warfarin,Celecoxib,Major,Severe risk of increased bleeding. Warfarin and Celecoxib both increase bleeding tendency.
+Warfarin,Meloxicam,Major,Severe risk of increased bleeding. Warfarin and Meloxicam both increase bleeding tendency.
+Warfarin,Ketorolac,Major,Severe risk of increased bleeding. Warfarin and Ketorolac both increase bleeding tendency.
+Warfarin,Indomethacin,Major,Severe risk of increased bleeding. Warfarin and Indomethacin both increase bleeding tendency.
+Warfarin,Piroxicam,Major,Severe risk of increased bleeding. Warfarin and Piroxicam both increase bleeding tendency.
+Heparin,Aspirin,Major,Severe risk of increased bleeding. Heparin and Aspirin both increase bleeding tendency.
+Heparin,Ibuprofen,Major,Severe risk of increased bleeding. Heparin and Ibuprofen both increase bleeding tendency.
+Heparin,Naproxen,Major,Severe risk of increased bleeding. Heparin and Naproxen both increase bleeding tendency.
+Heparin,Diclofenac,Major,Severe risk of increased bleeding. Heparin and Diclofenac both increase bleeding tendency.
+Heparin,Celecoxib,Major,Severe risk of increased bleeding. Heparin and Celecoxib both increase bleeding tendency.
+Heparin,Meloxicam,Major,Severe risk of increased bleeding. Heparin and Meloxicam both increase bleeding tendency.
+Heparin,Ketorolac,Major,Severe risk of increased bleeding. Heparin and Ketorolac both increase bleeding tendency.
+Heparin,Indomethacin,Major,Severe risk of increased bleeding. Heparin and Indomethacin both increase bleeding tendency.
+Heparin,Piroxicam,Major,Severe risk of increased bleeding. Heparin and Piroxicam both increase bleeding tendency.
+Enoxaparin,Aspirin,Major,Severe risk of increased bleeding. Enoxaparin and Aspirin both increase bleeding tendency.
+Enoxaparin,Ibuprofen,Major,Severe risk of increased bleeding. Enoxaparin and Ibuprofen both increase bleeding tendency.
+Enoxaparin,Naproxen,Major,Severe risk of increased bleeding. Enoxaparin and Naproxen both increase bleeding tendency.
+Enoxaparin,Diclofenac,Major,Severe risk of increased bleeding. Enoxaparin and Diclofenac both increase bleeding tendency.
+Enoxaparin,Celecoxib,Major,Severe risk of increased bleeding. Enoxaparin and Celecoxib both increase bleeding tendency.
+Enoxaparin,Meloxicam,Major,Severe risk of increased bleeding. Enoxaparin and Meloxicam both increase bleeding tendency.
+Enoxaparin,Ketorolac,Major,Severe risk of increased bleeding. Enoxaparin and Ketorolac both increase bleeding tendency.
+Enoxaparin,Indomethacin,Major,Severe risk of increased bleeding. Enoxaparin and Indomethacin both increase bleeding tendency.
+Enoxaparin,Piroxicam,Major,Severe risk of increased bleeding. Enoxaparin and Piroxicam both increase bleeding tendency.
+Clopidogrel,Aspirin,Major,Severe risk of increased bleeding. Clopidogrel and Aspirin both increase bleeding tendency.
+Clopidogrel,Ibuprofen,Major,Severe risk of increased bleeding. Clopidogrel and Ibuprofen both increase bleeding tendency.
+Clopidogrel,Naproxen,Major,Severe risk of increased bleeding. Clopidogrel and Naproxen both increase bleeding tendency.
+Clopidogrel,Diclofenac,Major,Severe risk of increased bleeding. Clopidogrel and Diclofenac both increase bleeding tendency.
+Clopidogrel,Celecoxib,Major,Severe risk of increased bleeding. Clopidogrel and Celecoxib both increase bleeding tendency.
+Clopidogrel,Meloxicam,Major,Severe risk of increased bleeding. Clopidogrel and Meloxicam both increase bleeding tendency.
+Clopidogrel,Ketorolac,Major,Severe risk of increased bleeding. Clopidogrel and Ketorolac both increase bleeding tendency.
+Clopidogrel,Indomethacin,Major,Severe risk of increased bleeding. Clopidogrel and Indomethacin both increase bleeding tendency.
+Clopidogrel,Piroxicam,Major,Severe risk of increased bleeding. Clopidogrel and Piroxicam both increase bleeding tendency.
+Prasugrel,Aspirin,Major,Severe risk of increased bleeding. Prasugrel and Aspirin both increase bleeding tendency.
+Prasugrel,Ibuprofen,Major,Severe risk of increased bleeding. Prasugrel and Ibuprofen both increase bleeding tendency.
+Prasugrel,Naproxen,Major,Severe risk of increased bleeding. Prasugrel and Naproxen both increase bleeding tendency.
+Prasugrel,Diclofenac,Major,Severe risk of increased bleeding. Prasugrel and Diclofenac both increase bleeding tendency.
+Prasugrel,Celecoxib,Major,Severe risk of increased bleeding. Prasugrel and Celecoxib both increase bleeding tendency.
+Prasugrel,Meloxicam,Major,Severe risk of increased bleeding. Prasugrel and Meloxicam both increase bleeding tendency.
+Prasugrel,Ketorolac,Major,Severe risk of increased bleeding. Prasugrel and Ketorolac both increase bleeding tendency.
+Prasugrel,Indomethacin,Major,Severe risk of increased bleeding. Prasugrel and Indomethacin both increase bleeding tendency.
+Prasugrel,Piroxicam,Major,Severe risk of increased bleeding. Prasugrel and Piroxicam both increase bleeding tendency.
+Ticagrelor,Aspirin,Major,Severe risk of increased bleeding. Ticagrelor and Aspirin both increase bleeding tendency.
+Ticagrelor,Ibuprofen,Major,Severe risk of increased bleeding. Ticagrelor and Ibuprofen both increase bleeding tendency.
+Ticagrelor,Naproxen,Major,Severe risk of increased bleeding. Ticagrelor and Naproxen both increase bleeding tendency.
+Ticagrelor,Diclofenac,Major,Severe risk of increased bleeding. Ticagrelor and Diclofenac both increase bleeding tendency.
+Ticagrelor,Celecoxib,Major,Severe risk of increased bleeding. Ticagrelor and Celecoxib both increase bleeding tendency.
+Ticagrelor,Meloxicam,Major,Severe risk of increased bleeding. Ticagrelor and Meloxicam both increase bleeding tendency.
+Ticagrelor,Ketorolac,Major,Severe risk of increased bleeding. Ticagrelor and Ketorolac both increase bleeding tendency.
+Ticagrelor,Indomethacin,Major,Severe risk of increased bleeding. Ticagrelor and Indomethacin both increase bleeding tendency.
+Ticagrelor,Piroxicam,Major,Severe risk of increased bleeding. Ticagrelor and Piroxicam both increase bleeding tendency.
+Dabigatran,Aspirin,Major,Severe risk of increased bleeding. Dabigatran and Aspirin both increase bleeding tendency.
+Dabigatran,Ibuprofen,Major,Severe risk of increased bleeding. Dabigatran and Ibuprofen both increase bleeding tendency.
+Dabigatran,Naproxen,Major,Severe risk of increased bleeding. Dabigatran and Naproxen both increase bleeding tendency.
+Dabigatran,Diclofenac,Major,Severe risk of increased bleeding. Dabigatran and Diclofenac both increase bleeding tendency.
+Dabigatran,Celecoxib,Major,Severe risk of increased bleeding. Dabigatran and Celecoxib both increase bleeding tendency.
+Dabigatran,Meloxicam,Major,Severe risk of increased bleeding. Dabigatran and Meloxicam both increase bleeding tendency.
+Dabigatran,Ketorolac,Major,Severe risk of increased bleeding. Dabigatran and Ketorolac both increase bleeding tendency.
+Dabigatran,Indomethacin,Major,Severe risk of increased bleeding. Dabigatran and Indomethacin both increase bleeding tendency.
+Dabigatran,Piroxicam,Major,Severe risk of increased bleeding. Dabigatran and Piroxicam both increase bleeding tendency.
+Rivaroxaban,Aspirin,Major,Severe risk of increased bleeding. Rivaroxaban and Aspirin both increase bleeding tendency.
+Rivaroxaban,Ibuprofen,Major,Severe risk of increased bleeding. Rivaroxaban and Ibuprofen both increase bleeding tendency.
+Rivaroxaban,Naproxen,Major,Severe risk of increased bleeding. Rivaroxaban and Naproxen both increase bleeding tendency.
+Rivaroxaban,Diclofenac,Major,Severe risk of increased bleeding. Rivaroxaban and Diclofenac both increase bleeding tendency.
+Rivaroxaban,Celecoxib,Major,Severe risk of increased bleeding. Rivaroxaban and Celecoxib both increase bleeding tendency.
+Rivaroxaban,Meloxicam,Major,Severe risk of increased bleeding. Rivaroxaban and Meloxicam both increase bleeding tendency.
+Rivaroxaban,Ketorolac,Major,Severe risk of increased bleeding. Rivaroxaban and Ketorolac both increase bleeding tendency.
+Rivaroxaban,Indomethacin,Major,Severe risk of increased bleeding. Rivaroxaban and Indomethacin both increase bleeding tendency.
+Rivaroxaban,Piroxicam,Major,Severe risk of increased bleeding. Rivaroxaban and Piroxicam both increase bleeding tendency.
+Apixaban,Aspirin,Major,Severe risk of increased bleeding. Apixaban and Aspirin both increase bleeding tendency.
+Apixaban,Ibuprofen,Major,Severe risk of increased bleeding. Apixaban and Ibuprofen both increase bleeding tendency.
+Apixaban,Naproxen,Major,Severe risk of increased bleeding. Apixaban and Naproxen both increase bleeding tendency.
+Apixaban,Diclofenac,Major,Severe risk of increased bleeding. Apixaban and Diclofenac both increase bleeding tendency.
+Apixaban,Celecoxib,Major,Severe risk of increased bleeding. Apixaban and Celecoxib both increase bleeding tendency.
+Apixaban,Meloxicam,Major,Severe risk of increased bleeding. Apixaban and Meloxicam both increase bleeding tendency.
+Apixaban,Ketorolac,Major,Severe risk of increased bleeding. Apixaban and Ketorolac both increase bleeding tendency.
+Apixaban,Indomethacin,Major,Severe risk of increased bleeding. Apixaban and Indomethacin both increase bleeding tendency.
+Apixaban,Piroxicam,Major,Severe risk of increased bleeding. Apixaban and Piroxicam both increase bleeding tendency.
+Sertraline,Tramadol,Major,High risk of Serotonin Syndrome. Combination of Sertraline and Tramadol can cause toxic serotonin accumulation.
+Sertraline,Morphine,Major,High risk of Serotonin Syndrome. Combination of Sertraline and Morphine can cause toxic serotonin accumulation.
+Sertraline,Codeine,Major,High risk of Serotonin Syndrome. Combination of Sertraline and Codeine can cause toxic serotonin accumulation.
+Sertraline,Fentanyl,Major,High risk of Serotonin Syndrome. Combination of Sertraline and Fentanyl can cause toxic serotonin accumulation.
+Sertraline,Oxycodone,Major,High risk of Serotonin Syndrome. Combination of Sertraline and Oxycodone can cause toxic serotonin accumulation.
+Sertraline,Hydrocodone,Major,High risk of Serotonin Syndrome. Combination of Sertraline and Hydrocodone can cause toxic serotonin accumulation.
+Fluoxetine,Tramadol,Major,High risk of Serotonin Syndrome. Combination of Fluoxetine and Tramadol can cause toxic serotonin accumulation.
+Fluoxetine,Morphine,Major,High risk of Serotonin Syndrome. Combination of Fluoxetine and Morphine can cause toxic serotonin accumulation.
+Fluoxetine,Codeine,Major,High risk of Serotonin Syndrome. Combination of Fluoxetine and Codeine can cause toxic serotonin accumulation.
+Fluoxetine,Fentanyl,Major,High risk of Serotonin Syndrome. Combination of Fluoxetine and Fentanyl can cause toxic serotonin accumulation.
+Fluoxetine,Oxycodone,Major,High risk of Serotonin Syndrome. Combination of Fluoxetine and Oxycodone can cause toxic serotonin accumulation.
+Fluoxetine,Hydrocodone,Major,High risk of Serotonin Syndrome. Combination of Fluoxetine and Hydrocodone can cause toxic serotonin accumulation.
+Citalopram,Tramadol,Major,High risk of Serotonin Syndrome. Combination of Citalopram and Tramadol can cause toxic serotonin accumulation.
+Citalopram,Morphine,Major,High risk of Serotonin Syndrome. Combination of Citalopram and Morphine can cause toxic serotonin accumulation.
+Citalopram,Codeine,Major,High risk of Serotonin Syndrome. Combination of Citalopram and Codeine can cause toxic serotonin accumulation.
+Citalopram,Fentanyl,Major,High risk of Serotonin Syndrome. Combination of Citalopram and Fentanyl can cause toxic serotonin accumulation.
+Citalopram,Oxycodone,Major,High risk of Serotonin Syndrome. Combination of Citalopram and Oxycodone can cause toxic serotonin accumulation.
+Citalopram,Hydrocodone,Major,High risk of Serotonin Syndrome. Combination of Citalopram and Hydrocodone can cause toxic serotonin accumulation.
+Escitalopram,Tramadol,Major,High risk of Serotonin Syndrome. Combination of Escitalopram and Tramadol can cause toxic serotonin accumulation.
+Escitalopram,Morphine,Major,High risk of Serotonin Syndrome. Combination of Escitalopram and Morphine can cause toxic serotonin accumulation.
+Escitalopram,Codeine,Major,High risk of Serotonin Syndrome. Combination of Escitalopram and Codeine can cause toxic serotonin accumulation.
+Escitalopram,Fentanyl,Major,High risk of Serotonin Syndrome. Combination of Escitalopram and Fentanyl can cause toxic serotonin accumulation.
+Escitalopram,Oxycodone,Major,High risk of Serotonin Syndrome. Combination of Escitalopram and Oxycodone can cause toxic serotonin accumulation.
+Escitalopram,Hydrocodone,Major,High risk of Serotonin Syndrome. Combination of Escitalopram and Hydrocodone can cause toxic serotonin accumulation.
+Paroxetine,Tramadol,Major,High risk of Serotonin Syndrome. Combination of Paroxetine and Tramadol can cause toxic serotonin accumulation.
+Paroxetine,Morphine,Major,High risk of Serotonin Syndrome. Combination of Paroxetine and Morphine can cause toxic serotonin accumulation.
+Paroxetine,Codeine,Major,High risk of Serotonin Syndrome. Combination of Paroxetine and Codeine can cause toxic serotonin accumulation.
+Paroxetine,Fentanyl,Major,High risk of Serotonin Syndrome. Combination of Paroxetine and Fentanyl can cause toxic serotonin accumulation.
+Paroxetine,Oxycodone,Major,High risk of Serotonin Syndrome. Combination of Paroxetine and Oxycodone can cause toxic serotonin accumulation.
+Paroxetine,Hydrocodone,Major,High risk of Serotonin Syndrome. Combination of Paroxetine and Hydrocodone can cause toxic serotonin accumulation.
+Lithium,Aspirin,Major,"NSAID Aspirin reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Ibuprofen,Major,"NSAID Ibuprofen reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Naproxen,Major,"NSAID Naproxen reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Diclofenac,Major,"NSAID Diclofenac reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Celecoxib,Major,"NSAID Celecoxib reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Meloxicam,Major,"NSAID Meloxicam reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Ketorolac,Major,"NSAID Ketorolac reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Indomethacin,Major,"NSAID Indomethacin reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Piroxicam,Major,"NSAID Piroxicam reduces renal clearance of Lithium, leading to toxicity risk."
+Lithium,Furosemide,Major,Diuretic Furosemide increases risk of Lithium toxicity due to sodium depletion.
+Lithium,Hydrochlorothiazide,Major,Diuretic Hydrochlorothiazide increases risk of Lithium toxicity due to sodium depletion.
+Lithium,Chlorthalidone,Major,Diuretic Chlorthalidone increases risk of Lithium toxicity due to sodium depletion.
+Lithium,Indapamide,Major,Diuretic Indapamide increases risk of Lithium toxicity due to sodium depletion.
+Lisinopril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Lisinopril and Spironolactone can cause severe high potassium levels.
+Lisinopril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Lisinopril and Amiloride can cause severe high potassium levels.
+Lisinopril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Lisinopril and Eplerenone can cause severe high potassium levels.
+Lisinopril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Lisinopril and potassium supplements can cause severe hyperkalemia.
+Ramipril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Ramipril and Spironolactone can cause severe high potassium levels.
+Ramipril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Ramipril and Amiloride can cause severe high potassium levels.
+Ramipril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Ramipril and Eplerenone can cause severe high potassium levels.
+Ramipril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Ramipril and potassium supplements can cause severe hyperkalemia.
+Captopril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Captopril and Spironolactone can cause severe high potassium levels.
+Captopril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Captopril and Amiloride can cause severe high potassium levels.
+Captopril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Captopril and Eplerenone can cause severe high potassium levels.
+Captopril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Captopril and potassium supplements can cause severe hyperkalemia.
+Enalapril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Enalapril and Spironolactone can cause severe high potassium levels.
+Enalapril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Enalapril and Amiloride can cause severe high potassium levels.
+Enalapril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Enalapril and Eplerenone can cause severe high potassium levels.
+Enalapril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Enalapril and potassium supplements can cause severe hyperkalemia.
+Fosinopril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Fosinopril and Spironolactone can cause severe high potassium levels.
+Fosinopril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Fosinopril and Amiloride can cause severe high potassium levels.
+Fosinopril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Fosinopril and Eplerenone can cause severe high potassium levels.
+Fosinopril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Fosinopril and potassium supplements can cause severe hyperkalemia.
+Quinapril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Quinapril and Spironolactone can cause severe high potassium levels.
+Quinapril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Quinapril and Amiloride can cause severe high potassium levels.
+Quinapril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Quinapril and Eplerenone can cause severe high potassium levels.
+Quinapril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Quinapril and potassium supplements can cause severe hyperkalemia.
+Trandolapril,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Trandolapril and Spironolactone can cause severe high potassium levels.
+Trandolapril,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Trandolapril and Amiloride can cause severe high potassium levels.
+Trandolapril,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Trandolapril and Eplerenone can cause severe high potassium levels.
+Trandolapril,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Trandolapril and potassium supplements can cause severe hyperkalemia.
+Losartan,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Losartan and Spironolactone can cause severe high potassium levels.
+Losartan,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Losartan and Amiloride can cause severe high potassium levels.
+Losartan,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Losartan and Eplerenone can cause severe high potassium levels.
+Losartan,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Losartan and potassium supplements can cause severe hyperkalemia.
+Valsartan,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Valsartan and Spironolactone can cause severe high potassium levels.
+Valsartan,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Valsartan and Amiloride can cause severe high potassium levels.
+Valsartan,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Valsartan and Eplerenone can cause severe high potassium levels.
+Valsartan,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Valsartan and potassium supplements can cause severe hyperkalemia.
+Candesartan,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Candesartan and Spironolactone can cause severe high potassium levels.
+Candesartan,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Candesartan and Amiloride can cause severe high potassium levels.
+Candesartan,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Candesartan and Eplerenone can cause severe high potassium levels.
+Candesartan,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Candesartan and potassium supplements can cause severe hyperkalemia.
+Irbesartan,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Irbesartan and Spironolactone can cause severe high potassium levels.
+Irbesartan,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Irbesartan and Amiloride can cause severe high potassium levels.
+Irbesartan,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Irbesartan and Eplerenone can cause severe high potassium levels.
+Irbesartan,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Irbesartan and potassium supplements can cause severe hyperkalemia.
+Olmesartan,Spironolactone,Major,Dangerous hyperkalemia risk. Combined use of Olmesartan and Spironolactone can cause severe high potassium levels.
+Olmesartan,Amiloride,Major,Dangerous hyperkalemia risk. Combined use of Olmesartan and Amiloride can cause severe high potassium levels.
+Olmesartan,Eplerenone,Major,Dangerous hyperkalemia risk. Combined use of Olmesartan and Eplerenone can cause severe high potassium levels.
+Olmesartan,Potassium Chloride,Major,Combination of ACE inhibitor/ARB Olmesartan and potassium supplements can cause severe hyperkalemia.
+Simvastatin,Verapamil,Major,Increased risk of myopathy/rhabdomyolysis. Verapamil strongly increases Simvastatin plasma levels.
+Simvastatin,Diltiazem,Major,Increased risk of myopathy/rhabdomyolysis. Diltiazem strongly increases Simvastatin plasma levels.
+Simvastatin,Clarithromycin,Major,Increased risk of myopathy/rhabdomyolysis. Clarithromycin strongly increases Simvastatin plasma levels.
+Simvastatin,Erythromycin,Major,Increased risk of myopathy/rhabdomyolysis. Erythromycin strongly increases Simvastatin plasma levels.
+Simvastatin,Ketoconazole,Major,Increased risk of myopathy/rhabdomyolysis. Ketoconazole strongly increases Simvastatin plasma levels.
+Simvastatin,Itraconazole,Major,Increased risk of myopathy/rhabdomyolysis. Itraconazole strongly increases Simvastatin plasma levels.
+Simvastatin,Fluconazole,Major,Increased risk of myopathy/rhabdomyolysis. Fluconazole strongly increases Simvastatin plasma levels.
+Simvastatin,Amiodarone,Major,Increased risk of myopathy/rhabdomyolysis. Amiodarone strongly increases Simvastatin plasma levels.
+Lovastatin,Verapamil,Major,Increased risk of myopathy/rhabdomyolysis. Verapamil strongly increases Lovastatin plasma levels.
+Lovastatin,Diltiazem,Major,Increased risk of myopathy/rhabdomyolysis. Diltiazem strongly increases Lovastatin plasma levels.
+Lovastatin,Clarithromycin,Major,Increased risk of myopathy/rhabdomyolysis. Clarithromycin strongly increases Lovastatin plasma levels.
+Lovastatin,Erythromycin,Major,Increased risk of myopathy/rhabdomyolysis. Erythromycin strongly increases Lovastatin plasma levels.
+Lovastatin,Ketoconazole,Major,Increased risk of myopathy/rhabdomyolysis. Ketoconazole strongly increases Lovastatin plasma levels.
+Lovastatin,Itraconazole,Major,Increased risk of myopathy/rhabdomyolysis. Itraconazole strongly increases Lovastatin plasma levels.
+Lovastatin,Fluconazole,Major,Increased risk of myopathy/rhabdomyolysis. Fluconazole strongly increases Lovastatin plasma levels.
+Lovastatin,Amiodarone,Major,Increased risk of myopathy/rhabdomyolysis. Amiodarone strongly increases Lovastatin plasma levels.
+Ciprofloxacin,Amiodarone,Major,QT interval prolongation. Concomitant use of Ciprofloxacin and Amiodarone increases risk of atypical ventricular tachycardia.
+Ciprofloxacin,Sotalol,Major,QT interval prolongation. Concomitant use of Ciprofloxacin and Sotalol increases risk of atypical ventricular tachycardia.
+Ciprofloxacin,Procainamide,Major,QT interval prolongation. Concomitant use of Ciprofloxacin and Procainamide increases risk of atypical ventricular tachycardia.
+Ciprofloxacin,Quinidine,Major,QT interval prolongation. Concomitant use of Ciprofloxacin and Quinidine increases risk of atypical ventricular tachycardia.
+Levofloxacin,Amiodarone,Major,QT interval prolongation. Concomitant use of Levofloxacin and Amiodarone increases risk of atypical ventricular tachycardia.
+Levofloxacin,Sotalol,Major,QT interval prolongation. Concomitant use of Levofloxacin and Sotalol increases risk of atypical ventricular tachycardia.
+Levofloxacin,Procainamide,Major,QT interval prolongation. Concomitant use of Levofloxacin and Procainamide increases risk of atypical ventricular tachycardia.
+Levofloxacin,Quinidine,Major,QT interval prolongation. Concomitant use of Levofloxacin and Quinidine increases risk of atypical ventricular tachycardia.
+Moxifloxacin,Amiodarone,Major,QT interval prolongation. Concomitant use of Moxifloxacin and Amiodarone increases risk of atypical ventricular tachycardia.
+Moxifloxacin,Sotalol,Major,QT interval prolongation. Concomitant use of Moxifloxacin and Sotalol increases risk of atypical ventricular tachycardia.
+Moxifloxacin,Procainamide,Major,QT interval prolongation. Concomitant use of Moxifloxacin and Procainamide increases risk of atypical ventricular tachycardia.
+Moxifloxacin,Quinidine,Major,QT interval prolongation. Concomitant use of Moxifloxacin and Quinidine increases risk of atypical ventricular tachycardia.
+Ofloxacin,Amiodarone,Major,QT interval prolongation. Concomitant use of Ofloxacin and Amiodarone increases risk of atypical ventricular tachycardia.
+Ofloxacin,Sotalol,Major,QT interval prolongation. Concomitant use of Ofloxacin and Sotalol increases risk of atypical ventricular tachycardia.
+Ofloxacin,Procainamide,Major,QT interval prolongation. Concomitant use of Ofloxacin and Procainamide increases risk of atypical ventricular tachycardia.
+Ofloxacin,Quinidine,Major,QT interval prolongation. Concomitant use of Ofloxacin and Quinidine increases risk of atypical ventricular tachycardia.
+Methotrexate,Aspirin,Major,"NSAID Aspirin reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Ibuprofen,Major,"NSAID Ibuprofen reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Naproxen,Major,"NSAID Naproxen reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Diclofenac,Major,"NSAID Diclofenac reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Celecoxib,Major,"NSAID Celecoxib reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Meloxicam,Major,"NSAID Meloxicam reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Ketorolac,Major,"NSAID Ketorolac reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Indomethacin,Major,"NSAID Indomethacin reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Methotrexate,Piroxicam,Major,"NSAID Piroxicam reduces renal clearance of Methotrexate, potentially causing fatal toxicity."
+Sildenafil,Glyceryl Trinitrate,Major,Severe hypotension. Glyceryl Trinitrate and Sildenafil combined can cause a dangerous drop in blood pressure.
+Tadalafil,Glyceryl Trinitrate,Major,Severe hypotension. Glyceryl Trinitrate and Tadalafil combined can cause a dangerous drop in blood pressure.
+Vardenafil,Glyceryl Trinitrate,Major,Severe hypotension. Glyceryl Trinitrate and Vardenafil combined can cause a dangerous drop in blood pressure.
+Sildenafil,Isosorbide Mononitrate,Major,Severe hypotension. Isosorbide Mononitrate and Sildenafil combined can cause a dangerous drop in blood pressure.
+Tadalafil,Isosorbide Mononitrate,Major,Severe hypotension. Isosorbide Mononitrate and Tadalafil combined can cause a dangerous drop in blood pressure.
+Vardenafil,Isosorbide Mononitrate,Major,Severe hypotension. Isosorbide Mononitrate and Vardenafil combined can cause a dangerous drop in blood pressure.
+Sildenafil,Isosorbide Dinitrate,Major,Severe hypotension. Isosorbide Dinitrate and Sildenafil combined can cause a dangerous drop in blood pressure.
+Tadalafil,Isosorbide Dinitrate,Major,Severe hypotension. Isosorbide Dinitrate and Tadalafil combined can cause a dangerous drop in blood pressure.
+Vardenafil,Isosorbide Dinitrate,Major,Severe hypotension. Isosorbide Dinitrate and Vardenafil combined can cause a dangerous drop in blood pressure.
+Sildenafil,Amyl Nitrite,Major,Severe hypotension. Amyl Nitrite and Sildenafil combined can cause a dangerous drop in blood pressure.
+Tadalafil,Amyl Nitrite,Major,Severe hypotension. Amyl Nitrite and Tadalafil combined can cause a dangerous drop in blood pressure.
+Vardenafil,Amyl Nitrite,Major,Severe hypotension. Amyl Nitrite and Vardenafil combined can cause a dangerous drop in blood pressure.
+Diazepam,Tramadol,Major,"Concomitant use of benzodiazepine Diazepam and opioid Tramadol may result in profound sedation, respiratory depression, coma, and death."
+Diazepam,Morphine,Major,"Concomitant use of benzodiazepine Diazepam and opioid Morphine may result in profound sedation, respiratory depression, coma, and death."
+Diazepam,Codeine,Major,"Concomitant use of benzodiazepine Diazepam and opioid Codeine may result in profound sedation, respiratory depression, coma, and death."
+Diazepam,Fentanyl,Major,"Concomitant use of benzodiazepine Diazepam and opioid Fentanyl may result in profound sedation, respiratory depression, coma, and death."
+Diazepam,Oxycodone,Major,"Concomitant use of benzodiazepine Diazepam and opioid Oxycodone may result in profound sedation, respiratory depression, coma, and death."
+Diazepam,Hydrocodone,Major,"Concomitant use of benzodiazepine Diazepam and opioid Hydrocodone may result in profound sedation, respiratory depression, coma, and death."
+Alprazolam,Tramadol,Major,"Concomitant use of benzodiazepine Alprazolam and opioid Tramadol may result in profound sedation, respiratory depression, coma, and death."
+Alprazolam,Morphine,Major,"Concomitant use of benzodiazepine Alprazolam and opioid Morphine may result in profound sedation, respiratory depression, coma, and death."
+Alprazolam,Codeine,Major,"Concomitant use of benzodiazepine Alprazolam and opioid Codeine may result in profound sedation, respiratory depression, coma, and death."
+Alprazolam,Fentanyl,Major,"Concomitant use of benzodiazepine Alprazolam and opioid Fentanyl may result in profound sedation, respiratory depression, coma, and death."
+Alprazolam,Oxycodone,Major,"Concomitant use of benzodiazepine Alprazolam and opioid Oxycodone may result in profound sedation, respiratory depression, coma, and death."
+Alprazolam,Hydrocodone,Major,"Concomitant use of benzodiazepine Alprazolam and opioid Hydrocodone may result in profound sedation, respiratory depression, coma, and death."
+Midazolam,Tramadol,Major,"Concomitant use of benzodiazepine Midazolam and opioid Tramadol may result in profound sedation, respiratory depression, coma, and death."
+Midazolam,Morphine,Major,"Concomitant use of benzodiazepine Midazolam and opioid Morphine may result in profound sedation, respiratory depression, coma, and death."
+Midazolam,Codeine,Major,"Concomitant use of benzodiazepine Midazolam and opioid Codeine may result in profound sedation, respiratory depression, coma, and death."
+Midazolam,Fentanyl,Major,"Concomitant use of benzodiazepine Midazolam and opioid Fentanyl may result in profound sedation, respiratory depression, coma, and death."
+Midazolam,Oxycodone,Major,"Concomitant use of benzodiazepine Midazolam and opioid Oxycodone may result in profound sedation, respiratory depression, coma, and death."
+Midazolam,Hydrocodone,Major,"Concomitant use of benzodiazepine Midazolam and opioid Hydrocodone may result in profound sedation, respiratory depression, coma, and death."
+Lorazepam,Tramadol,Major,"Concomitant use of benzodiazepine Lorazepam and opioid Tramadol may result in profound sedation, respiratory depression, coma, and death."
+Lorazepam,Morphine,Major,"Concomitant use of benzodiazepine Lorazepam and opioid Morphine may result in profound sedation, respiratory depression, coma, and death."
+Lorazepam,Codeine,Major,"Concomitant use of benzodiazepine Lorazepam and opioid Codeine may result in profound sedation, respiratory depression, coma, and death."
+Lorazepam,Fentanyl,Major,"Concomitant use of benzodiazepine Lorazepam and opioid Fentanyl may result in profound sedation, respiratory depression, coma, and death."
+Lorazepam,Oxycodone,Major,"Concomitant use of benzodiazepine Lorazepam and opioid Oxycodone may result in profound sedation, respiratory depression, coma, and death."
+Lorazepam,Hydrocodone,Major,"Concomitant use of benzodiazepine Lorazepam and opioid Hydrocodone may result in profound sedation, respiratory depression, coma, and death."
+Clonazepam,Tramadol,Major,"Concomitant use of benzodiazepine Clonazepam and opioid Tramadol may result in profound sedation, respiratory depression, coma, and death."
+Clonazepam,Morphine,Major,"Concomitant use of benzodiazepine Clonazepam and opioid Morphine may result in profound sedation, respiratory depression, coma, and death."
+Clonazepam,Codeine,Major,"Concomitant use of benzodiazepine Clonazepam and opioid Codeine may result in profound sedation, respiratory depression, coma, and death."
+Clonazepam,Fentanyl,Major,"Concomitant use of benzodiazepine Clonazepam and opioid Fentanyl may result in profound sedation, respiratory depression, coma, and death."
+Clonazepam,Oxycodone,Major,"Concomitant use of benzodiazepine Clonazepam and opioid Oxycodone may result in profound sedation, respiratory depression, coma, and death."
+Clonazepam,Hydrocodone,Major,"Concomitant use of benzodiazepine Clonazepam and opioid Hydrocodone may result in profound sedation, respiratory depression, coma, and death."
+Temazepam,Tramadol,Major,"Concomitant use of benzodiazepine Temazepam and opioid Tramadol may result in profound sedation, respiratory depression, coma, and death."
+Temazepam,Morphine,Major,"Concomitant use of benzodiazepine Temazepam and opioid Morphine may result in profound sedation, respiratory depression, coma, and death."
+Temazepam,Codeine,Major,"Concomitant use of benzodiazepine Temazepam and opioid Codeine may result in profound sedation, respiratory depression, coma, and death."
+Temazepam,Fentanyl,Major,"Concomitant use of benzodiazepine Temazepam and opioid Fentanyl may result in profound sedation, respiratory depression, coma, and death."
+Temazepam,Oxycodone,Major,"Concomitant use of benzodiazepine Temazepam and opioid Oxycodone may result in profound sedation, respiratory depression, coma, and death."
+Temazepam,Hydrocodone,Major,"Concomitant use of benzodiazepine Temazepam and opioid Hydrocodone may result in profound sedation, respiratory depression, coma, and death."
+Metformin,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Metformin.
+Metformin,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Metformin.
+Metformin,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Metformin.
+Metformin,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Metformin.
+Metformin,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Metformin.
+Metformin,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Metformin.
+Glibenclamide,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Glibenclamide.
+Glibenclamide,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Glibenclamide.
+Glibenclamide,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Glibenclamide.
+Glibenclamide,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Glibenclamide.
+Glibenclamide,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Glibenclamide.
+Glibenclamide,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Glibenclamide.
+Insulin,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Insulin.
+Insulin,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Insulin.
+Insulin,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Insulin.
+Insulin,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Insulin.
+Insulin,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Insulin.
+Insulin,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Insulin.
+Glimepiride,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Glimepiride.
+Glimepiride,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Glimepiride.
+Glimepiride,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Glimepiride.
+Glimepiride,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Glimepiride.
+Glimepiride,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Glimepiride.
+Glimepiride,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Glimepiride.
+Pioglitazone,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Pioglitazone.
+Pioglitazone,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Pioglitazone.
+Pioglitazone,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Pioglitazone.
+Pioglitazone,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Pioglitazone.
+Pioglitazone,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Pioglitazone.
+Pioglitazone,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Pioglitazone.
+Sitagliptin,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Sitagliptin.
+Sitagliptin,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Sitagliptin.
+Sitagliptin,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Sitagliptin.
+Sitagliptin,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Sitagliptin.
+Sitagliptin,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Sitagliptin.
+Sitagliptin,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Sitagliptin.
+Empagliflozin,Metoprolol,Moderate,Beta blocker Metoprolol may mask symptoms of hypoglycemia caused by Empagliflozin.
+Empagliflozin,Atenolol,Moderate,Beta blocker Atenolol may mask symptoms of hypoglycemia caused by Empagliflozin.
+Empagliflozin,Propranolol,Moderate,Beta blocker Propranolol may mask symptoms of hypoglycemia caused by Empagliflozin.
+Empagliflozin,Carvedilol,Moderate,Beta blocker Carvedilol may mask symptoms of hypoglycemia caused by Empagliflozin.
+Empagliflozin,Bisoprolol,Moderate,Beta blocker Bisoprolol may mask symptoms of hypoglycemia caused by Empagliflozin.
+Empagliflozin,Nebivolol,Moderate,Beta blocker Nebivolol may mask symptoms of hypoglycemia caused by Empagliflozin.
+Lisinopril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Aspirin.
+Lisinopril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Ibuprofen.
+Lisinopril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Naproxen.
+Lisinopril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Diclofenac.
+Lisinopril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Celecoxib.
+Lisinopril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Meloxicam.
+Lisinopril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Ketorolac.
+Lisinopril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Indomethacin.
+Lisinopril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Lisinopril and Piroxicam.
+Ramipril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Aspirin.
+Ramipril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Ibuprofen.
+Ramipril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Naproxen.
+Ramipril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Diclofenac.
+Ramipril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Celecoxib.
+Ramipril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Meloxicam.
+Ramipril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Ketorolac.
+Ramipril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Indomethacin.
+Ramipril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Ramipril and Piroxicam.
+Captopril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Aspirin.
+Captopril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Ibuprofen.
+Captopril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Naproxen.
+Captopril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Diclofenac.
+Captopril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Celecoxib.
+Captopril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Meloxicam.
+Captopril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Ketorolac.
+Captopril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Indomethacin.
+Captopril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Captopril and Piroxicam.
+Enalapril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Aspirin.
+Enalapril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Ibuprofen.
+Enalapril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Naproxen.
+Enalapril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Diclofenac.
+Enalapril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Celecoxib.
+Enalapril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Meloxicam.
+Enalapril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Ketorolac.
+Enalapril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Indomethacin.
+Enalapril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Enalapril and Piroxicam.
+Fosinopril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Aspirin.
+Fosinopril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Ibuprofen.
+Fosinopril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Naproxen.
+Fosinopril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Diclofenac.
+Fosinopril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Celecoxib.
+Fosinopril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Meloxicam.
+Fosinopril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Ketorolac.
+Fosinopril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Indomethacin.
+Fosinopril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Fosinopril and Piroxicam.
+Quinapril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Aspirin.
+Quinapril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Ibuprofen.
+Quinapril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Naproxen.
+Quinapril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Diclofenac.
+Quinapril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Celecoxib.
+Quinapril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Meloxicam.
+Quinapril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Ketorolac.
+Quinapril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Indomethacin.
+Quinapril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Quinapril and Piroxicam.
+Trandolapril,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Aspirin.
+Trandolapril,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Ibuprofen.
+Trandolapril,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Naproxen.
+Trandolapril,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Diclofenac.
+Trandolapril,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Celecoxib.
+Trandolapril,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Meloxicam.
+Trandolapril,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Ketorolac.
+Trandolapril,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Indomethacin.
+Trandolapril,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Trandolapril and Piroxicam.
+Losartan,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Aspirin.
+Losartan,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Ibuprofen.
+Losartan,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Naproxen.
+Losartan,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Diclofenac.
+Losartan,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Celecoxib.
+Losartan,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Meloxicam.
+Losartan,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Ketorolac.
+Losartan,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Indomethacin.
+Losartan,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Losartan and Piroxicam.
+Valsartan,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Aspirin.
+Valsartan,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Ibuprofen.
+Valsartan,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Naproxen.
+Valsartan,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Diclofenac.
+Valsartan,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Celecoxib.
+Valsartan,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Meloxicam.
+Valsartan,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Ketorolac.
+Valsartan,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Indomethacin.
+Valsartan,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Valsartan and Piroxicam.
+Candesartan,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Aspirin.
+Candesartan,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Ibuprofen.
+Candesartan,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Naproxen.
+Candesartan,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Diclofenac.
+Candesartan,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Celecoxib.
+Candesartan,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Meloxicam.
+Candesartan,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Ketorolac.
+Candesartan,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Indomethacin.
+Candesartan,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Candesartan and Piroxicam.
+Irbesartan,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Aspirin.
+Irbesartan,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Ibuprofen.
+Irbesartan,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Naproxen.
+Irbesartan,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Diclofenac.
+Irbesartan,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Celecoxib.
+Irbesartan,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Meloxicam.
+Irbesartan,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Ketorolac.
+Irbesartan,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Indomethacin.
+Irbesartan,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Irbesartan and Piroxicam.
+Olmesartan,Aspirin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Aspirin.
+Olmesartan,Ibuprofen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Ibuprofen.
+Olmesartan,Naproxen,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Naproxen.
+Olmesartan,Diclofenac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Diclofenac.
+Olmesartan,Celecoxib,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Celecoxib.
+Olmesartan,Meloxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Meloxicam.
+Olmesartan,Ketorolac,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Ketorolac.
+Olmesartan,Indomethacin,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Indomethacin.
+Olmesartan,Piroxicam,Moderate,Increased risk of acute kidney injury and reduced blood pressure control when combining Olmesartan and Piroxicam.
+Ciprofloxacin,Antacid,Moderate,Reduced absorption. Divalent or trivalent cations in Antacid bind to Ciprofloxacin and lower its blood levels.
+Ciprofloxacin,Calcium Carbonate,Moderate,Reduced absorption. Divalent or trivalent cations in Calcium Carbonate bind to Ciprofloxacin and lower its blood levels.
+Ciprofloxacin,Ferrous Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Ferrous Sulfate bind to Ciprofloxacin and lower its blood levels.
+Ciprofloxacin,Magnesium Hydroxide,Moderate,Reduced absorption. Divalent or trivalent cations in Magnesium Hydroxide bind to Ciprofloxacin and lower its blood levels.
+Ciprofloxacin,Zinc Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Zinc Sulfate bind to Ciprofloxacin and lower its blood levels.
+Levofloxacin,Antacid,Moderate,Reduced absorption. Divalent or trivalent cations in Antacid bind to Levofloxacin and lower its blood levels.
+Levofloxacin,Calcium Carbonate,Moderate,Reduced absorption. Divalent or trivalent cations in Calcium Carbonate bind to Levofloxacin and lower its blood levels.
+Levofloxacin,Ferrous Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Ferrous Sulfate bind to Levofloxacin and lower its blood levels.
+Levofloxacin,Magnesium Hydroxide,Moderate,Reduced absorption. Divalent or trivalent cations in Magnesium Hydroxide bind to Levofloxacin and lower its blood levels.
+Levofloxacin,Zinc Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Zinc Sulfate bind to Levofloxacin and lower its blood levels.
+Moxifloxacin,Antacid,Moderate,Reduced absorption. Divalent or trivalent cations in Antacid bind to Moxifloxacin and lower its blood levels.
+Moxifloxacin,Calcium Carbonate,Moderate,Reduced absorption. Divalent or trivalent cations in Calcium Carbonate bind to Moxifloxacin and lower its blood levels.
+Moxifloxacin,Ferrous Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Ferrous Sulfate bind to Moxifloxacin and lower its blood levels.
+Moxifloxacin,Magnesium Hydroxide,Moderate,Reduced absorption. Divalent or trivalent cations in Magnesium Hydroxide bind to Moxifloxacin and lower its blood levels.
+Moxifloxacin,Zinc Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Zinc Sulfate bind to Moxifloxacin and lower its blood levels.
+Ofloxacin,Antacid,Moderate,Reduced absorption. Divalent or trivalent cations in Antacid bind to Ofloxacin and lower its blood levels.
+Ofloxacin,Calcium Carbonate,Moderate,Reduced absorption. Divalent or trivalent cations in Calcium Carbonate bind to Ofloxacin and lower its blood levels.
+Ofloxacin,Ferrous Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Ferrous Sulfate bind to Ofloxacin and lower its blood levels.
+Ofloxacin,Magnesium Hydroxide,Moderate,Reduced absorption. Divalent or trivalent cations in Magnesium Hydroxide bind to Ofloxacin and lower its blood levels.
+Ofloxacin,Zinc Sulfate,Moderate,Reduced absorption. Divalent or trivalent cations in Zinc Sulfate bind to Ofloxacin and lower its blood levels.
+Atorvastatin,Antacid,Moderate,Antacids reduce Atorvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Atorvastatin,Magnesium Hydroxide,Moderate,Antacids reduce Atorvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Atorvastatin,Aluminum Hydroxide,Moderate,Antacids reduce Atorvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Simvastatin,Antacid,Moderate,Antacids reduce Simvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Simvastatin,Magnesium Hydroxide,Moderate,Antacids reduce Simvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Simvastatin,Aluminum Hydroxide,Moderate,Antacids reduce Simvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Rosuvastatin,Antacid,Moderate,Antacids reduce Rosuvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Rosuvastatin,Magnesium Hydroxide,Moderate,Antacids reduce Rosuvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Rosuvastatin,Aluminum Hydroxide,Moderate,Antacids reduce Rosuvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Pravastatin,Antacid,Moderate,Antacids reduce Pravastatin plasma concentration. Take antacids at least 2 hours after statin.
+Pravastatin,Magnesium Hydroxide,Moderate,Antacids reduce Pravastatin plasma concentration. Take antacids at least 2 hours after statin.
+Pravastatin,Aluminum Hydroxide,Moderate,Antacids reduce Pravastatin plasma concentration. Take antacids at least 2 hours after statin.
+Lovastatin,Antacid,Moderate,Antacids reduce Lovastatin plasma concentration. Take antacids at least 2 hours after statin.
+Lovastatin,Magnesium Hydroxide,Moderate,Antacids reduce Lovastatin plasma concentration. Take antacids at least 2 hours after statin.
+Lovastatin,Aluminum Hydroxide,Moderate,Antacids reduce Lovastatin plasma concentration. Take antacids at least 2 hours after statin.
+Fluvastatin,Antacid,Moderate,Antacids reduce Fluvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Fluvastatin,Magnesium Hydroxide,Moderate,Antacids reduce Fluvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Fluvastatin,Aluminum Hydroxide,Moderate,Antacids reduce Fluvastatin plasma concentration. Take antacids at least 2 hours after statin.
+Sertraline,Aspirin,Moderate,SSRI Sertraline combined with NSAID/Aspirin Aspirin increases risk of gastrointestinal bleeding.
+Sertraline,Ibuprofen,Moderate,SSRI Sertraline combined with NSAID/Aspirin Ibuprofen increases risk of gastrointestinal bleeding.
+Sertraline,Naproxen,Moderate,SSRI Sertraline combined with NSAID/Aspirin Naproxen increases risk of gastrointestinal bleeding.
+Sertraline,Diclofenac,Moderate,SSRI Sertraline combined with NSAID/Aspirin Diclofenac increases risk of gastrointestinal bleeding.
+Sertraline,Celecoxib,Moderate,SSRI Sertraline combined with NSAID/Aspirin Celecoxib increases risk of gastrointestinal bleeding.
+Sertraline,Meloxicam,Moderate,SSRI Sertraline combined with NSAID/Aspirin Meloxicam increases risk of gastrointestinal bleeding.
+Sertraline,Ketorolac,Moderate,SSRI Sertraline combined with NSAID/Aspirin Ketorolac increases risk of gastrointestinal bleeding.
+Sertraline,Indomethacin,Moderate,SSRI Sertraline combined with NSAID/Aspirin Indomethacin increases risk of gastrointestinal bleeding.
+Sertraline,Piroxicam,Moderate,SSRI Sertraline combined with NSAID/Aspirin Piroxicam increases risk of gastrointestinal bleeding.
+Fluoxetine,Aspirin,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Aspirin increases risk of gastrointestinal bleeding.
+Fluoxetine,Ibuprofen,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Ibuprofen increases risk of gastrointestinal bleeding.
+Fluoxetine,Naproxen,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Naproxen increases risk of gastrointestinal bleeding.
+Fluoxetine,Diclofenac,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Diclofenac increases risk of gastrointestinal bleeding.
+Fluoxetine,Celecoxib,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Celecoxib increases risk of gastrointestinal bleeding.
+Fluoxetine,Meloxicam,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Meloxicam increases risk of gastrointestinal bleeding.
+Fluoxetine,Ketorolac,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Ketorolac increases risk of gastrointestinal bleeding.
+Fluoxetine,Indomethacin,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Indomethacin increases risk of gastrointestinal bleeding.
+Fluoxetine,Piroxicam,Moderate,SSRI Fluoxetine combined with NSAID/Aspirin Piroxicam increases risk of gastrointestinal bleeding.
+Citalopram,Aspirin,Moderate,SSRI Citalopram combined with NSAID/Aspirin Aspirin increases risk of gastrointestinal bleeding.
+Citalopram,Ibuprofen,Moderate,SSRI Citalopram combined with NSAID/Aspirin Ibuprofen increases risk of gastrointestinal bleeding.
+Citalopram,Naproxen,Moderate,SSRI Citalopram combined with NSAID/Aspirin Naproxen increases risk of gastrointestinal bleeding.
+Citalopram,Diclofenac,Moderate,SSRI Citalopram combined with NSAID/Aspirin Diclofenac increases risk of gastrointestinal bleeding.
+Citalopram,Celecoxib,Moderate,SSRI Citalopram combined with NSAID/Aspirin Celecoxib increases risk of gastrointestinal bleeding.
+Citalopram,Meloxicam,Moderate,SSRI Citalopram combined with NSAID/Aspirin Meloxicam increases risk of gastrointestinal bleeding.
+Citalopram,Ketorolac,Moderate,SSRI Citalopram combined with NSAID/Aspirin Ketorolac increases risk of gastrointestinal bleeding.
+Citalopram,Indomethacin,Moderate,SSRI Citalopram combined with NSAID/Aspirin Indomethacin increases risk of gastrointestinal bleeding.
+Citalopram,Piroxicam,Moderate,SSRI Citalopram combined with NSAID/Aspirin Piroxicam increases risk of gastrointestinal bleeding.
+Escitalopram,Aspirin,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Aspirin increases risk of gastrointestinal bleeding.
+Escitalopram,Ibuprofen,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Ibuprofen increases risk of gastrointestinal bleeding.
+Escitalopram,Naproxen,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Naproxen increases risk of gastrointestinal bleeding.
+Escitalopram,Diclofenac,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Diclofenac increases risk of gastrointestinal bleeding.
+Escitalopram,Celecoxib,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Celecoxib increases risk of gastrointestinal bleeding.
+Escitalopram,Meloxicam,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Meloxicam increases risk of gastrointestinal bleeding.
+Escitalopram,Ketorolac,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Ketorolac increases risk of gastrointestinal bleeding.
+Escitalopram,Indomethacin,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Indomethacin increases risk of gastrointestinal bleeding.
+Escitalopram,Piroxicam,Moderate,SSRI Escitalopram combined with NSAID/Aspirin Piroxicam increases risk of gastrointestinal bleeding.
+Paroxetine,Aspirin,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Aspirin increases risk of gastrointestinal bleeding.
+Paroxetine,Ibuprofen,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Ibuprofen increases risk of gastrointestinal bleeding.
+Paroxetine,Naproxen,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Naproxen increases risk of gastrointestinal bleeding.
+Paroxetine,Diclofenac,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Diclofenac increases risk of gastrointestinal bleeding.
+Paroxetine,Celecoxib,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Celecoxib increases risk of gastrointestinal bleeding.
+Paroxetine,Meloxicam,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Meloxicam increases risk of gastrointestinal bleeding.
+Paroxetine,Ketorolac,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Ketorolac increases risk of gastrointestinal bleeding.
+Paroxetine,Indomethacin,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Indomethacin increases risk of gastrointestinal bleeding.
+Paroxetine,Piroxicam,Moderate,SSRI Paroxetine combined with NSAID/Aspirin Piroxicam increases risk of gastrointestinal bleeding.
+Prednisolone,Aspirin,Moderate,Corticosteroid Prednisolone combined with NSAID Aspirin increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Ibuprofen,Moderate,Corticosteroid Prednisolone combined with NSAID Ibuprofen increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Naproxen,Moderate,Corticosteroid Prednisolone combined with NSAID Naproxen increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Diclofenac,Moderate,Corticosteroid Prednisolone combined with NSAID Diclofenac increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Celecoxib,Moderate,Corticosteroid Prednisolone combined with NSAID Celecoxib increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Meloxicam,Moderate,Corticosteroid Prednisolone combined with NSAID Meloxicam increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Ketorolac,Moderate,Corticosteroid Prednisolone combined with NSAID Ketorolac increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Indomethacin,Moderate,Corticosteroid Prednisolone combined with NSAID Indomethacin increases risk of gastrointestinal ulceration and bleeding.
+Prednisolone,Piroxicam,Moderate,Corticosteroid Prednisolone combined with NSAID Piroxicam increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Aspirin,Moderate,Corticosteroid Dexamethasone combined with NSAID Aspirin increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Ibuprofen,Moderate,Corticosteroid Dexamethasone combined with NSAID Ibuprofen increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Naproxen,Moderate,Corticosteroid Dexamethasone combined with NSAID Naproxen increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Diclofenac,Moderate,Corticosteroid Dexamethasone combined with NSAID Diclofenac increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Celecoxib,Moderate,Corticosteroid Dexamethasone combined with NSAID Celecoxib increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Meloxicam,Moderate,Corticosteroid Dexamethasone combined with NSAID Meloxicam increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Ketorolac,Moderate,Corticosteroid Dexamethasone combined with NSAID Ketorolac increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Indomethacin,Moderate,Corticosteroid Dexamethasone combined with NSAID Indomethacin increases risk of gastrointestinal ulceration and bleeding.
+Dexamethasone,Piroxicam,Moderate,Corticosteroid Dexamethasone combined with NSAID Piroxicam increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Aspirin,Moderate,Corticosteroid Hydrocortisone combined with NSAID Aspirin increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Ibuprofen,Moderate,Corticosteroid Hydrocortisone combined with NSAID Ibuprofen increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Naproxen,Moderate,Corticosteroid Hydrocortisone combined with NSAID Naproxen increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Diclofenac,Moderate,Corticosteroid Hydrocortisone combined with NSAID Diclofenac increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Celecoxib,Moderate,Corticosteroid Hydrocortisone combined with NSAID Celecoxib increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Meloxicam,Moderate,Corticosteroid Hydrocortisone combined with NSAID Meloxicam increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Ketorolac,Moderate,Corticosteroid Hydrocortisone combined with NSAID Ketorolac increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Indomethacin,Moderate,Corticosteroid Hydrocortisone combined with NSAID Indomethacin increases risk of gastrointestinal ulceration and bleeding.
+Hydrocortisone,Piroxicam,Moderate,Corticosteroid Hydrocortisone combined with NSAID Piroxicam increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Aspirin,Moderate,Corticosteroid Methylprednisolone combined with NSAID Aspirin increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Ibuprofen,Moderate,Corticosteroid Methylprednisolone combined with NSAID Ibuprofen increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Naproxen,Moderate,Corticosteroid Methylprednisolone combined with NSAID Naproxen increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Diclofenac,Moderate,Corticosteroid Methylprednisolone combined with NSAID Diclofenac increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Celecoxib,Moderate,Corticosteroid Methylprednisolone combined with NSAID Celecoxib increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Meloxicam,Moderate,Corticosteroid Methylprednisolone combined with NSAID Meloxicam increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Ketorolac,Moderate,Corticosteroid Methylprednisolone combined with NSAID Ketorolac increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Indomethacin,Moderate,Corticosteroid Methylprednisolone combined with NSAID Indomethacin increases risk of gastrointestinal ulceration and bleeding.
+Methylprednisolone,Piroxicam,Moderate,Corticosteroid Methylprednisolone combined with NSAID Piroxicam increases risk of gastrointestinal ulceration and bleeding.
+Metformin,Iodinated Contrast,Moderate,Temporary discontinuation of Metformin is recommended before Iodinated Contrast imaging due to renal injury and lactic acidosis risk.
+Metformin,Gadolinium Contrast,Moderate,Temporary discontinuation of Metformin is recommended before Gadolinium Contrast imaging due to renal injury and lactic acidosis risk.
+Diazepam,Alcohol,Moderate,"Concomitant use of Diazepam and alcohol results in additive CNS depression, causing severe sedation and impairment."
+Alprazolam,Alcohol,Moderate,"Concomitant use of Alprazolam and alcohol results in additive CNS depression, causing severe sedation and impairment."
+Midazolam,Alcohol,Moderate,"Concomitant use of Midazolam and alcohol results in additive CNS depression, causing severe sedation and impairment."
+Lorazepam,Alcohol,Moderate,"Concomitant use of Lorazepam and alcohol results in additive CNS depression, causing severe sedation and impairment."
+Clonazepam,Alcohol,Moderate,"Concomitant use of Clonazepam and alcohol results in additive CNS depression, causing severe sedation and impairment."
+Temazepam,Alcohol,Moderate,"Concomitant use of Temazepam and alcohol results in additive CNS depression, causing severe sedation and impairment."
+Metformin,Alcohol,Moderate,Alcohol ingestion enhances Metformin-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Glibenclamide,Alcohol,Moderate,Alcohol ingestion enhances Glibenclamide-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Insulin,Alcohol,Moderate,Alcohol ingestion enhances Insulin-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Glimepiride,Alcohol,Moderate,Alcohol ingestion enhances Glimepiride-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Pioglitazone,Alcohol,Moderate,Alcohol ingestion enhances Pioglitazone-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Sitagliptin,Alcohol,Moderate,Alcohol ingestion enhances Sitagliptin-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Empagliflozin,Alcohol,Moderate,Alcohol ingestion enhances Empagliflozin-induced hypoglycemia and lactic acidosis risk. Avoid excessive alcohol.
+Paracetamol,Alcohol,Minor,Chronic heavy alcohol consumption may increase risk of Paracetamol hepatotoxicity.
+Paracetamol,Wine,Minor,Chronic heavy alcohol consumption may increase risk of Paracetamol hepatotoxicity.
+Paracetamol,Beer,Minor,Chronic heavy alcohol consumption may increase risk of Paracetamol hepatotoxicity.
+Antacid,Ferrous Sulfate,Minor,Antacid reduces gastrointestinal absorption of iron supplements.
+Omeprazole,Ferrous Sulfate,Minor,Omeprazole reduces gastrointestinal absorption of iron supplements.
+Pantoprazole,Ferrous Sulfate,Minor,Pantoprazole reduces gastrointestinal absorption of iron supplements.
+Cimetidine,Ferrous Sulfate,Minor,Cimetidine reduces gastrointestinal absorption of iron supplements.
+Ranitidine,Ferrous Sulfate,Minor,Ranitidine reduces gastrointestinal absorption of iron supplements.
+Famotidine,Ferrous Sulfate,Minor,Famotidine reduces gastrointestinal absorption of iron supplements.
+Esomeprazole,Ferrous Sulfate,Minor,Esomeprazole reduces gastrointestinal absorption of iron supplements.
+Lansoprazole,Ferrous Sulfate,Minor,Lansoprazole reduces gastrointestinal absorption of iron supplements.
+Aspirin,Ibuprofen,Minor,Ibuprofen may interfere with low-dose Aspirin cardioprotection. Take NSAID at least 2 hours after Aspirin.
+Aspirin,Naproxen,Minor,Naproxen may interfere with low-dose Aspirin cardioprotection. Take NSAID at least 2 hours after Aspirin.
+Aspirin,Diclofenac,Minor,Diclofenac may interfere with low-dose Aspirin cardioprotection. Take NSAID at least 2 hours after Aspirin.
+Metformin,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Metformin."
+Metformin,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Metformin."
+Metformin,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Metformin."
+Glibenclamide,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Glibenclamide."
+Glibenclamide,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Glibenclamide."
+Glibenclamide,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Glibenclamide."
+Insulin,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Insulin."
+Insulin,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Insulin."
+Insulin,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Insulin."
+Glimepiride,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Glimepiride."
+Glimepiride,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Glimepiride."
+Glimepiride,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Glimepiride."
+Pioglitazone,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Pioglitazone."
+Pioglitazone,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Pioglitazone."
+Pioglitazone,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Pioglitazone."
+Sitagliptin,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Sitagliptin."
+Sitagliptin,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Sitagliptin."
+Sitagliptin,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Sitagliptin."
+Empagliflozin,Hydrochlorothiazide,Minor,"Thiazide diuretic Hydrochlorothiazide can increase blood glucose, slightly reducing effect of Empagliflozin."
+Empagliflozin,Chlorthalidone,Minor,"Thiazide diuretic Chlorthalidone can increase blood glucose, slightly reducing effect of Empagliflozin."
+Empagliflozin,Indapamide,Minor,"Thiazide diuretic Indapamide can increase blood glucose, slightly reducing effect of Empagliflozin."
+Levothyroxine,Antacid,Minor,Absorption of Levothyroxine is reduced by concurrent administration of Antacid. Separate by 4 hours.
+Levothyroxine,Calcium Carbonate,Minor,Absorption of Levothyroxine is reduced by concurrent administration of Calcium Carbonate. Separate by 4 hours.
+Levothyroxine,Ferrous Sulfate,Minor,Absorption of Levothyroxine is reduced by concurrent administration of Ferrous Sulfate. Separate by 4 hours.
+Levothyroxine,Magnesium Hydroxide,Minor,Absorption of Levothyroxine is reduced by concurrent administration of Magnesium Hydroxide. Separate by 4 hours.
+Metoprolol,Aspirin,Minor,NSAID Aspirin may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Ibuprofen,Minor,NSAID Ibuprofen may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Naproxen,Minor,NSAID Naproxen may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Diclofenac,Minor,NSAID Diclofenac may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Celecoxib,Minor,NSAID Celecoxib may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Meloxicam,Minor,NSAID Meloxicam may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Ketorolac,Minor,NSAID Ketorolac may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Indomethacin,Minor,NSAID Indomethacin may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Metoprolol,Piroxicam,Minor,NSAID Piroxicam may slightly decrease the antihypertensive effect of beta-blocker Metoprolol by inhibiting prostaglandins.
+Atenolol,Aspirin,Minor,NSAID Aspirin may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Ibuprofen,Minor,NSAID Ibuprofen may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Naproxen,Minor,NSAID Naproxen may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Diclofenac,Minor,NSAID Diclofenac may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Celecoxib,Minor,NSAID Celecoxib may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Meloxicam,Minor,NSAID Meloxicam may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Ketorolac,Minor,NSAID Ketorolac may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Indomethacin,Minor,NSAID Indomethacin may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Atenolol,Piroxicam,Minor,NSAID Piroxicam may slightly decrease the antihypertensive effect of beta-blocker Atenolol by inhibiting prostaglandins.
+Propranolol,Aspirin,Minor,NSAID Aspirin may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Ibuprofen,Minor,NSAID Ibuprofen may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Naproxen,Minor,NSAID Naproxen may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Diclofenac,Minor,NSAID Diclofenac may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Celecoxib,Minor,NSAID Celecoxib may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Meloxicam,Minor,NSAID Meloxicam may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Ketorolac,Minor,NSAID Ketorolac may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Indomethacin,Minor,NSAID Indomethacin may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Propranolol,Piroxicam,Minor,NSAID Piroxicam may slightly decrease the antihypertensive effect of beta-blocker Propranolol by inhibiting prostaglandins.
+Carvedilol,Aspirin,Minor,NSAID Aspirin may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Ibuprofen,Minor,NSAID Ibuprofen may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Naproxen,Minor,NSAID Naproxen may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Diclofenac,Minor,NSAID Diclofenac may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Celecoxib,Minor,NSAID Celecoxib may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Meloxicam,Minor,NSAID Meloxicam may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Ketorolac,Minor,NSAID Ketorolac may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Indomethacin,Minor,NSAID Indomethacin may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Carvedilol,Piroxicam,Minor,NSAID Piroxicam may slightly decrease the antihypertensive effect of beta-blocker Carvedilol by inhibiting prostaglandins.
+Bisoprolol,Aspirin,Minor,NSAID Aspirin may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Ibuprofen,Minor,NSAID Ibuprofen may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Naproxen,Minor,NSAID Naproxen may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Diclofenac,Minor,NSAID Diclofenac may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Celecoxib,Minor,NSAID Celecoxib may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Meloxicam,Minor,NSAID Meloxicam may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Ketorolac,Minor,NSAID Ketorolac may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Indomethacin,Minor,NSAID Indomethacin may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Bisoprolol,Piroxicam,Minor,NSAID Piroxicam may slightly decrease the antihypertensive effect of beta-blocker Bisoprolol by inhibiting prostaglandins.
+Nebivolol,Aspirin,Minor,NSAID Aspirin may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Ibuprofen,Minor,NSAID Ibuprofen may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Naproxen,Minor,NSAID Naproxen may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Diclofenac,Minor,NSAID Diclofenac may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Celecoxib,Minor,NSAID Celecoxib may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Meloxicam,Minor,NSAID Meloxicam may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Ketorolac,Minor,NSAID Ketorolac may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Indomethacin,Minor,NSAID Indomethacin may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Nebivolol,Piroxicam,Minor,NSAID Piroxicam may slightly decrease the antihypertensive effect of beta-blocker Nebivolol by inhibiting prostaglandins.
+Caffeine,Ciprofloxacin,Minor,"Quinolone Ciprofloxacin reduces hepatic metabolism of caffeine, causing increased nervousness, palpitations, or insomnia."
+Caffeine,Levofloxacin,Minor,"Quinolone Levofloxacin reduces hepatic metabolism of caffeine, causing increased nervousness, palpitations, or insomnia."
+Caffeine,Moxifloxacin,Minor,"Quinolone Moxifloxacin reduces hepatic metabolism of caffeine, causing increased nervousness, palpitations, or insomnia."
+Caffeine,Ofloxacin,Minor,"Quinolone Ofloxacin reduces hepatic metabolism of caffeine, causing increased nervousness, palpitations, or insomnia."
+Aspirin,Paracetamol,Minor,"Concomitant use of Aspirin and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Ibuprofen,Paracetamol,Minor,"Concomitant use of Ibuprofen and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Naproxen,Paracetamol,Minor,"Concomitant use of Naproxen and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Diclofenac,Paracetamol,Minor,"Concomitant use of Diclofenac and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Celecoxib,Paracetamol,Minor,"Concomitant use of Celecoxib and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Meloxicam,Paracetamol,Minor,"Concomitant use of Meloxicam and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Ketorolac,Paracetamol,Minor,"Concomitant use of Ketorolac and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Indomethacin,Paracetamol,Minor,"Concomitant use of Indomethacin and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Piroxicam,Paracetamol,Minor,"Concomitant use of Piroxicam and Paracetamol is generally safe for short-term pain, monitor for minor GI side effects."
+Pravastatin,Amlodipine,Minor,CCB Amlodipine may minorly increase levels of Pravastatin. Monitor for muscle soreness.
+Pravastatin,Nifedipine,Minor,CCB Nifedipine may minorly increase levels of Pravastatin. Monitor for muscle soreness.
+Pravastatin,Felodipine,Minor,CCB Felodipine may minorly increase levels of Pravastatin. Monitor for muscle soreness.
+Pravastatin,Lercanidipine,Minor,CCB Lercanidipine may minorly increase levels of Pravastatin. Monitor for muscle soreness.
+Fluvastatin,Amlodipine,Minor,CCB Amlodipine may minorly increase levels of Fluvastatin. Monitor for muscle soreness.
+Fluvastatin,Nifedipine,Minor,CCB Nifedipine may minorly increase levels of Fluvastatin. Monitor for muscle soreness.
+Fluvastatin,Felodipine,Minor,CCB Felodipine may minorly increase levels of Fluvastatin. Monitor for muscle soreness.
+Fluvastatin,Lercanidipine,Minor,CCB Lercanidipine may minorly increase levels of Fluvastatin. Monitor for muscle soreness.
+Rosuvastatin,Amlodipine,Minor,CCB Amlodipine may minorly increase levels of Rosuvastatin. Monitor for muscle soreness.
+Rosuvastatin,Nifedipine,Minor,CCB Nifedipine may minorly increase levels of Rosuvastatin. Monitor for muscle soreness.
+Rosuvastatin,Felodipine,Minor,CCB Felodipine may minorly increase levels of Rosuvastatin. Monitor for muscle soreness.
+Rosuvastatin,Lercanidipine,Minor,CCB Lercanidipine may minorly increase levels of Rosuvastatin. Monitor for muscle soreness.
+Metformin,Ibuprofen,Minor,NSAID Ibuprofen may minorly increase the risk of hypoglycemia when used with Metformin.
+Metformin,Naproxen,Minor,NSAID Naproxen may minorly increase the risk of hypoglycemia when used with Metformin.
+Metformin,Diclofenac,Minor,NSAID Diclofenac may minorly increase the risk of hypoglycemia when used with Metformin.
+Metformin,Celecoxib,Minor,NSAID Celecoxib may minorly increase the risk of hypoglycemia when used with Metformin.
+Metformin,Meloxicam,Minor,NSAID Meloxicam may minorly increase the risk of hypoglycemia when used with Metformin.
+Glimepiride,Ibuprofen,Minor,NSAID Ibuprofen may minorly increase the risk of hypoglycemia when used with Glimepiride.
+Glimepiride,Naproxen,Minor,NSAID Naproxen may minorly increase the risk of hypoglycemia when used with Glimepiride.
+Glimepiride,Diclofenac,Minor,NSAID Diclofenac may minorly increase the risk of hypoglycemia when used with Glimepiride.
+Glimepiride,Celecoxib,Minor,NSAID Celecoxib may minorly increase the risk of hypoglycemia when used with Glimepiride.
+Glimepiride,Meloxicam,Minor,NSAID Meloxicam may minorly increase the risk of hypoglycemia when used with Glimepiride.
+Sitagliptin,Ibuprofen,Minor,NSAID Ibuprofen may minorly increase the risk of hypoglycemia when used with Sitagliptin.
+Sitagliptin,Naproxen,Minor,NSAID Naproxen may minorly increase the risk of hypoglycemia when used with Sitagliptin.
+Sitagliptin,Diclofenac,Minor,NSAID Diclofenac may minorly increase the risk of hypoglycemia when used with Sitagliptin.
+Sitagliptin,Celecoxib,Minor,NSAID Celecoxib may minorly increase the risk of hypoglycemia when used with Sitagliptin.
+Sitagliptin,Meloxicam,Minor,NSAID Meloxicam may minorly increase the risk of hypoglycemia when used with Sitagliptin.
+Empagliflozin,Ibuprofen,Minor,NSAID Ibuprofen may minorly increase the risk of hypoglycemia when used with Empagliflozin.
+Empagliflozin,Naproxen,Minor,NSAID Naproxen may minorly increase the risk of hypoglycemia when used with Empagliflozin.
+Empagliflozin,Diclofenac,Minor,NSAID Diclofenac may minorly increase the risk of hypoglycemia when used with Empagliflozin.
+Empagliflozin,Celecoxib,Minor,NSAID Celecoxib may minorly increase the risk of hypoglycemia when used with Empagliflozin.
+Empagliflozin,Meloxicam,Minor,NSAID Meloxicam may minorly increase the risk of hypoglycemia when used with Empagliflozin.
+Sertraline,Omeprazole,Minor,PPI Omeprazole may slightly increase the concentration of SSRI Sertraline.
+Sertraline,Lansoprazole,Minor,PPI Lansoprazole may slightly increase the concentration of SSRI Sertraline.
+Sertraline,Esomeprazole,Minor,PPI Esomeprazole may slightly increase the concentration of SSRI Sertraline.
+Citalopram,Omeprazole,Minor,PPI Omeprazole may slightly increase the concentration of SSRI Citalopram.
+Citalopram,Lansoprazole,Minor,PPI Lansoprazole may slightly increase the concentration of SSRI Citalopram.
+Citalopram,Esomeprazole,Minor,PPI Esomeprazole may slightly increase the concentration of SSRI Citalopram.
+Escitalopram,Omeprazole,Minor,PPI Omeprazole may slightly increase the concentration of SSRI Escitalopram.
+Escitalopram,Lansoprazole,Minor,PPI Lansoprazole may slightly increase the concentration of SSRI Escitalopram.
+Escitalopram,Esomeprazole,Minor,PPI Esomeprazole may slightly increase the concentration of SSRI Escitalopram.
+Sertraline,Antacid,Minor,Antacid Antacid may slightly affect absorption of SSRI Sertraline.
+Sertraline,Magnesium Hydroxide,Minor,Antacid Magnesium Hydroxide may slightly affect absorption of SSRI Sertraline.
+Sertraline,Calcium Carbonate,Minor,Antacid Calcium Carbonate may slightly affect absorption of SSRI Sertraline.
+Fluoxetine,Antacid,Minor,Antacid Antacid may slightly affect absorption of SSRI Fluoxetine.
+Fluoxetine,Magnesium Hydroxide,Minor,Antacid Magnesium Hydroxide may slightly affect absorption of SSRI Fluoxetine.
+Fluoxetine,Calcium Carbonate,Minor,Antacid Calcium Carbonate may slightly affect absorption of SSRI Fluoxetine.
+Citalopram,Antacid,Minor,Antacid Antacid may slightly affect absorption of SSRI Citalopram.
+Citalopram,Magnesium Hydroxide,Minor,Antacid Magnesium Hydroxide may slightly affect absorption of SSRI Citalopram.
+Citalopram,Calcium Carbonate,Minor,Antacid Calcium Carbonate may slightly affect absorption of SSRI Citalopram.
+Escitalopram,Antacid,Minor,Antacid Antacid may slightly affect absorption of SSRI Escitalopram.
+Escitalopram,Magnesium Hydroxide,Minor,Antacid Magnesium Hydroxide may slightly affect absorption of SSRI Escitalopram.
+Escitalopram,Calcium Carbonate,Minor,Antacid Calcium Carbonate may slightly affect absorption of SSRI Escitalopram.
+Paroxetine,Antacid,Minor,Antacid Antacid may slightly affect absorption of SSRI Paroxetine.
+Paroxetine,Magnesium Hydroxide,Minor,Antacid Magnesium Hydroxide may slightly affect absorption of SSRI Paroxetine.
+Paroxetine,Calcium Carbonate,Minor,Antacid Calcium Carbonate may slightly affect absorption of SSRI Paroxetine.
+Metformin,Paracetamol,None,No significant interaction known.
+Metformin,Cetirizine,None,No significant interaction known.
+Metformin,Loratadine,None,No significant interaction known.
+Metformin,Fexofenadine,None,No significant interaction known.
+Metformin,Levothyroxine,None,No significant interaction known.
+Metformin,Omeprazole,None,No significant interaction known.
+Metformin,Pantoprazole,None,No significant interaction known.
+Metformin,Ranitidine,None,No significant interaction known.
+Glibenclamide,Paracetamol,None,No significant interaction known.
+Glibenclamide,Cetirizine,None,No significant interaction known.
+Glibenclamide,Loratadine,None,No significant interaction known.
+Glibenclamide,Fexofenadine,None,No significant interaction known.
+Glibenclamide,Levothyroxine,None,No significant interaction known.
+Glibenclamide,Omeprazole,None,No significant interaction known.
+Glibenclamide,Pantoprazole,None,No significant interaction known.
+Glibenclamide,Ranitidine,None,No significant interaction known.
+Insulin,Paracetamol,None,No significant interaction known.
+Insulin,Cetirizine,None,No significant interaction known.
+Insulin,Loratadine,None,No significant interaction known.
+Insulin,Fexofenadine,None,No significant interaction known.
+Insulin,Levothyroxine,None,No significant interaction known.
+Insulin,Omeprazole,None,No significant interaction known.
+Insulin,Pantoprazole,None,No significant interaction known.
+Insulin,Ranitidine,None,No significant interaction known.
+Glimepiride,Paracetamol,None,No significant interaction known.
+Glimepiride,Cetirizine,None,No significant interaction known.
+Glimepiride,Loratadine,None,No significant interaction known.
+Glimepiride,Fexofenadine,None,No significant interaction known.
+Glimepiride,Levothyroxine,None,No significant interaction known.
+Glimepiride,Omeprazole,None,No significant interaction known.
+Glimepiride,Pantoprazole,None,No significant interaction known.
+Glimepiride,Ranitidine,None,No significant interaction known.
+Pioglitazone,Paracetamol,None,No significant interaction known.
+Pioglitazone,Cetirizine,None,No significant interaction known.
+Pioglitazone,Loratadine,None,No significant interaction known.
+Pioglitazone,Fexofenadine,None,No significant interaction known.
+Pioglitazone,Levothyroxine,None,No significant interaction known.
+Pioglitazone,Omeprazole,None,No significant interaction known.
+Pioglitazone,Pantoprazole,None,No significant interaction known.
+Pioglitazone,Ranitidine,None,No significant interaction known.
+Sitagliptin,Paracetamol,None,No significant interaction known.
+Sitagliptin,Cetirizine,None,No significant interaction known.
+Sitagliptin,Loratadine,None,No significant interaction known.
+Sitagliptin,Fexofenadine,None,No significant interaction known.
+Sitagliptin,Levothyroxine,None,No significant interaction known.
+Sitagliptin,Omeprazole,None,No significant interaction known.
+Sitagliptin,Pantoprazole,None,No significant interaction known.
+Sitagliptin,Ranitidine,None,No significant interaction known.
+Empagliflozin,Paracetamol,None,No significant interaction known.
+Empagliflozin,Cetirizine,None,No significant interaction known.
+Empagliflozin,Loratadine,None,No significant interaction known.
+Empagliflozin,Fexofenadine,None,No significant interaction known.
+Empagliflozin,Levothyroxine,None,No significant interaction known.
+Empagliflozin,Omeprazole,None,No significant interaction known.
+Empagliflozin,Pantoprazole,None,No significant interaction known.
+Empagliflozin,Ranitidine,None,No significant interaction known.
+Atorvastatin,Paracetamol,None,No significant interaction known.
+Atorvastatin,Cetirizine,None,No significant interaction known.
+Atorvastatin,Loratadine,None,No significant interaction known.
+Atorvastatin,Fexofenadine,None,No significant interaction known.
+Atorvastatin,Metformin,None,No significant interaction known.
+Atorvastatin,Insulin,None,No significant interaction known.
+Atorvastatin,Ranitidine,None,No significant interaction known.
+Atorvastatin,Famotidine,None,No significant interaction known.
+Simvastatin,Paracetamol,None,No significant interaction known.
+Simvastatin,Cetirizine,None,No significant interaction known.
+Simvastatin,Loratadine,None,No significant interaction known.
+Simvastatin,Fexofenadine,None,No significant interaction known.
+Simvastatin,Metformin,None,No significant interaction known.
+Simvastatin,Insulin,None,No significant interaction known.
+Simvastatin,Ranitidine,None,No significant interaction known.
+Simvastatin,Famotidine,None,No significant interaction known.
+Rosuvastatin,Paracetamol,None,No significant interaction known.
+Rosuvastatin,Cetirizine,None,No significant interaction known.
+Rosuvastatin,Loratadine,None,No significant interaction known.
+Rosuvastatin,Fexofenadine,None,No significant interaction known.
+Rosuvastatin,Metformin,None,No significant interaction known.
+Rosuvastatin,Insulin,None,No significant interaction known.
+Rosuvastatin,Ranitidine,None,No significant interaction known.
+Rosuvastatin,Famotidine,None,No significant interaction known.
+Pravastatin,Paracetamol,None,No significant interaction known.
+Pravastatin,Cetirizine,None,No significant interaction known.
+Pravastatin,Loratadine,None,No significant interaction known.
+Pravastatin,Fexofenadine,None,No significant interaction known.
+Pravastatin,Metformin,None,No significant interaction known.
+Pravastatin,Insulin,None,No significant interaction known.
+Pravastatin,Ranitidine,None,No significant interaction known.
+Pravastatin,Famotidine,None,No significant interaction known.
+Lovastatin,Paracetamol,None,No significant interaction known.
+Lovastatin,Cetirizine,None,No significant interaction known.
+Lovastatin,Loratadine,None,No significant interaction known.
+Lovastatin,Fexofenadine,None,No significant interaction known.
+Lovastatin,Metformin,None,No significant interaction known.
+Lovastatin,Insulin,None,No significant interaction known.
+Lovastatin,Ranitidine,None,No significant interaction known.
+Lovastatin,Famotidine,None,No significant interaction known.
+Fluvastatin,Paracetamol,None,No significant interaction known.
+Fluvastatin,Cetirizine,None,No significant interaction known.
+Fluvastatin,Loratadine,None,No significant interaction known.
+Fluvastatin,Fexofenadine,None,No significant interaction known.
+Fluvastatin,Metformin,None,No significant interaction known.
+Fluvastatin,Insulin,None,No significant interaction known.
+Fluvastatin,Ranitidine,None,No significant interaction known.
+Fluvastatin,Famotidine,None,No significant interaction known.
+Aspirin,Cetirizine,None,No significant interaction known.
+Aspirin,Loratadine,None,No significant interaction known.
+Aspirin,Fexofenadine,None,No significant interaction known.
+Aspirin,Levothyroxine,None,No significant interaction known.
+Aspirin,Omeprazole,None,No significant interaction known.
+Aspirin,Pantoprazole,None,No significant interaction known.
+Aspirin,Ranitidine,None,No significant interaction known.
+Ibuprofen,Cetirizine,None,No significant interaction known.
+Ibuprofen,Loratadine,None,No significant interaction known.
+Ibuprofen,Fexofenadine,None,No significant interaction known.
+Ibuprofen,Levothyroxine,None,No significant interaction known.
+Ibuprofen,Omeprazole,None,No significant interaction known.
+Ibuprofen,Pantoprazole,None,No significant interaction known.
+Ibuprofen,Ranitidine,None,No significant interaction known.
+Naproxen,Cetirizine,None,No significant interaction known.
+Naproxen,Loratadine,None,No significant interaction known.
+Naproxen,Fexofenadine,None,No significant interaction known.
+Naproxen,Levothyroxine,None,No significant interaction known.
+Naproxen,Omeprazole,None,No significant interaction known.
+Naproxen,Pantoprazole,None,No significant interaction known.
+Naproxen,Ranitidine,None,No significant interaction known.
+Diclofenac,Cetirizine,None,No significant interaction known.
+Diclofenac,Loratadine,None,No significant interaction known.
+Diclofenac,Fexofenadine,None,No significant interaction known.
+Diclofenac,Levothyroxine,None,No significant interaction known.
+Diclofenac,Omeprazole,None,No significant interaction known.
+Diclofenac,Pantoprazole,None,No significant interaction known.
+Diclofenac,Ranitidine,None,No significant interaction known.
+Celecoxib,Cetirizine,None,No significant interaction known.
+Celecoxib,Loratadine,None,No significant interaction known.
+Celecoxib,Fexofenadine,None,No significant interaction known.
+Celecoxib,Levothyroxine,None,No significant interaction known.
+Celecoxib,Omeprazole,None,No significant interaction known.
+Celecoxib,Pantoprazole,None,No significant interaction known.
+Celecoxib,Ranitidine,None,No significant interaction known.
+Meloxicam,Cetirizine,None,No significant interaction known.
+Meloxicam,Loratadine,None,No significant interaction known.
+Meloxicam,Fexofenadine,None,No significant interaction known.
+Meloxicam,Levothyroxine,None,No significant interaction known.
+Meloxicam,Omeprazole,None,No significant interaction known.
+Meloxicam,Pantoprazole,None,No significant interaction known.
+Meloxicam,Ranitidine,None,No significant interaction known.
+Ketorolac,Cetirizine,None,No significant interaction known.
+Ketorolac,Loratadine,None,No significant interaction known.
+Ketorolac,Fexofenadine,None,No significant interaction known.
+Ketorolac,Levothyroxine,None,No significant interaction known.
+Ketorolac,Omeprazole,None,No significant interaction known.
+Ketorolac,Pantoprazole,None,No significant interaction known.
+Ketorolac,Ranitidine,None,No significant interaction known.
+Indomethacin,Cetirizine,None,No significant interaction known.
+Indomethacin,Loratadine,None,No significant interaction known.
+Indomethacin,Fexofenadine,None,No significant interaction known.
+Indomethacin,Levothyroxine,None,No significant interaction known.
+Indomethacin,Omeprazole,None,No significant interaction known.
+Indomethacin,Pantoprazole,None,No significant interaction known.
+Indomethacin,Ranitidine,None,No significant interaction known.
+Piroxicam,Cetirizine,None,No significant interaction known.
+Piroxicam,Loratadine,None,No significant interaction known.
+Piroxicam,Fexofenadine,None,No significant interaction known.
+Piroxicam,Levothyroxine,None,No significant interaction known.
+Piroxicam,Omeprazole,None,No significant interaction known.
+Piroxicam,Pantoprazole,None,No significant interaction known.
+Piroxicam,Ranitidine,None,No significant interaction known.
+Lisinopril,Paracetamol,None,No significant interaction known.
+Lisinopril,Cetirizine,None,No significant interaction known.
+Lisinopril,Loratadine,None,No significant interaction known.
+Lisinopril,Fexofenadine,None,No significant interaction known.
+Lisinopril,Omeprazole,None,No significant interaction known.
+Lisinopril,Pantoprazole,None,No significant interaction known.
+Lisinopril,Ranitidine,None,No significant interaction known.
+Ramipril,Paracetamol,None,No significant interaction known.
+Ramipril,Cetirizine,None,No significant interaction known.
+Ramipril,Loratadine,None,No significant interaction known.
+Ramipril,Fexofenadine,None,No significant interaction known.
+Ramipril,Omeprazole,None,No significant interaction known.
+Ramipril,Pantoprazole,None,No significant interaction known.
+Ramipril,Ranitidine,None,No significant interaction known.
+Captopril,Paracetamol,None,No significant interaction known.
+Captopril,Cetirizine,None,No significant interaction known.
+Captopril,Loratadine,None,No significant interaction known.
+Captopril,Fexofenadine,None,No significant interaction known.
+Captopril,Omeprazole,None,No significant interaction known.
+Captopril,Pantoprazole,None,No significant interaction known.
+Captopril,Ranitidine,None,No significant interaction known.
+Enalapril,Paracetamol,None,No significant interaction known.
+Enalapril,Cetirizine,None,No significant interaction known.
+Enalapril,Loratadine,None,No significant interaction known.
+Enalapril,Fexofenadine,None,No significant interaction known.
+Enalapril,Omeprazole,None,No significant interaction known.
+Enalapril,Pantoprazole,None,No significant interaction known.
+Enalapril,Ranitidine,None,No significant interaction known.
+Fosinopril,Paracetamol,None,No significant interaction known.
+Fosinopril,Cetirizine,None,No significant interaction known.
+Fosinopril,Loratadine,None,No significant interaction known.
+Fosinopril,Fexofenadine,None,No significant interaction known.
+Fosinopril,Omeprazole,None,No significant interaction known.
+Fosinopril,Pantoprazole,None,No significant interaction known.
+Fosinopril,Ranitidine,None,No significant interaction known.
+Quinapril,Paracetamol,None,No significant interaction known.
+Quinapril,Cetirizine,None,No significant interaction known.
+Quinapril,Loratadine,None,No significant interaction known.
+Quinapril,Fexofenadine,None,No significant interaction known.
+Quinapril,Omeprazole,None,No significant interaction known.
+Quinapril,Pantoprazole,None,No significant interaction known.
+Quinapril,Ranitidine,None,No significant interaction known.
+Trandolapril,Paracetamol,None,No significant interaction known.
+Trandolapril,Cetirizine,None,No significant interaction known.
+Trandolapril,Loratadine,None,No significant interaction known.
+Trandolapril,Fexofenadine,None,No significant interaction known.
+Trandolapril,Omeprazole,None,No significant interaction known.
+Trandolapril,Pantoprazole,None,No significant interaction known.
+Trandolapril,Ranitidine,None,No significant interaction known.
+Losartan,Paracetamol,None,No significant interaction known.
+Losartan,Cetirizine,None,No significant interaction known.
+Losartan,Loratadine,None,No significant interaction known.
+Losartan,Fexofenadine,None,No significant interaction known.
+Losartan,Omeprazole,None,No significant interaction known.
+Losartan,Pantoprazole,None,No significant interaction known.
+Losartan,Ranitidine,None,No significant interaction known.
+Valsartan,Paracetamol,None,No significant interaction known.
+Valsartan,Cetirizine,None,No significant interaction known.
+Valsartan,Loratadine,None,No significant interaction known.
+Valsartan,Fexofenadine,None,No significant interaction known.
+Valsartan,Omeprazole,None,No significant interaction known.
+Valsartan,Pantoprazole,None,No significant interaction known.
+Valsartan,Ranitidine,None,No significant interaction known.
+Candesartan,Paracetamol,None,No significant interaction known.
+Candesartan,Cetirizine,None,No significant interaction known.
+Candesartan,Loratadine,None,No significant interaction known.
+Candesartan,Fexofenadine,None,No significant interaction known.
+Candesartan,Omeprazole,None,No significant interaction known.
+Candesartan,Pantoprazole,None,No significant interaction known.
+Candesartan,Ranitidine,None,No significant interaction known.
+Irbesartan,Paracetamol,None,No significant interaction known.
+Irbesartan,Cetirizine,None,No significant interaction known.
+Irbesartan,Loratadine,None,No significant interaction known.
+Irbesartan,Fexofenadine,None,No significant interaction known.
+Irbesartan,Omeprazole,None,No significant interaction known.
+Irbesartan,Pantoprazole,None,No significant interaction known.
+Irbesartan,Ranitidine,None,No significant interaction known.
+Olmesartan,Paracetamol,None,No significant interaction known.
+Olmesartan,Cetirizine,None,No significant interaction known.
+Olmesartan,Loratadine,None,No significant interaction known.
+Olmesartan,Fexofenadine,None,No significant interaction known.
+Olmesartan,Omeprazole,None,No significant interaction known.
+Olmesartan,Pantoprazole,None,No significant interaction known.
+Olmesartan,Ranitidine,None,No significant interaction known.
+Metoprolol,Paracetamol,None,No significant interaction known.
+Metoprolol,Cetirizine,None,No significant interaction known.
+Metoprolol,Loratadine,None,No significant interaction known.
+Metoprolol,Fexofenadine,None,No significant interaction known.
+Metoprolol,Omeprazole,None,No significant interaction known.
+Metoprolol,Pantoprazole,None,No significant interaction known.
+Metoprolol,Ranitidine,None,No significant interaction known.
+Atenolol,Paracetamol,None,No significant interaction known.
+Atenolol,Cetirizine,None,No significant interaction known.
+Atenolol,Loratadine,None,No significant interaction known.
+Atenolol,Fexofenadine,None,No significant interaction known.
+Atenolol,Omeprazole,None,No significant interaction known.
+Atenolol,Pantoprazole,None,No significant interaction known.
+Atenolol,Ranitidine,None,No significant interaction known.
+Propranolol,Paracetamol,None,No significant interaction known.
+Propranolol,Cetirizine,None,No significant interaction known.
+Propranolol,Loratadine,None,No significant interaction known.
+Propranolol,Fexofenadine,None,No significant interaction known.
+Propranolol,Omeprazole,None,No significant interaction known.
+Propranolol,Pantoprazole,None,No significant interaction known.
+Propranolol,Ranitidine,None,No significant interaction known.
+Carvedilol,Paracetamol,None,No significant interaction known.
+Carvedilol,Cetirizine,None,No significant interaction known.
+Carvedilol,Loratadine,None,No significant interaction known.
+Carvedilol,Fexofenadine,None,No significant interaction known.
+Carvedilol,Omeprazole,None,No significant interaction known.
+Carvedilol,Pantoprazole,None,No significant interaction known.
+Carvedilol,Ranitidine,None,No significant interaction known.
+Bisoprolol,Paracetamol,None,No significant interaction known.
+Bisoprolol,Cetirizine,None,No significant interaction known.
+Bisoprolol,Loratadine,None,No significant interaction known.
+Bisoprolol,Fexofenadine,None,No significant interaction known.
+Bisoprolol,Omeprazole,None,No significant interaction known.
+Bisoprolol,Pantoprazole,None,No significant interaction known.
+Bisoprolol,Ranitidine,None,No significant interaction known.
+Nebivolol,Paracetamol,None,No significant interaction known.
+Nebivolol,Cetirizine,None,No significant interaction known.
+Nebivolol,Loratadine,None,No significant interaction known.
+Nebivolol,Fexofenadine,None,No significant interaction known.
+Nebivolol,Omeprazole,None,No significant interaction known.
+Nebivolol,Pantoprazole,None,No significant interaction known.
+Nebivolol,Ranitidine,None,No significant interaction known.
+Sertraline,Paracetamol,None,No significant interaction known.
+Sertraline,Loratadine,None,No significant interaction known.
+Sertraline,Fexofenadine,None,No significant interaction known.
+Sertraline,Levothyroxine,None,No significant interaction known.
+Sertraline,Pantoprazole,None,No significant interaction known.
+Sertraline,Ranitidine,None,No significant interaction known.
+Sertraline,Famotidine,None,No significant interaction known.
+Fluoxetine,Paracetamol,None,No significant interaction known.
+Fluoxetine,Loratadine,None,No significant interaction known.
+Fluoxetine,Fexofenadine,None,No significant interaction known.
+Fluoxetine,Levothyroxine,None,No significant interaction known.
+Fluoxetine,Omeprazole,None,No significant interaction known.
+Fluoxetine,Pantoprazole,None,No significant interaction known.
+Fluoxetine,Ranitidine,None,No significant interaction known.
+Fluoxetine,Famotidine,None,No significant interaction known.
+Citalopram,Paracetamol,None,No significant interaction known.
+Citalopram,Loratadine,None,No significant interaction known.
+Citalopram,Fexofenadine,None,No significant interaction known.
+Citalopram,Levothyroxine,None,No significant interaction known.
+Citalopram,Pantoprazole,None,No significant interaction known.
+Citalopram,Ranitidine,None,No significant interaction known.
+Citalopram,Famotidine,None,No significant interaction known.
+Escitalopram,Paracetamol,None,No significant interaction known.
+Escitalopram,Loratadine,None,No significant interaction known.
+Escitalopram,Fexofenadine,None,No significant interaction known.
+Escitalopram,Levothyroxine,None,No significant interaction known.
+Escitalopram,Pantoprazole,None,No significant interaction known.
+Escitalopram,Ranitidine,None,No significant interaction known.
+Escitalopram,Famotidine,None,No significant interaction known.
+Paroxetine,Paracetamol,None,No significant interaction known.
+Paroxetine,Loratadine,None,No significant interaction known.
+Paroxetine,Fexofenadine,None,No significant interaction known.
+Paroxetine,Levothyroxine,None,No significant interaction known.
+Paroxetine,Omeprazole,None,No significant interaction known.
+Paroxetine,Pantoprazole,None,No significant interaction known.
+Paroxetine,Ranitidine,None,No significant interaction known.
+Paroxetine,Famotidine,None,No significant interaction known.

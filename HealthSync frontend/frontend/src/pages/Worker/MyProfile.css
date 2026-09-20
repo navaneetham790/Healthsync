@@ -1,0 +1,146 @@
+.profile-header h2{
+
+    font-size:32px;
+
+    color:#222;
+
+}
+
+.profile-header p{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+.profile-card{
+
+    display:flex;
+
+    gap:30px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.profile-left{
+
+    width:280px;
+
+    text-align:center;
+
+    border-right:1px solid #eee;
+
+    padding-right:30px;
+
+}
+
+.profile-image{
+
+    font-size:130px;
+
+    color:#0F8F83;
+
+}
+.worker-profile-picture{width:130px;height:130px;object-fit:cover;border-radius:50%}.profile-picture-actions{display:flex;justify-content:center;gap:8px;margin:12px 0}.edit-picture-btn,.delete-picture-btn{border:0;border-radius:7px;padding:7px 11px;font:inherit;cursor:pointer}.edit-picture-btn{background:#0f8f83;color:#fff}.edit-picture-btn input{display:none}.delete-picture-btn{background:#fee2e2;color:#b91c1c}
+
+.profile-left h3{
+
+    margin-top:20px;
+
+    color:#222;
+
+}
+
+.profile-left span{
+
+    color:#777;
+
+}
+
+.profile-right{
+
+    flex:1;
+
+}
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.info-box{
+
+    background:#F8FAFB;
+
+    border-radius:12px;
+
+    padding:18px;
+
+}
+
+.info-box label{
+
+    color:#0F8F83;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.info-box p{
+
+    margin-top:8px;
+
+    font-size:17px;
+
+    color:#222;
+
+    font-weight:500;
+
+}
+
+@media(max-width:992px){
+
+.profile-card{
+
+flex-direction:column;
+
+}
+
+.profile-left{
+
+width:100%;
+
+border-right:none;
+
+border-bottom:1px solid #eee;
+
+padding-bottom:20px;
+
+padding-right:0;
+
+}
+
+.info-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+.info-box label small{display:block;color:#64748b;font-weight:400;margin-top:3px}.info-box input{width:100%;margin-top:8px;padding:9px;border:1px solid #0f8f83;border-radius:8px;font:inherit}.worker-profile-error{display:block;margin-top:5px;color:#c0362c}.worker-edit-btn,.worker-save-btn,.worker-cancel-btn{border:0;border-radius:10px;padding:13px 18px;font-size:16px;cursor:pointer}.worker-edit-btn{margin-top:24px;background:#0f8f83;color:#fff;display:inline-flex;align-items:center;gap:8px}.worker-profile-actions{display:flex;gap:12px;margin-top:24px}.worker-save-btn{background:#0f8f83;color:#fff}.worker-cancel-btn{background:#e2e8f0;color:#1e293b}.worker-save-btn:disabled{opacity:.65;cursor:wait}

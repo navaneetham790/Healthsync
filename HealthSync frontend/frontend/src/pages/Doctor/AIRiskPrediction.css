@@ -1,0 +1,73 @@
+.doctor-risk-page { max-width: 1180px; padding-bottom: 2rem; }
+.risk-disclaimer { margin-bottom: 1.25rem; padding: .85rem 1rem; border-left: 4px solid #f59e0b; background: #fffbeb; color: #92400e; border-radius: .35rem; }
+.doctor-risk-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(22rem, 1fr); gap: 1.25rem; align-items: start; }
+.risk-form, .risk-result-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 6px 18px rgba(15,23,42,.08); }
+.risk-left-panel { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* Upload Zone */
+.report-upload-zone { border: 2px dashed #93c5fd; border-radius: 1rem; padding: 2rem; text-align: center; cursor: pointer; background: #f8fafc; transition: all 0.2s ease; }
+.report-upload-zone:hover { background: #eff6ff; border-color: #3b82f6; }
+.upload-prompt { color: #64748b; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.upload-loading { color: #3b82f6; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.upload-success { color: #15803d; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.spinning { animation: spin 1.5s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.risk-form h3, .risk-result-card h3 { margin: 0 0 1rem; color: #0f172a; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+.risk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.risk-field { display: grid; gap: .4rem; font-weight: 600; color: #334155; }
+.risk-label { color: #334155; }
+.risk-label b, .risk-field small { color: #c0362c; margin-left: .2rem; }
+.risk-field input, .risk-field select, .risk-field textarea { width: 100%; border: 1px solid #cbd5e1; border-radius: .5rem; padding: .7rem; background: #fff; font: inherit; }
+.risk-field textarea { min-height: 5rem; resize: vertical; }
+.predict-btn { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.25rem; border: 0; border-radius: .5rem; padding: .75rem 1.5rem; background: #1565c0; color: #fff; font-weight: 600; cursor: pointer; width: 100%; justify-content: center; }
+
+/* Dashboard Left */
+.advanced-dashboard { text-align: left; }
+.dashboard-empty, .dashboard-loading { text-align: center; padding: 3rem 1rem; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+.dashboard-header h3 { border-bottom: none; margin: 0; padding: 0; }
+.confidence-badge { background: #e0f2fe; color: #0369a1; padding: 0.2rem 0.6rem; border-radius: 1rem; font-size: 0.8rem; font-weight: bold; }
+
+.overall-risk { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
+.risk-score { width: 9rem; height: 9rem; display: grid; place-items: center; border-radius: 50%; font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.risk-text { font-weight: bold; color: #475569; }
+
+.risk-low { background: #dcfce7; color: #15803d; }
+.risk-medium { background: #fef3c7; color: #b45309; }
+.risk-high { background: #fee2e2; color: #b91c1c; }
+
+.multi-disease-section, .xai-section, .whatif-section { margin-bottom: 2rem; }
+.multi-disease-section h4, .xai-section h4, .whatif-section h4 { color: #334155; margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Progress Bars */
+.disease-bar-container { margin-bottom: 1rem; }
+.disease-info { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.3rem; color: #475569; }
+.progress-bg { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out; }
+
+/* XAI Bars */
+.xai-chart { display: flex; flex-direction: column; gap: 0.8rem; }
+.xai-row { display: grid; grid-template-columns: 100px 1fr; align-items: center; gap: 1rem; }
+.xai-label { font-size: 0.85rem; color: #475569; text-align: right; line-height: 1.1; }
+.xai-bar-area { width: 100%; border-left: 2px solid #cbd5e1; height: 20px; display: flex; align-items: center; }
+.xai-bar { height: 16px; display: flex; align-items: center; padding: 0 5px; font-size: 0.75rem; font-weight: bold; color: white; border-radius: 0 3px 3px 0; transition: width 0.5s; white-space: nowrap; overflow: hidden; }
+.xai-bar.pos { background: #ef4444; }
+.xai-bar.neg { background: #22c55e; margin-left: -2px; /* Pull back visually slightly if needed, but flex takes care of it usually */ }
+
+/* Simulation */
+.whatif-section { background: #f8fafc; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e2e8f0; }
+.simulation-toggle { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer; color: #1e293b; }
+.simulation-hint { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
+
+.risk-empty-icon { font-size: 3rem; color: #93c5fd; margin-bottom: 1rem; }
+
+@media (max-width: 800px) {
+  .doctor-risk-layout, .risk-grid { grid-template-columns: 1fr; }
+}
+
+.patient-select-card, .extracted-vitals-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 6px 18px rgba(15,23,42,.08); }
+.vitals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.vital-item { display: flex; flex-direction: column; background: #f8fafc; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #e2e8f0; }
+.vital-label { font-size: 0.8rem; color: #64748b; text-transform: uppercase; font-weight: 600; margin-bottom: 0.2rem; }
+.vital-value { font-weight: bold; color: #0f172a; font-size: 1rem; }

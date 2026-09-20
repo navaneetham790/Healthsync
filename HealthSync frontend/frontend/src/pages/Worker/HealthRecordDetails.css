@@ -1,0 +1,117 @@
+.record-details{
+
+    width:100%;
+
+}
+
+.page-header{
+
+    margin-bottom:25px;
+
+}
+
+.page-header h2{
+
+    font-size:32px;
+
+    color:#222;
+
+}
+
+.page-header p{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+.details-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.details-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.detail-item{
+
+    background:#f8fbfc;
+
+    border-radius:12px;
+
+    padding:18px;
+
+}
+
+.detail-item label{
+
+    display:block;
+
+    color:#0F8F83;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.detail-item p{
+
+    color:#333;
+
+    line-height:1.6;
+
+}
+
+.full-width{
+
+    grid-column:1 / -1;
+
+}
+
+.status{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    background:#d4f6d9;
+
+    color:#188038;
+
+    font-weight:600;
+
+}
+
+@media(max-width:768px){
+
+.details-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.full-width{
+
+grid-column:auto;
+
+}
+
+}

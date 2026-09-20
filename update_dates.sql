@@ -1,0 +1,4 @@
+UPDATE workers SET created_at = TO_TIMESTAMP('2026-08-15 10:00:00', 'YYYY-MM-DD HH24:MI:SS') WHERE created_at IS NULL;
+UPDATE doctors SET created_at = TO_TIMESTAMP('2026-08-15 10:00:00', 'YYYY-MM-DD HH24:MI:SS') WHERE created_at IS NULL;
+COMMIT;
+EXIT;

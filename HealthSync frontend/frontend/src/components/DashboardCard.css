@@ -1,0 +1,101 @@
+/* ================= DASHBOARD CARD ================= */
+
+.dashboard-card{
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.12);
+
+}
+
+.card-content h2{
+
+    margin:0;
+
+    font-size:30px;
+
+    color:#222;
+
+    font-weight:700;
+
+}
+
+.card-content p{
+
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+.card-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#ffffff;
+
+    font-size:30px;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.dashboard-card{
+
+padding:18px;
+
+}
+
+.card-icon{
+
+width:60px;
+
+height:60px;
+
+font-size:24px;
+
+}
+
+.card-content h2{
+
+font-size:24px;
+
+}
+
+}

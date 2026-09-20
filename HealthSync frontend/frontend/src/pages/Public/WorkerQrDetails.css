@@ -1,0 +1,16 @@
+.qr-details{width:100%;max-width:none;min-height:100vh;background:#f1f8f8;padding:2rem 1.5vw;margin:0;color:#17323a}.qr-details header{text-align:center;margin:1rem 0 2rem}.qr-details header span{color:#008f83;font-weight:700}.qr-details h1{margin:.35rem 0}.qr-card{width:100%;background:#fff;border-radius:16px;padding:1.5rem;margin:1rem 0;box-shadow:0 4px 18px #17323a14}.qr-card h2{margin-top:0;color:#008f83}.qr-profile{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem}.qr-profile div{padding:.75rem;background:#f7fbfb;border-radius:.5rem}.qr-profile dt{font-size:.8rem;color:#64748b}.qr-profile dd{margin:.3rem 0 0;font-weight:600}.qr-list{display:grid;gap:.75rem}.qr-list article{border-left:4px solid #159589;padding:.75rem 1rem;background:#f7fbfb}.qr-list small{display:block;color:#64748b;margin-top:.25rem}.qr-list p{margin:.5rem 0 0}.qr-error{color:#b42318}
+
+body:has(.qr-details),
+html:has(.qr-details) {
+  overflow: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
+.qr-table-wrap{width:100%;overflow:visible}.qr-history-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.92rem}.qr-history-table th{background:#008f83;color:#fff;text-align:left;padding:.85rem;white-space:normal}.qr-history-table td{padding:.85rem;border-bottom:1px solid #d9e5e6;vertical-align:top;line-height:1.45;overflow-wrap:anywhere}.qr-history-table th:nth-child(1){width:9%}.qr-history-table th:nth-child(2){width:12%}.qr-history-table th:nth-child(3){width:14%}.qr-history-table th:nth-child(4){width:25%}.qr-history-table th:nth-child(5){width:10%}.qr-history-table th:nth-child(6){width:30%}.qr-history-table tbody tr:nth-child(even){background:#f7fbfb}.qr-history-table tbody tr:first-child{background:#e8f7f4}@media(max-width:900px){.qr-details{padding:1rem}.qr-table-wrap{overflow-x:auto}.qr-history-table{min-width:950px}}
+
+/* Override the worker dashboard's global .qr-card rule on this public page. */
+.qr-details .qr-card{width:100%!important;max-width:none!important;margin:1rem 0!important;padding:1.5rem!important;text-align:left!important}.qr-details .qr-card>h2{text-align:center}.qr-details .qr-profile{width:100%}.qr-details .qr-table-wrap{max-width:100%}
+.qr-otp-page{display:grid;place-content:center;min-height:100vh}.qr-otp-page header{margin:0 0 1rem}.qr-otp-card{width:min(100%,34rem)!important;margin:auto!important;text-align:center!important}.qr-otp-card p{line-height:1.6}.qr-otp-card button{border:0;border-radius:.55rem;background:#008f83;color:#fff;padding:.8rem 1.2rem;font-weight:700;cursor:pointer}.qr-otp-card button:disabled{opacity:.65}.qr-otp-card form{display:grid;gap:1rem}.qr-otp-card input{padding:.85rem;border:1px solid #94a3b8;border-radius:.55rem;font-size:1.1rem;text-align:center;letter-spacing:.2rem}.qr-otp-card .qr-resend{background:transparent;color:#008f83}
+.qr-prescription-table th:nth-child(1){width:10%;white-space:nowrap}.qr-prescription-table td:nth-child(1){white-space:nowrap}.qr-prescription-table th:nth-child(2){width:15%}.qr-prescription-table th:nth-child(3){width:15%}.qr-prescription-table th:nth-child(4){width:25%}.qr-prescription-table th:nth-child(5){width:10%}.qr-prescription-table th:nth-child(6){width:25%}

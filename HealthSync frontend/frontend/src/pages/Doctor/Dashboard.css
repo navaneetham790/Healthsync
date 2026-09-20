@@ -1,0 +1,260 @@
+.doctor-dashboard{
+    width:100%;
+}
+
+/* Welcome Banner */
+
+.welcome-banner{
+    width:100%;
+    background:linear-gradient(90deg,#1565c0,#42a5f5);
+    color:#fff;
+    border-radius:18px;
+    padding:35px 40px;
+    margin-bottom:30px;
+}
+
+.welcome-banner h2{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.welcome-banner p{
+    font-size:18px;
+}
+
+/* Cards */
+
+.doctor-cards{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(220px,1fr));
+    gap:24px;
+    margin-bottom:30px;
+}
+
+.doctor-card{
+    background:#fff;
+    border-radius:18px;
+    padding:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.doctor-card .icon{
+    width:78px;
+    height:78px;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:32px;
+}
+
+.blue{background:#1565c0;}
+.green{background:#43a047;}
+.orange{background:#fb8c00;}
+.purple{background:#8e24aa;}
+
+.card-info{
+    text-align:right;
+}
+
+.card-info h2{
+    font-size:42px;
+    margin-bottom:6px;
+    color:#222;
+}
+
+.card-info p{
+    color:#666;
+    font-size:18px;
+}
+
+/* Table */
+
+.patient-table{
+    background:#fff;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+.patient-table h3{
+    color:#1565c0;
+    font-size:34px;
+    margin-bottom:25px;
+}
+
+.patient-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.patient-table th{
+    background:#0F8F83;
+    color:#fff;
+    padding:16px;
+    text-align:left;
+    font-size:18px;
+}
+
+.patient-table td{
+    padding:16px;
+    border-bottom:1px solid #eee;
+    font-size:17px;
+}
+
+/* Status */
+
+.status{
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.green-status{
+    background:#d9f7dd;
+    color:#2e7d32;
+}
+
+.red-status{
+    background:#fde0df;
+    color:#d32f2f;
+}
+
+.yellow-status{
+    background:#fff3cd;
+    color:#996c00;
+}
+
+/* Laptop */
+
+@media(max-width:1400px){
+
+.doctor-cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+.welcome-banner h2{
+font-size:34px;
+}
+
+.doctor-card{
+padding:18px;
+}
+
+.card-info h2{
+font-size:34px;
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.doctor-cards{
+grid-template-columns:1fr;
+}
+
+.doctor-card{
+flex-direction:column;
+gap:20px;
+text-align:center;
+}
+
+.card-info{
+text-align:center;
+}
+
+.welcome-banner{
+padding:25px;
+}
+
+.welcome-banner h2{
+font-size:28px;
+}
+
+.patient-table{
+padding:15px;
+}
+
+}
+
+/* Keep dashboard data readable when the application is in dark mode.  This
+   lives with the dashboard styles so it wins over the page's light defaults. */
+html[data-theme="dark"] .doctor-dashboard .doctor-table,
+body.healthsync-dark .doctor-dashboard .doctor-table{
+    background:#172033 !important;
+    color:#f8fafc !important;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table h3,
+html[data-theme="dark"] .doctor-dashboard .doctor-table td,
+html[data-theme="dark"] .doctor-dashboard .doctor-table td *,
+body.healthsync-dark .doctor-dashboard .doctor-table h3,
+body.healthsync-dark .doctor-dashboard .doctor-table td,
+body.healthsync-dark .doctor-dashboard .doctor-table td *{
+    color:#f8fafc !important;
+    opacity:1 !important;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table tbody tr,
+body.healthsync-dark .doctor-dashboard .doctor-table tbody tr{
+    background:#172033 !important;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table tbody tr:nth-child(even),
+body.healthsync-dark .doctor-dashboard .doctor-table tbody tr:nth-child(even){
+    background:#1b2940 !important;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table td,
+body.healthsync-dark .doctor-dashboard .doctor-table td{
+    border-color:#3a4a63 !important;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table td .doctor-risk,
+body.healthsync-dark .doctor-dashboard .doctor-table td .doctor-risk{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    padding:0 12px;
+    border:1px solid transparent;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.02em;
+    white-space:nowrap;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table td .doctor-risk-low,
+body.healthsync-dark .doctor-dashboard .doctor-table td .doctor-risk-low{
+    background:#14532d !important; color:#dcfce7 !important; border-color:#22c55e !important;
+}
+html[data-theme="dark"] .doctor-dashboard .doctor-table td .doctor-risk-medium,
+body.healthsync-dark .doctor-dashboard .doctor-table td .doctor-risk-medium{
+    background:#78350f !important; color:#fef3c7 !important; border-color:#f59e0b !important;
+}
+html[data-theme="dark"] .doctor-dashboard .doctor-table td .doctor-risk-high,
+body.healthsync-dark .doctor-dashboard .doctor-table td .doctor-risk-high{
+    background:#7f1d1d !important; color:#fee2e2 !important; border-color:#f87171 !important;
+}
+html[data-theme="dark"] .doctor-dashboard .doctor-table td .doctor-risk-neutral,
+body.healthsync-dark .doctor-dashboard .doctor-table td .doctor-risk-neutral{
+    background:#334155 !important; color:#e2e8f0 !important; border-color:#64748b !important;
+}
+
+html[data-theme="dark"] .doctor-dashboard .doctor-table tbody tr,
+body.healthsync-dark .doctor-dashboard .doctor-table tbody tr{ transition:background .16s ease, box-shadow .16s ease; }
+html[data-theme="dark"] .doctor-dashboard .doctor-table tbody tr:hover,
+body.healthsync-dark .doctor-dashboard .doctor-table tbody tr:hover{ background:#26364e !important; box-shadow:inset 3px 0 0 #2dd4bf; }

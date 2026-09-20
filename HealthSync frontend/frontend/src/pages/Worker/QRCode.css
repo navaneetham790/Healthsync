@@ -1,0 +1,125 @@
+.qr-page{
+
+    width:100%;
+
+}
+
+.page-header{
+
+    margin-bottom:25px;
+
+}
+
+.page-header h2{
+
+    font-size:32px;
+
+    color:#222;
+
+}
+
+.page-header p{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+.qr-card{
+
+    max-width:500px;
+
+    margin:auto;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.qr-box{
+
+    width:220px;
+
+    height:220px;
+
+    margin:auto;
+
+    background:#F4F7FA;
+
+    border:3px dashed #0F8F83;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.qr-icon{
+
+    font-size:140px;
+
+    color:#0F8F83;
+
+}
+
+.qr-card h3{
+
+    margin-top:25px;
+
+    color:#222;
+
+}
+
+.qr-card p{
+
+    color:#666;
+
+    margin:10px 0 25px;
+
+}
+
+.download-btn{
+
+    background:#0F8F83;
+
+    color:#fff;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-size:16px;
+
+    margin:auto;
+
+}
+
+.download-btn:hover{
+
+    background:#0c746b;
+
+}

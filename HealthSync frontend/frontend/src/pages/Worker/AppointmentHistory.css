@@ -1,0 +1,178 @@
+.appointment-history{
+
+    width:100%;
+
+}
+
+.page-header{
+
+    margin-bottom:25px;
+
+}
+
+.page-header h2{
+
+    font-size:32px;
+
+    color:#222;
+
+}
+
+.page-header p{
+
+    margin-top:8px;
+
+    color:#666;
+
+}
+
+.history-card{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#0F8F83;
+
+    color:white;
+
+}
+
+th{
+
+    padding:16px;
+
+    text-align:left;
+
+}
+
+td{
+
+    padding:16px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr:hover{
+
+    background:#f9f9f9;
+
+}
+
+/* Keep appointment rows readable when the worker portal uses dark theme. */
+:root[data-theme="dark"] .appointment-history .history-card tbody tr:hover,
+body.healthsync-dark .appointment-history .history-card tbody tr:hover{
+    background:#26364e!important;
+}
+
+:root[data-theme="dark"] .appointment-history .history-card tbody tr:hover td,
+body.healthsync-dark .appointment-history .history-card tbody tr:hover td{
+    color:#f8fafc!important;
+    border-color:#3a4a63!important;
+}
+
+:root[data-theme="dark"] .appointment-history .history-card tbody tr:hover .view-btn,
+body.healthsync-dark .appointment-history .history-card tbody tr:hover .view-btn{
+    color:#fff!important;
+}
+
+/* Status */
+
+.completed{
+
+    background:#D4F6D9;
+
+    color:#188038;
+
+    padding:7px 16px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+.pending{
+
+    background:#FFF3CD;
+
+    color:#996C00;
+
+    padding:7px 16px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+.cancelled{
+
+    background:#FDE2E2;
+
+    color:#D93025;
+
+    padding:7px 16px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+/* Button */
+
+.view-btn{
+
+    background:#0F8F83;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.view-btn:hover{
+
+    background:#0C746B;
+
+}
+
+@media(max-width:768px){
+
+table{
+
+display:block;
+
+overflow-x:auto;
+
+}
+
+}

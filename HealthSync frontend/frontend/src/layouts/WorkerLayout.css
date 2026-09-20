@@ -1,0 +1,76 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef5f8;
+}
+
+/* Main Layout */
+
+.worker-layout{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Right Side */
+
+.worker-main{
+    flex:1;
+    margin-left:280px;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    min-height:0;
+}
+
+/* Page Content */
+
+.worker-content{
+    flex:1;
+    min-height:0;
+    padding:30px;
+    background:#eef5f8;
+    overflow-y:auto;
+}
+
+.worker-content::-webkit-scrollbar{width:9px}.worker-content::-webkit-scrollbar-thumb{background:#0f8f83;border-radius:999px}.worker-content::-webkit-scrollbar-track{background:#dfecef}
+
+:root[data-theme="dark"] .worker-layout,:root[data-theme="dark"] .worker-main,:root[data-theme="dark"] .worker-content{background:#0f172a;color:#e2e8f0}:root[data-theme="dark"] .worker-content .page-header h2,:root[data-theme="dark"] .worker-content .pageHeader h2,:root[data-theme="dark"] .worker-content .profile-header h2{color:#f8fafc}:root[data-theme="dark"] .worker-content .page-header p,:root[data-theme="dark"] .worker-content .pageHeader p,:root[data-theme="dark"] .worker-content .profile-header p{color:#cbd5e1}:root[data-theme="dark"] .worker-content .appointment-card,:root[data-theme="dark"] .worker-content .history-card,:root[data-theme="dark"] .worker-content .records-table,:root[data-theme="dark"] .worker-content .table-card,:root[data-theme="dark"] .worker-content .profile-card,:root[data-theme="dark"] .worker-content .worker-table,:root[data-theme="dark"] .worker-content .prescription-card,:root[data-theme="dark"] .worker-content .details-card{background:#172033;color:#e2e8f0;border-color:#334155}:root[data-theme="dark"] .worker-content table td{color:#e2e8f0;border-color:#334155}:root[data-theme="dark"] .worker-content .info-box{background:#25334a}:root[data-theme="dark"] .worker-content .info-box p,:root[data-theme="dark"] .worker-content .profile-left h3{color:#f8fafc}:root[data-theme="dark"] .worker-content .info-box label,:root[data-theme="dark"] .worker-content .info-box label small,:root[data-theme="dark"] .worker-content .profile-left span{color:#99f6e4}:root[data-theme="dark"] .worker-content input,:root[data-theme="dark"] .worker-content select,:root[data-theme="dark"] .worker-content textarea{background:#0f172a;color:#f8fafc;border-color:#475569}:root[data-theme="dark"] .worker-content .profile-left{border-color:#334155}:root[data-theme="dark"] .worker-content .worker-cancel-btn{background:#334155;color:#f8fafc}:root[data-theme="dark"] .worker-content .appointment-card label,:root[data-theme="dark"] .worker-content .appointment-card .form-group label{color:#cbd5e1}:root[data-theme="dark"] .worker-content .appointment-card input::placeholder{color:#94a3b8;opacity:1}
+
+/* Mobile */
+
+@media(max-width:992px){
+
+.worker-main{
+
+margin-left:80px;
+
+}
+
+.worker-content{
+
+padding:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.worker-main{
+
+margin-left:0;
+
+}
+
+.worker-content{
+
+padding:15px;
+
+}
+
+}

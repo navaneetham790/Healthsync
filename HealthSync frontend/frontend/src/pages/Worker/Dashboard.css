@@ -1,0 +1,173 @@
+.worker-dashboard{
+
+    width:100%;
+
+}
+
+.worker-welcome{
+
+    background:linear-gradient(135deg,#0F8F83,#25b9ad);
+
+    color:#fff;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    margin-bottom:30px;
+
+}
+
+.worker-welcome h2{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.worker-welcome p{
+
+    font-size:17px;
+
+}
+
+.worker-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+.worker-table{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    overflow-x:auto;
+
+}
+
+.worker-table h3{
+
+    margin-bottom:20px;
+
+    color:#0F8F83;
+
+    font-size:28px;
+
+}
+
+.worker-table table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.worker-table thead{
+
+    background:#0F8F83;
+
+    color:white;
+
+}
+
+.worker-table th{
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+.worker-table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.worker-table tbody tr:hover{
+
+    background:#f8f8f8;
+
+}
+
+.worker-healthy{
+
+    background:#D4F6D9;
+
+    color:#188038;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+.worker-follow{
+
+    background:#FFF3CD;
+
+    color:#996C00;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+.worker-treatment{
+
+    background:#FDE2E2;
+
+    color:#D93025;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+@media(max-width:768px){
+
+.worker-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.worker-table{
+
+padding:15px;
+
+}
+
+}
+
+/* Dashboard is used with the dark worker panel too: keep row hover and
+   status text readable instead of inheriting the light-table palette. */
+.worker-dashboard .worker-table tbody tr:hover{background:#263754!important}
+.worker-dashboard .worker-table .worker-healthy{background:#d4f6d9!important;color:#166534!important;border:1px solid #86efac;font-weight:800!important}
+.worker-dashboard .worker-table span.worker-healthy{color:#166534!important;text-shadow:none!important}
+.worker-dashboard .worker-table .worker-follow{background:#fff3cd!important;color:#7c5200!important;border:1px solid #facc15;font-weight:800!important}
+.worker-dashboard .worker-table .worker-treatment{background:#fde2e2!important;color:#b42318!important;border:1px solid #fca5a5;font-weight:800!important}

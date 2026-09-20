@@ -1,0 +1,66 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+    width:100%;
+    height:100%;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef5f8;
+}
+
+.admin-layout{
+    display:flex;
+    width:100%;
+    height:100vh;
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:280px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+/* Right Side */
+
+.admin-main{
+    margin-left:280px;
+    width:calc(100% - 280px);
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+}
+
+/* Navbar */
+
+.navbar{
+    height:80px;
+    flex-shrink:0;
+}
+
+/* Scroll only content */
+
+.admin-content{
+    flex:1;
+    height:calc(100vh - 80px);
+    min-height:0;
+    max-height:calc(100vh - 80px);
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
+    padding:30px;
+    background:#eef5f8;
+}

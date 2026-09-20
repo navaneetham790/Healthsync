@@ -1,0 +1,130 @@
+.appointment{
+
+    width:100%;
+
+}
+
+.page-header{
+
+    margin-bottom:25px;
+
+}
+
+.page-header h2{
+
+    font-size:32px;
+
+    color:#222;
+
+}
+
+.page-header p{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+.appointment-card{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+.form-group input,
+.form-group select{
+
+    height:48px;
+
+    padding:0 15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+.book-btn{
+
+    margin-top:30px;
+
+    background:#0F8F83;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+.book-btn:hover{
+
+    background:#0c746b;
+
+}
+
+@media(max-width:768px){
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.book-btn{
+
+width:100%;
+
+}
+
+}
+
+.required-mark,.field-error{color:#c0362c}.field-error{margin-top:6px;font-size:.82rem}.form-group input[aria-invalid="true"],.form-group select[aria-invalid="true"]{border-color:#c0362c}.book-btn:disabled{opacity:.65;cursor:wait}
+
+.doctor-location{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1rem 1.1rem;border:1px solid #99f6e4;border-left:4px solid #0f8f83;border-radius:10px;background:#ecfdf5}.doctor-location div{display:grid;gap:.25rem}.doctor-location span{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#0f766e}.doctor-location strong{color:#0f172a;font-size:1rem;line-height:1.45}
+:root[data-theme="dark"] .appointment .doctor-location,body.healthsync-dark .appointment .doctor-location{background:#173a3b;border-color:#287a76}:root[data-theme="dark"] .appointment .doctor-location span,body.healthsync-dark .appointment .doctor-location span{color:#99f6e4}:root[data-theme="dark"] .appointment .doctor-location strong,body.healthsync-dark .appointment .doctor-location strong{color:#f8fafc}
+@media(max-width:768px){.doctor-location{grid-template-columns:1fr}}
