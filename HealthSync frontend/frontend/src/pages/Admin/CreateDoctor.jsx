@@ -24,7 +24,12 @@ function CreateDoctor() {
   const [hospitalLoading, setHospitalLoading] = useState(true);
   const [isOtherHospital, setIsOtherHospital] = useState(false);
 
-  useEffect(() => { AdminService.getHospitals().then(({ data }) => setHospitals(Array.isArray(data) ? data : [])).catch(() => notify.error("Unable to load the hospital dataset.")).finally(() => setHospitalLoading(false)); }, []);
+  useEffect(() => { 
+    AdminService.getHospitals()
+      .then(({ data }) => setHospitals(Array.isArray(data) && data.length > 0 ? data : []))
+      .catch(() => {})
+      .finally(() => setHospitalLoading(false)); 
+  }, []);
   useEffect(() => {
     if (!approvedApplication) return;
     setDoctor((current) => ({ ...current, name: approvedApplication.fullName || "", email: approvedApplication.email || "", mobile: approvedApplication.phone || "", specialization: approvedApplication.specialization || "", hospital: approvedApplication.hospital || "", localAddress: approvedApplication.hospitalAddress || "", experience: String(approvedApplication.experience || "").replace(/\D/g, ""), password: "verified-password", confirmPassword: "verified-password" }));

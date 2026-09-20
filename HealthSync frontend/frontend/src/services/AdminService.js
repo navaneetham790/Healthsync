@@ -1,4 +1,5 @@
 import axios from "axios";
+import fallbackHospitals from "../assets/datasets/hospitals.json";
 
 const BASE_URL = "/api/admin";
 
@@ -21,22 +22,21 @@ const AdminService = {
     rejectDoctorApplication(id, reason) { return axios.post(`${BASE_URL}/doctor-applications/${id}/reject`, { reason }); },
     cancelDoctorApplication(id) { return axios.delete(`${BASE_URL}/doctor-applications/${id}`); },
     getDoctorApplicationDocument(id, type) { return axios.get(`${BASE_URL}/doctor-applications/${id}/documents/${type}`, { responseType: "blob" }); },
-    getHospitals() { return axios.get("/api/ml/hospitals"); },
+    getHospitals() {
+        return axios.get("/api/ml/hospitals").catch(() => ({ data: fallbackHospitals }));
+    },
     createWorker(data) { return axios.post(`${BASE_URL}/workers`, data); },
 
     updateDoctor(id, data) { return axios.put(`${BASE_URL}/doctors/${id}`, data); },
     deleteDoctor(id, message) { return axios.delete(`${BASE_URL}/doctors/${id}`, { data: { message } }); },
 
     getWorkers() {
-
         return axios.get(`${BASE_URL}/workers`);
-
     },
 
 
     updateProfile(data) { return axios.put(`${BASE_URL}/profile`, data); },
     getProfile() { return axios.get(`${BASE_URL}/profile`); },
-    getSettings() { return axios.get(`${BASE_URL}/settings`); },
     updateSettings(data) { return axios.put(`${BASE_URL}/settings`, data); },
     logoutAllSessions() { return axios.post(`${BASE_URL}/sessions/logout-all`); },
 
