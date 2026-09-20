@@ -55,10 +55,119 @@
 .xai-bar.pos { background: #ef4444; }
 .xai-bar.neg { background: #22c55e; margin-left: -2px; /* Pull back visually slightly if needed, but flex takes care of it usually */ }
 
-/* Simulation */
-.whatif-section { background: #f8fafc; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e2e8f0; }
-.simulation-toggle { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer; color: #1e293b; }
-.simulation-hint { font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; }
+/* Doctor Care Recommendations Box */
+.care-recommendations-box {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-left: 4px solid #16a34a;
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.care-recommendations-box h4 {
+  color: #15803d !important;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.care-recommendations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.care-recommendations-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: #14532d !important;
+  line-height: 1.45;
+}
+
+.rec-check-icon {
+  color: #16a34a !important;
+  font-size: 15px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Simulation Section */
+.whatif-section {
+  background: #f8fafc;
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+}
+
+.whatif-section h4 {
+  color: #334155;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.simulation-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1e293b;
+}
+
+.simulation-hint {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Dark mode for Recommendations & Simulation */
+html[data-theme="dark"] .care-recommendations-box,
+body.healthsync-dark .care-recommendations-box {
+  background: #06351d !important;
+  border-color: #16a34a !important;
+}
+
+html[data-theme="dark"] .care-recommendations-box h4,
+body.healthsync-dark .care-recommendations-box h4 {
+  color: #4ade80 !important;
+}
+
+html[data-theme="dark"] .care-recommendations-list li,
+body.healthsync-dark .care-recommendations-list li {
+  color: #dcfce7 !important;
+}
+
+html[data-theme="dark"] .whatif-section,
+body.healthsync-dark .whatif-section {
+  background: #111c2e !important;
+  border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .whatif-section h4,
+body.healthsync-dark .whatif-section h4 {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .simulation-toggle,
+body.healthsync-dark .simulation-toggle {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] .simulation-hint,
+body.healthsync-dark .simulation-hint {
+  color: #94a3b8 !important;
+}
 
 .risk-empty-icon { font-size: 3rem; color: #93c5fd; margin-bottom: 1rem; }
 

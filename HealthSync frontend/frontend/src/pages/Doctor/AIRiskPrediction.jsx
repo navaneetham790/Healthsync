@@ -110,7 +110,7 @@ async function analyzeClinicalReport(file, workerName, workerId, healthRecords =
     allText.includes("chronic smoker");
 
   // 1. SCENARIO: MILD HEADACHE / ROUTINE CONSULTATION / NORMAL CBC -> LOW RISK
-  if (isMildRoutine && !isHighSevere) {
+  if (!isHighSevere) {
     const bp = latestRecord?.bloodPressure || "118/78 mmHg";
     const sugar = latestRecord?.sugar ? `${latestRecord.sugar} mg/dL` : "94 mg/dL";
     const bmi = latestRecord?.bmi ? String(latestRecord.bmi) : "22.1";
@@ -742,12 +742,15 @@ function AIRiskPrediction() {
                 </div>
               </div>
 
-              {/* Clinical Advice */}
-              <div className="whatif-section" style={{ marginBottom: "1.5rem" }}>
-                <h4 style={{ color: "#1e40af", marginBottom: "0.5rem" }}>Doctor Care Recommendations</h4>
-                <ul style={{ paddingLeft: "1.2rem", margin: 0, fontSize: "0.85rem", color: "#334155", lineHeight: "1.5" }}>
-                  {result.advice.map((adv, i) => (
-                    <li key={i} style={{ marginBottom: "4px" }}>{adv}</li>
+              {/* Doctor Care Recommendations */}
+              <div className="care-recommendations-box">
+                <h4>Doctor Care Recommendations</h4>
+                <ul className="care-recommendations-list">
+                  {result.advice?.map((adv, i) => (
+                    <li key={i}>
+                      <FaCheckCircle className="rec-check-icon" />
+                      <span>{adv}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -761,14 +764,20 @@ function AIRiskPrediction() {
                     checked={simulateIntervention}
                     onChange={(e) => setSimulateIntervention(e.target.checked)}
                   />
-                  {result.level === "low"
-                    ? "Simulate Preventive Maintenance: Hydration & Sleep Hygiene"
-                    : "Simulate Intervention: Quit Smoking & Target BP (120/80)"}
+                  <span>
+                    {extractedVitals?.smoker?.includes("Yes")
+                      ? "Simulate Intervention: Quit Smoking & Target BP (120/80)"
+                      : result.level === "low"
+                      ? "Simulate Preventive Care: Hydration & Sleep Routine"
+                      : "Simulate Lifestyle Care: Heart-Healthy Nutrition & Activity"}
+                  </span>
                 </label>
                 <p className="simulation-hint">
-                  {result.level === "low"
-                    ? "Patient is already a non-smoker with normal baseline BP. Simulation confirms persistent low cardiovascular risk."
-                    : "See how targeted lifestyle changes impact the patient's predicted risk trajectory."}
+                  {extractedVitals?.smoker?.includes("Yes")
+                    ? "See how smoking cessation and blood pressure control reduce long-term cardiovascular risk."
+                    : result.level === "low"
+                    ? "Patient is a non-smoker with normal baseline vitals. Targeted hydration and rest eliminate tension headaches and sustain long-term low risk."
+                    : "See how balanced nutrition and daily physical activity stabilize metabolic health."}
                 </p>
               </div>
             </div>
