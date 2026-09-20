@@ -15,10 +15,9 @@ export default function EmailOtpVerification({ email, onVerified }) {
     if (!validEmail) return notify.warning("Enter a valid email address first.");
     setSending(true);
     try {
-      const res = await AuthService.sendEmailOtp(email);
+      await AuthService.sendEmailOtp(email);
       setSent(true);
-      if (res.data?.code) setOtp(res.data.code);
-      notify.success(res.data?.code ? `Verification code: ${res.data.code}` : "Verification code sent to your email.");
+      notify.success("Verification code sent to your email.");
     } catch (error) { notify.error(error.response?.data?.message || "Unable to send verification code."); }
     finally { setSending(false); }
   };
