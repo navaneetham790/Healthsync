@@ -250,6 +250,46 @@ font-size:90px;
     line-height: 1.4;
 }
 
+.doctor-qr-success-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-left: 4px solid #16a34a;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+.doctor-qr-success-alert .success-icon {
+    color: #16a34a;
+    font-size: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.doctor-qr-success-alert strong {
+    display: block;
+    color: #14532d;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.doctor-qr-success-alert p {
+    margin: 0;
+    color: #15803d;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.qr-preview-placeholder {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
 .qr-actions-row {
     display: flex;
     gap: 12px;

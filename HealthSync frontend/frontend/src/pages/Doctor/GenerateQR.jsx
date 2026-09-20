@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./GenerateQR.css";
-import { FaQrcode, FaDownload, FaCheckCircle, FaRedo } from "react-icons/fa";
+import { FaQrcode, FaDownload, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
 import QRCode from "qrcode";
 import DoctorService from "../../services/DoctorService";
 import { downloadBlob } from "../../utils/download";
@@ -13,7 +13,7 @@ function GenerateQR() {
   const [previewUrl, setPreviewUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [workersList, setWorkersList] = useState([]);
-  const [qrAlreadyExists, setQrAlreadyExists] = useState(false);
+  const [qrStatus, setQrStatus] = useState(null); // null | "exists" | "new"
 
   useEffect(() => {
     const fetchWorkers = async () => {
@@ -47,30 +47,31 @@ function GenerateQR() {
     setQrBlob(blob);
   };
 
-  // When worker ID changes, match with directory and check if QR code already exists
-  useEffect(() => {
-    if (worker.id.trim()) {
+  // When worker ID changes: auto-fill name if known, but DO NOT show QR or "already exists" until clicking Generate
+  const handleIdChange = (newId) => {
+    setWorker((prev) => {
       const match = workersList.find(
         (item) =>
-          item.workerCode?.trim().toLowerCase() === worker.id.trim().toLowerCase() ||
-          String(item.id).trim() === worker.id.trim()
+          item.workerCode?.trim().toLowerCase() === newId.trim().toLowerCase() ||
+          String(item.id).trim() === newId.trim()
       );
-      if (match) {
-        setWorker((prev) => ({ ...prev, name: match.fullName.trim() }));
-        const code = match.workerCode || `MW${match.id}`;
-        if (hasGeneratedQr(match.id, code)) {
-          setQrAlreadyExists(true);
-          createLocalQrBlob(code).then((blob) => {
-            showQr(blob);
-          });
-        } else {
-          setQrAlreadyExists(false);
-          setPreviewUrl("");
-          setQrBlob(null);
-        }
-      }
-    }
-  }, [worker.id, workersList]);
+      return {
+        id: newId,
+        name: match ? match.fullName.trim() : prev.name
+      };
+    });
+    // Clear preview and status so nothing shows before clicking Generate
+    setPreviewUrl("");
+    setQrBlob(null);
+    setQrStatus(null);
+  };
+
+  const handleNameChange = (newName) => {
+    setWorker((prev) => ({ ...prev, name: newName }));
+    setPreviewUrl("");
+    setQrBlob(null);
+    setQrStatus(null);
+  };
 
   useEffect(() => () => {
     if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -100,7 +101,8 @@ function GenerateQR() {
     return match;
   };
 
-  const generate = async (isRegenerate = false) => {
+  // Only trigger on clicking "Generate QR"
+  const generate = async () => {
     if (!worker.id.trim() || !worker.name.trim()) {
       notify.warning("Enter both worker ID and worker name.");
       return;
@@ -112,15 +114,15 @@ function GenerateQR() {
       const blob = await createLocalQrBlob(code);
       showQr(blob);
 
-      const exists = hasGeneratedQr(match.id, code);
+      const alreadyExists = hasGeneratedQr(match.id, code);
 
-      if (exists && !isRegenerate) {
-        setQrAlreadyExists(true);
-        notify.info(`QR code already exists for ${match.fullName || worker.name} (${code}). Existing QR displayed.`);
+      if (alreadyExists) {
+        setQrStatus("exists");
+        notify.warning(`QR code already exists for ${match.fullName || worker.name} (${code}). Existing QR displayed.`);
       } else {
         markQrGenerated(match.id, code);
-        setQrAlreadyExists(true);
-        notify.success(isRegenerate ? "QR code regenerated successfully." : "QR code generated successfully.");
+        setQrStatus("new");
+        notify.success("QR code generated successfully.");
       }
     } catch (error) {
       notify.error(error.message || "Unable to generate QR code.");
@@ -147,7 +149,7 @@ function GenerateQR() {
           className="doctor-qr-form"
           onSubmit={(event) => {
             event.preventDefault();
-            generate(false);
+            generate();
           }}
         >
           <div className="doctor-form-group">
@@ -156,7 +158,7 @@ function GenerateQR() {
               id="worker-id"
               type="text"
               value={worker.id}
-              onChange={(event) => setWorker({ ...worker, id: event.target.value })}
+              onChange={(e) => handleIdChange(e.target.value)}
               placeholder="Enter Worker ID (e.g. MW001)"
               required
             />
@@ -168,18 +170,28 @@ function GenerateQR() {
               id="worker-name"
               type="text"
               value={worker.name}
-              onChange={(event) => setWorker({ ...worker, name: event.target.value })}
+              onChange={(e) => handleNameChange(e.target.value)}
               placeholder="Enter Worker Name"
               required
             />
           </div>
 
-          {qrAlreadyExists && (
+          {qrStatus === "exists" && (
             <div className="doctor-qr-exists-alert">
-              <FaCheckCircle className="exists-icon" />
+              <FaExclamationTriangle className="exists-icon" />
               <div>
                 <strong>QR Code Already Exists</strong>
-                <p>This worker already has an active QR code in the system. The existing QR code is displayed on the right.</p>
+                <p>This worker already has a registered QR code in the system. The existing QR code is displayed on the right.</p>
+              </div>
+            </div>
+          )}
+
+          {qrStatus === "new" && (
+            <div className="doctor-qr-success-alert">
+              <FaCheckCircle className="success-icon" />
+              <div>
+                <strong>QR Code Generated Successfully</strong>
+                <p>A new QR code has been generated and registered for this worker.</p>
               </div>
             </div>
           )}
@@ -187,28 +199,12 @@ function GenerateQR() {
           <div className="qr-actions-row">
             <button
               type="submit"
-              className={`doctor-generate-btn ${qrAlreadyExists ? "btn-already-exists" : ""}`}
+              className="doctor-generate-btn"
               disabled={loading}
             >
               <FaQrcode />
-              {loading
-                ? "Checking…"
-                : qrAlreadyExists
-                ? "QR Code Already Exists"
-                : "Generate QR"}
+              {loading ? "Checking & Generating…" : "Generate QR"}
             </button>
-
-            {qrAlreadyExists && (
-              <button
-                type="button"
-                className="doctor-regenerate-btn"
-                disabled={loading}
-                onClick={() => generate(true)}
-                title="Regenerate a fresh QR code if needed"
-              >
-                <FaRedo /> Regenerate QR
-              </button>
-            )}
           </div>
         </form>
 
@@ -220,10 +216,14 @@ function GenerateQR() {
               <FaQrcode />
             )}
           </div>
-          {previewUrl && (
-            <div className={`qr-preview-tag ${qrAlreadyExists ? "tag-exists" : "tag-ready"}`}>
-              {qrAlreadyExists ? `✅ Existing QR Code for ${worker.name}` : `QR ready for ${worker.name}`}
+          {previewUrl ? (
+            <div className={`qr-preview-tag ${qrStatus === "exists" ? "tag-exists" : "tag-ready"}`}>
+              {qrStatus === "exists"
+                ? `⚠️ Existing QR Code for ${worker.name}`
+                : `✅ QR Code generated for ${worker.name}`}
             </div>
+          ) : (
+            <p className="qr-preview-placeholder">QR Preview</p>
           )}
           <button
             type="button"
