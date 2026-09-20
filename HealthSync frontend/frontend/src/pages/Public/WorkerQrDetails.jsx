@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { getLocalHealthRecords, getLocalPrescriptions } from "../../utils/clinicalStorage";
 import "./WorkerQrDetails.css";
 
 function WorkerQrDetails() {
@@ -24,10 +25,12 @@ function WorkerQrDetails() {
             (w) => String(w.id) === String(token) || (w.workerCode && w.workerCode.toLowerCase() === String(token).toLowerCase())
           );
           if (match) {
+            const localRecs = getLocalHealthRecords(match.id);
+            const localPrescs = getLocalPrescriptions(match.id);
             setData({
               worker: match,
-              healthRecords: [],
-              prescriptions: []
+              healthRecords: localRecs,
+              prescriptions: localPrescs
             });
             return;
           }
