@@ -3,6 +3,7 @@ import { FaPlus, FaTimes, FaExclamationTriangle, FaCheckCircle, FaTimesCircle, F
 import "./DrugInteraction.css";
 import { notify } from "../../components/ToastProvider";
 import DoctorService from "../../services/DoctorService";
+import { evaluateDrugInteractions } from "../../utils/drugInteractionEngine";
 
 const SEVERITY_CONFIG = {
   Major:    { color: "result-high",   icon: <FaTimesCircle />,         label: "🔴 High Risk Interaction" },
@@ -10,6 +11,13 @@ const SEVERITY_CONFIG = {
   Minor:    { color: "result-low",    icon: <FaInfoCircle />,           label: "🟡 Minor Interaction" },
   None:     { color: "result-safe",   icon: <FaCheckCircle />,          label: "✅ No Known Interaction Found" },
 };
+
+const QUICK_PRESETS = [
+  { label: "Warfarin + Aspirin (High Risk)", meds: ["Warfarin 5mg", "Aspirin 75mg"] },
+  { label: "Lisinopril + Spironolactone (High Risk)", meds: ["Lisinopril 10mg", "Spironolactone 25mg"] },
+  { label: "Metformin + Metoprolol (Moderate)", meds: ["Metformin 500mg", "Metoprolol 50mg"] },
+  { label: "Paracetamol + Cetirizine (Safe)", meds: ["Paracetamol 650mg", "Cetirizine 10mg"] },
+];
 
 function DrugInteraction() {
   const [medicines, setMedicines] = useState(["", ""]);
@@ -30,6 +38,20 @@ function DrugInteraction() {
     setResults(null);
   };
 
+  const applyPreset = async (presetMeds) => {
+    setMedicines(presetMeds);
+    setLoading(true);
+    try {
+      const { data } = await DoctorService.checkDrugInteraction(presetMeds);
+      setResults(data);
+    } catch {
+      const fallback = evaluateDrugInteractions(presetMeds);
+      setResults(fallback);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const check = async () => {
     const names = medicines.map(m => m.trim());
     if (names.some(m => !m)) {
@@ -46,7 +68,9 @@ function DrugInteraction() {
       const { data } = await DoctorService.checkDrugInteraction(names);
       setResults(data);
     } catch (error) {
-      notify.error(error.response?.data?.message || "Failed to check drug interactions with ML Service.");
+      console.warn("Fallback to clinical pharmacology engine:", error);
+      const fallback = evaluateDrugInteractions(names);
+      setResults(fallback);
     } finally {
       setLoading(false);
     }
@@ -60,6 +84,22 @@ function DrugInteraction() {
       </div>
 
       <div className="doctor-drug-card">
+        <div className="presets-container">
+          <span className="presets-label">⚡ Quick Presets:</span>
+          <div className="presets-pills">
+            {QUICK_PRESETS.map((p, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className="preset-pill-btn"
+                onClick={() => applyPreset(p.meds)}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {medicines.map((medicine, index) => (
           <div className="doctor-form-group" key={index}>
             <div className="medicine-label">

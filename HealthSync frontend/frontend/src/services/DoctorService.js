@@ -7,6 +7,7 @@ import {
   getLocalPrescriptions,
   getAllLocalPrescriptions
 } from "../utils/clinicalStorage";
+import { evaluateDrugInteractions } from "../utils/drugInteractionEngine";
 
 const BASE_URL = "/api/doctor";
 
@@ -60,7 +61,18 @@ const DoctorService = {
   generateQR: (workerId) => axios.post(`${BASE_URL}/workers/${workerId}/qr`, null, { responseType: "blob", timeout: 4000 }),
   downloadQR: (workerId) => axios.get(`${BASE_URL}/workers/${workerId}/qr`, { responseType: "blob", timeout: 4000 }),
   predictRisk: (data) => axios.post(`${BASE_URL}/risk-prediction`, data, { timeout: 5000 }),
-  checkDrugInteraction: (medicines) => axios.post(`/api/ml/drug-interaction`, { medicines }, { timeout: 5000 }),
+  checkDrugInteraction: async (medicines) => {
+    try {
+      const res = await axios.post(`/api/ml/drug-interaction`, { medicines }, { timeout: 3500 });
+      if (res && res.data && Array.isArray(res.data.interactions) && res.data.interactions.length > 0) {
+        return res;
+      }
+    } catch (err) {
+      console.warn("ML service unavailable or timed out, evaluating via clinical pharmacology engine:", err);
+    }
+    const localResult = evaluateDrugInteractions(medicines);
+    return { data: localResult };
+  },
 
   getWorkerHealthRecords: async (workerId) => {
     let backendRecords = [];
