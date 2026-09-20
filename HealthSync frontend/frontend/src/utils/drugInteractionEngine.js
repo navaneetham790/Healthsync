@@ -1,4 +1,4 @@
-import drugInteractionsDb from "../data/drugInteractions.json";
+import drugInteractionsDb from "../data/drugInteractionsData";
 
 // Clinical synonyms & brand name normalizer
 const BRAND_TO_GENERIC = {
