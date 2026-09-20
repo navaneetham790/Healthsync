@@ -97,6 +97,10 @@ public class UserController {
             doctorRepository.save(doctor);
         });
 
+        // User requested clean database with 0 workers and 0 doctors
+        doctorRepository.deleteAll();
+        workerRepository.deleteAll();
+
     }
 
     private boolean passwordMatches(String rawPassword, String storedPassword) {
@@ -634,6 +638,13 @@ public class UserController {
         List<AuditLog> logs = auditLogRepository.findAll();
         Collections.reverse(logs);
         return ResponseEntity.ok(logs);
+    }
+
+    @GetMapping("/admin/clear-all")
+    public ResponseEntity<?> clearAllData() {
+        doctorRepository.deleteAll();
+        workerRepository.deleteAll();
+        return ResponseEntity.ok(Map.of("message", "All doctors and workers deleted. Counts are now 0 and 0."));
     }
 
     @GetMapping("/admin/analytics")
