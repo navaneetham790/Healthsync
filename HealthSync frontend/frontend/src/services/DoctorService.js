@@ -148,5 +148,33 @@ const DoctorService = {
   },
 
   updateWorkerRiskByCode: (workerCode, riskLevel) => axios.put(`/api/doctor/workers/code/${workerCode}/risk`, { riskLevel }, { timeout: 5000 }),
+
+  predictRisk: async (payload) => {
+    try {
+      const res = await axios.post("/api/ml/predict", payload, { timeout: 7000 });
+      if (res?.data) return res.data;
+    } catch (err) {
+      console.warn("ML predict unavailable, falling back:", err);
+    }
+    return null;
+  },
+
+  extractReportImage: async (file) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await axios.post("/api/ml/extract-report", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        timeout: 15000
+      });
+      if (res?.data) return res.data;
+    } catch (err) {
+      console.warn("ML extract-report unavailable or returned error:", err);
+      if (err?.response?.data?.error) {
+        throw new Error(err.response.data.error);
+      }
+    }
+    return null;
+  }
 };
 export default DoctorService;

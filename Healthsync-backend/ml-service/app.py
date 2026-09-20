@@ -134,8 +134,11 @@ def extract_report():
         # Read image
         img = PIL.Image.open(file.stream)
         
-        # Configure Gemini Model
-        model = genai.GenerativeModel('gemini-3.6-flash')
+        # Configure Gemini Model with fallback
+        try:
+            gemini_model = genai.GenerativeModel('gemini-2.5-flash')
+        except Exception:
+            gemini_model = genai.GenerativeModel('gemini-1.5-flash')
         
         prompt = """
         You are an expert clinical AI assistant. Analyze the provided lab report image.
@@ -169,7 +172,7 @@ def extract_report():
         }
         """
         
-        response = model.generate_content([prompt, img])
+        response = gemini_model.generate_content([prompt, img])
         response_text = response.text.strip()
         
         # Clean potential markdown JSON formatting
@@ -413,5 +416,5 @@ if __name__ == "__main__":
     print("  POST /drug-interaction   — Drug interaction check (AI + DB)")
     print("  GET  /health             — Health check")
     print("=" * 50 + "\n")
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False, threaded=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8084)), debug=False, threaded=True)
 
