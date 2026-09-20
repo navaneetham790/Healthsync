@@ -489,8 +489,8 @@ function AIRiskPrediction() {
         <div className="risk-left-panel">
           {/* Patient Selection Card */}
           <div className="patient-select-card">
-            <h3 style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem", color: "#0f172a" }}>
-              <FaUser color="#3b82f6" /> Select Patient
+            <h3 className="section-card-title">
+              <FaUser className="section-card-icon" /> Select Patient
             </h3>
             <div className="risk-grid">
               <label className="risk-field">
@@ -519,10 +519,10 @@ function AIRiskPrediction() {
               <label className="risk-field">
                 <span className="risk-label">Patient Name</span>
                 <input
+                  className="patient-name-readonly"
                   value={workerName}
                   placeholder={workerId ? "Worker not found" : "Select ID first"}
                   readOnly
-                  style={{ backgroundColor: "#f8fafc", color: workerName ? "#0f172a" : "#94a3b8" }}
                 />
               </label>
             </div>
@@ -538,43 +538,28 @@ function AIRiskPrediction() {
             {uploading ? (
               <div className="upload-loading">
                 <FaRobot className="spinning" size={32} />
-                <p style={{ fontWeight: "bold", marginTop: "1rem", color: "#0f172a", fontSize: "1.1rem" }}>
-                  {scanStep}
-                </p>
-                <small style={{ color: "#64748b" }}>AI Verification &amp; Clinical Analysis in progress...</small>
+                <p className="upload-title">{scanStep}</p>
+                <small className="upload-subtitle">AI Verification &amp; Clinical Analysis in progress...</small>
               </div>
             ) : uploadedFile ? (
               <div className="upload-success">
                 <FaFilePdf size={32} color="#ef4444" />
-                <p style={{ fontWeight: "bold", marginTop: "1rem", fontSize: "1.1rem" }}>{uploadedFile}</p>
+                <p className="upload-filename">{uploadedFile}</p>
                 {isOverridden ? (
-                  <small style={{ color: "#d97706", fontWeight: "bold" }}>
+                  <small className="upload-status-override">
                     ⚠️ Doctor Override Active (Patient Name Mismatch)
                   </small>
                 ) : (
-                  <small style={{ color: "#15803d", fontWeight: "bold" }}>
+                  <small className="upload-status-success">
                     ✅ Analyzed for {workerName} ({result?.riskLevel || "LOW"} Risk Profile)
                   </small>
                 )}
 
                 <button
+                  className="btn-new-analysis"
                   onClick={(e) => {
                     e.stopPropagation();
                     resetAnalysis();
-                  }}
-                  style={{
-                    marginTop: "1.5rem",
-                    padding: "0.6rem 1.2rem",
-                    background: "#eff6ff",
-                    color: "#1d4ed8",
-                    border: "1px solid #bfdbfe",
-                    borderRadius: "0.5rem",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    margin: "1.5rem auto 0"
                   }}
                 >
                   Start New Analysis
@@ -582,13 +567,13 @@ function AIRiskPrediction() {
               </div>
             ) : (
               <div className="upload-prompt">
-                <FaUpload size={32} color={workerName ? "#3b82f6" : "#94a3b8"} />
-                <p style={{ fontWeight: "bold", marginTop: "1rem", color: "#0f172a", fontSize: "1.1rem" }}>
+                <FaUpload size={32} className="upload-icon-prompt" />
+                <p className="upload-title">
                   {workerName
                     ? `Click or drag Lab Report for ${workerName}`
                     : "Select a patient to upload report"}
                 </p>
-                <small style={{ color: "#64748b" }}>
+                <small className="upload-subtitle">
                   AI reads document parameters dynamically to determine clinical risk.
                 </small>
               </div>
@@ -598,19 +583,12 @@ function AIRiskPrediction() {
           {/* Extracted Vitals Summary (Read-Only) */}
           {extractedVitals && (
             <div className="extracted-vitals-card">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                <h3 style={{ display: "flex", alignItems: "center", gap: "0.5rem", margin: 0, color: "#15803d" }}>
+              <div className="vitals-header-row">
+                <h3 className="vitals-card-title">
                   <FaStethoscope /> Extracted Vitals Summary
                 </h3>
                 <span
-                  style={{
-                    fontSize: "12px",
-                    background: result?.level === "low" ? "#dcfce7" : result?.level === "high" ? "#fee2e2" : "#fef3c7",
-                    color: result?.level === "low" ? "#166534" : result?.level === "high" ? "#b91c1c" : "#b45309",
-                    padding: "3px 10px",
-                    borderRadius: "12px",
-                    fontWeight: "bold"
-                  }}
+                  className={`vitals-badge vitals-badge-${result?.level || "low"}`}
                 >
                   {result?.riskLevel} RISK
                 </span>
@@ -634,14 +612,17 @@ function AIRiskPrediction() {
                 </div>
                 <div className="vital-item">
                   <span className="vital-label">Smoking Status</span>
-                  <span className="vital-value" style={{ color: extractedVitals.smoker.includes("No") ? "#16a34a" : "#dc2626" }}>
+                  <span
+                    className="vital-value"
+                    style={{ color: extractedVitals.smoker.includes("No") ? "#16a34a" : "#dc2626" }}
+                  >
                     {extractedVitals.smoker}
                   </span>
                 </div>
                 {extractedVitals.chiefComplaint && (
                   <div className="vital-item">
                     <span className="vital-label">Clinical Indication</span>
-                    <span className="vital-value" style={{ color: "#2563eb", fontSize: "0.9rem" }}>
+                    <span className="vital-value vital-indication">
                       {extractedVitals.chiefComplaint}
                     </span>
                   </div>
@@ -662,14 +643,14 @@ function AIRiskPrediction() {
             <div className="dashboard-content">
               <div className="dashboard-header">
                 <div>
-                  <h3>AI Diagnostic Dashboard</h3>
-                  <small style={{ color: "#64748b", fontWeight: "600" }}>Patient: {workerName} ({workerId})</small>
+                  <h3 className="dashboard-title">AI Diagnostic Dashboard</h3>
+                  <small className="dashboard-patient-sub">Patient: {workerName} ({workerId})</small>
                 </div>
                 <span className="confidence-badge">Confidence: {result.confidence}%</span>
               </div>
 
               {isOverridden && (
-                <div style={{ background: "#fffbeb", border: "1px solid #fde68a", padding: "8px 12px", borderRadius: "6px", color: "#92400e", fontSize: "12px", marginBottom: "1rem" }}>
+                <div className="doctor-override-banner">
                   ⚠️ <strong>Doctor Override:</strong> Document name differed from patient name.
                 </div>
               )}
