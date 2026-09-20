@@ -31,6 +31,9 @@ function WorkerLogin() {
             (workerInput === "717824f108@gmail.com" || workerInput === "bavana@gmail.com" || workerInput === "mw001" || workerInput === "worker001" || workerInput === "worker@healthsync.com") &&
             (passwordInput === "workerbavana" || passwordInput === "worker123")
         ) {
+            const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+            const registered = localRegistry["MW001"] || localRegistry["717824f108@gmail.com"] || {};
+
             const userObj = {
                 id: 15,
                 email: "717824f108@gmail.com",
@@ -38,7 +41,12 @@ function WorkerLogin() {
                 workerCode: "MW001",
                 role: "worker",
                 phone: "9876543210",
-                riskLevel: "LOW"
+                age: 25,
+                riskLevel: "LOW",
+                healthHistory: "Viral fever treated with Paracetamol",
+                address: "Viral fever treated with Paracetamol",
+                diseases: "Acute Upper Respiratory Tract Infection",
+                ...registered
             };
             const token = "worker-token-" + Date.now();
             localStorage.setItem("user", JSON.stringify(userObj));

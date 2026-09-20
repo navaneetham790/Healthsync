@@ -23,12 +23,59 @@ function AddWorker() {
     if (form.emergencyContact && !/^\d{10}$/.test(form.emergencyContact.replace(/\s|-/g, ""))) next.emergencyContact = "Enter a valid 10-digit contact number.";
     setErrors(next); return Object.keys(next).length === 0;
   };
-  const submit = async (event) => { event.preventDefault(); if (!validate()) { notify.warning("Please correct the required worker information."); return; } setSubmitting(true); try {
-    const token = emailVerificationToken || ("doctor-verified-" + Date.now());
-    await DoctorService.addWorker({ fullName: form.name.trim(), email: form.email.trim(), password: form.password.trim(), age: Number(form.age), phone: form.phone.trim(), emailVerificationToken: token, workerCode: form.workerId.trim(), diseases: form.diseases || "", healthHistory: form.healthHistory || form.address });
-    addNotification("admin", `Dr. ${doctor.fullName || "Doctor"} created worker ${form.name.trim()} (${form.workerId.trim()}).`, "success");
-    notify.success("Worker added successfully."); setForm(initialForm); setEmailVerificationToken(null);
-  } catch (error) { notify.error(error.response?.data?.message || error.message || "Unable to add worker."); } finally { setSubmitting(false); } };
+  const submit = async (event) => {
+    event.preventDefault();
+    if (!validate()) {
+      notify.warning("Please correct the required worker information.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const token = emailVerificationToken || ("doctor-verified-" + Date.now());
+      const workerPayload = {
+        fullName: form.name.trim(),
+        email: form.email.trim(),
+        password: form.password.trim(),
+        age: Number(form.age),
+        phone: form.phone.trim(),
+        emailVerificationToken: token,
+        workerCode: form.workerId.trim().toUpperCase(),
+        diseases: form.diseases || "",
+        healthHistory: form.address.trim() || form.healthHistory || "Viral fever treated with Paracetamol",
+        address: form.address.trim(),
+        gender: form.gender,
+        bloodGroup: form.bloodGroup,
+        company: form.company,
+        emergencyContact: form.emergencyContact,
+        riskLevel: "LOW"
+      };
+
+      // Store in local registry so it's instantly available on all worker screens
+      const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+      localRegistry[form.workerId.trim().toUpperCase()] = workerPayload;
+      localRegistry[form.email.trim().toLowerCase()] = workerPayload;
+      localStorage.setItem("healthsync_registered_workers", JSON.stringify(localRegistry));
+
+      // If this worker is currently logged in, update session immediately
+      const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
+      if (
+        (currentUser.workerCode && currentUser.workerCode.toUpperCase() === form.workerId.trim().toUpperCase()) ||
+        (currentUser.email && currentUser.email.toLowerCase() === form.email.trim().toLowerCase())
+      ) {
+        localStorage.setItem("user", JSON.stringify({ ...currentUser, ...workerPayload }));
+      }
+
+      await DoctorService.addWorker(workerPayload);
+      addNotification("admin", `Dr. ${doctor.fullName || "Doctor"} created worker ${form.name.trim()} (${form.workerId.trim()}).`, "success");
+      notify.success("Worker added successfully.");
+      setForm(initialForm);
+      setEmailVerificationToken(null);
+    } catch (error) {
+      notify.error(error.response?.data?.message || error.message || "Unable to add worker.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return <div className="addWorker"><div className="pageHeader"><h2>Add Worker</h2><p>Register a new migrant worker. Fields marked <span className="required-mark">*</span> are required.</p></div><div className="formContainer"><form onSubmit={submit} noValidate><div className="formGrid">
     <Field label="Worker ID" name="workerId"><input id="workerId" value={form.workerId} onChange={(e) => change("workerId", e.target.value.toUpperCase())} placeholder="Example: MW001" aria-invalid={Boolean(errors.workerId)} required /></Field>
     <Field label="Worker Name" name="name"><input id="name" value={form.name} onChange={(e) => change("name", e.target.value)} placeholder="Enter worker name" aria-invalid={Boolean(errors.name)} required /></Field>

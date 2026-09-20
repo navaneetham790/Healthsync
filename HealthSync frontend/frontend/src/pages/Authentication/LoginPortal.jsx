@@ -47,6 +47,9 @@ const LoginPortal = () => {
       finishLogin(data);
     } catch (error) {
       if (isBavanaWorker) {
+        const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+        const registered = localRegistry["MW001"] || localRegistry["717824f108@gmail.com"] || {};
+
         finishLogin({
           token: "worker-bavana-token-" + Date.now(),
           role: "worker",
@@ -57,9 +60,12 @@ const LoginPortal = () => {
             workerCode: "MW001",
             role: "worker",
             phone: "9876543210",
+            age: 25,
             riskLevel: "LOW",
             diseases: "Acute Upper Respiratory Tract Infection",
-            healthHistory: "Viral fever treated with Paracetamol"
+            healthHistory: "Viral fever treated with Paracetamol",
+            address: "Viral fever treated with Paracetamol",
+            ...registered
           }
         });
         return;
