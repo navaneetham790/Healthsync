@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   saveLocalHealthRecord,
   getLocalHealthRecords,
@@ -7,7 +6,9 @@ import {
   getLocalPrescriptions,
   getAllLocalPrescriptions,
   getAllLocalAppointments,
-  updateLocalAppointmentStatus
+  updateLocalAppointmentStatus,
+  deduplicateHealthRecords,
+  deduplicatePrescriptions
 } from "../utils/clinicalStorage";
 import { evaluateDrugInteractions } from "../utils/drugInteractionEngine";
 
@@ -31,7 +32,7 @@ const DoctorService = {
       if (Array.isArray(res.data)) backendRecords = res.data;
     } catch (_) {}
     const local = getAllLocalHealthRecords();
-    const merged = [...local, ...backendRecords.filter((b) => !local.some((l) => l.id === b.id))];
+    const merged = deduplicateHealthRecords(local, backendRecords);
     return { data: merged };
   },
 
@@ -103,7 +104,7 @@ const DoctorService = {
       if (Array.isArray(res.data)) backendRecords = res.data;
     } catch (_) {}
     const local = getLocalHealthRecords(workerId);
-    const merged = [...local, ...backendRecords.filter((b) => !local.some((l) => l.id === b.id))];
+    const merged = deduplicateHealthRecords(local, backendRecords);
     return { data: merged };
   },
 
@@ -114,7 +115,7 @@ const DoctorService = {
       if (Array.isArray(res.data)) backendPrescriptions = res.data;
     } catch (_) {}
     const local = getLocalPrescriptions(workerId);
-    const merged = [...local, ...backendPrescriptions.filter((b) => !local.some((l) => l.id === b.id))];
+    const merged = deduplicatePrescriptions(local, backendPrescriptions);
     return { data: merged };
   },
 

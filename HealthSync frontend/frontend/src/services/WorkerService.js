@@ -3,7 +3,9 @@ import {
   getLocalHealthRecords,
   getLocalPrescriptions,
   getAllLocalAppointments,
-  saveLocalAppointment
+  saveLocalAppointment,
+  deduplicateHealthRecords,
+  deduplicatePrescriptions
 } from "../utils/clinicalStorage";
 
 const BASE_URL = "/api/worker";
@@ -20,7 +22,7 @@ const WorkerService = {
       if (Array.isArray(res.data)) backendRecords = res.data;
     } catch (_) {}
     const local = getLocalHealthRecords(id);
-    const merged = [...local, ...backendRecords.filter((b) => !local.some((l) => l.id === b.id))];
+    const merged = deduplicateHealthRecords(local, backendRecords);
     return { data: merged };
   },
 
@@ -31,7 +33,7 @@ const WorkerService = {
       if (Array.isArray(res.data)) backendPrescriptions = res.data;
     } catch (_) {}
     const local = getLocalPrescriptions(id);
-    const merged = [...local, ...backendPrescriptions.filter((b) => !local.some((l) => l.id === b.id))];
+    const merged = deduplicatePrescriptions(local, backendPrescriptions);
     return { data: merged };
   },
 

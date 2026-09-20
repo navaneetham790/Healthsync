@@ -159,3 +159,65 @@ export function updateLocalAppointmentStatus(id, status, details = {}) {
   setStoredArray(APPOINTMENTS_KEY, updated);
   return updated.find((item) => String(item.id) === String(id));
 }
+
+export function deduplicateHealthRecords(localList = [], backendList = []) {
+  const isSame = (a, b) => {
+    if (String(a.id) === String(b.id)) return true;
+    const dateA = a.date || a.visitDate || "";
+    const dateB = b.date || b.visitDate || "";
+    const diagA = String(a.diagnosis || a.summary || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+    const diagB = String(b.diagnosis || b.summary || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+    return dateA && dateB && dateA === dateB && (diagA === diagB || (diagA && diagB && (diagA.includes(diagB) || diagB.includes(diagA))));
+  };
+
+  // If backend records are returned, use them as authoritative
+  const merged = [...backendList];
+  for (const item of localList) {
+    if (!merged.some((b) => isSame(item, b))) {
+      merged.unshift(item);
+    }
+  }
+
+  // Clean redundant duplicates from localStorage
+  try {
+    if (backendList && backendList.length > 0) {
+      const rawLocal = getStoredArray(HEALTH_RECORDS_KEY);
+      const cleanedLocal = rawLocal.filter((l) => !backendList.some((b) => isSame(l, b)));
+      if (cleanedLocal.length !== rawLocal.length) {
+        setStoredArray(HEALTH_RECORDS_KEY, cleanedLocal);
+      }
+    }
+  } catch (_) {}
+
+  return merged;
+}
+
+export function deduplicatePrescriptions(localList = [], backendList = []) {
+  const isSame = (a, b) => {
+    if (String(a.id) === String(b.id)) return true;
+    const dateA = a.date || a.prescriptionDate || "";
+    const dateB = b.date || b.prescriptionDate || "";
+    const medA = String(a.medicine || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 30);
+    const medB = String(b.medicine || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 30);
+    return dateA && dateB && dateA === dateB && (medA === medB || (medA && medB && (medA.includes(medB) || medB.includes(medA))));
+  };
+
+  const merged = [...backendList];
+  for (const item of localList) {
+    if (!merged.some((b) => isSame(item, b))) {
+      merged.unshift(item);
+    }
+  }
+
+  try {
+    if (backendList && backendList.length > 0) {
+      const rawLocal = getStoredArray(PRESCRIPTIONS_KEY);
+      const cleanedLocal = rawLocal.filter((l) => !backendList.some((b) => isSame(l, b)));
+      if (cleanedLocal.length !== rawLocal.length) {
+        setStoredArray(PRESCRIPTIONS_KEY, cleanedLocal);
+      }
+    }
+  } catch (_) {}
+
+  return merged;
+}
