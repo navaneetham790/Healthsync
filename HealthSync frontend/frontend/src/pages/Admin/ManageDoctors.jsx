@@ -10,7 +10,7 @@ const getDoctorDisplayId = (doctor) => {
   if (doctor.doctorId && String(doctor.doctorId).toUpperCase().startsWith("DR")) return doctor.doctorId;
   const customId = localStorage.getItem(`doctor_id_${doctor.id}`) || localStorage.getItem(`doctor_id_${doctor.email?.toLowerCase()}`);
   if (customId) return customId;
-  if (Number(doctor.id) === 6 || Number(doctor.id) === 1) return "DR001";
+  if (Number(doctor.id) <= 7) return "DR001";
   return `DR${String(doctor.id).padStart(3, "0")}`;
 };
 

@@ -13,12 +13,14 @@ function Dashboard() {
   const loadAnalytics = useCallback(async (quiet = false) => {
     if (!quiet) setLoading(true);
     try {
-      const [analyticsResult, hospitalsResult] = await Promise.allSettled([AdminService.getAnalytics(), AdminService.getHospitals()]);
+      const [analyticsResult, hospitalsResult, doctorsResult] = await Promise.allSettled([AdminService.getAnalytics(), AdminService.getHospitals(), AdminService.getDoctors()]);
       if (analyticsResult.status !== "fulfilled") throw analyticsResult.reason;
       const { data } = analyticsResult.value;
       const hospitals = hospitalsResult.status === "fulfilled" && Array.isArray(hospitalsResult.value.data) ? hospitalsResult.value.data : [];
       const totalHospitals = Math.max(new Set(hospitals.map((hospital) => `${hospital.hospital || ""}|${hospital.city || ""}`)).size, hospitals.length, 1348);
-      setAnalytics({ ...emptyAnalytics, ...data, totalHospitals, monthlyRegistrations: data.monthlyRegistrations || data.registrationsByMonth || [], riskOverview: data.riskOverview || data.riskLevels || [] });
+      const doctorsList = doctorsResult.status === "fulfilled" && Array.isArray(doctorsResult.value.data) ? doctorsResult.value.data : [];
+      const totalDoctors = Math.max(number(data.totalDoctors), doctorsList.length);
+      setAnalytics({ ...emptyAnalytics, ...data, totalDoctors, totalHospitals, monthlyRegistrations: data.monthlyRegistrations || data.registrationsByMonth || [], riskOverview: data.riskOverview || data.riskLevels || [] });
     } catch (error) { if (!quiet) notify.error(error.response?.data?.message || "Unable to load dashboard analytics."); }
     finally { if (!quiet) setLoading(false); }
   }, []);
