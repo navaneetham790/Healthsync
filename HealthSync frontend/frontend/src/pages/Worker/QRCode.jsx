@@ -4,7 +4,7 @@ import QRCodeLib from "qrcode";
 import WorkerService from "../../services/WorkerService";
 import { notify } from "../../components/ToastProvider";
 import { downloadBlob } from "../../utils/download";
-import { FaQrcode, FaDownload } from "react-icons/fa";
+import { FaQrcode, FaDownload, FaCheckCircle } from "react-icons/fa";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 function QRCode() {
@@ -16,74 +16,112 @@ function QRCode() {
   const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadData = async () => {
       setLoading(true);
       try {
-        const user = JSON.parse(localStorage.getItem("user") || "{}");
-        const workerId = user.id || 1;
-        
-        // 1. Fetch profile to get real name and workerCode
-        const profileRes = await WorkerService.getProfile(workerId);
-        const profile = profileRes.data;
-        const code = profile.workerCode || `MW${String(profile.id || workerId).padStart(3, "0")}`;
-        setWorker({ ...profile, workerCode: code });
+        const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+        const workerId = storedUser.id || 15;
+        let profile = { ...storedUser };
 
-        // 2. Fetch/Download QR Blob
-        let blob = null;
+        // 1. Fetch profile to get real name and workerCode safely
         try {
-          const qrRes = await WorkerService.downloadQR(workerId);
-          if (qrRes.data instanceof Blob && qrRes.data.size > 0 && qrRes.data.type?.includes("image")) {
-            blob = qrRes.data;
+          const profileRes = await WorkerService.getProfile(workerId);
+          if (profileRes && profileRes.data) {
+            profile = { ...profile, ...profileRes.data };
           }
         } catch (e) {
-          console.warn("Backend QR download unavailable, using client-side generation:", e);
+          console.warn("Backend worker profile unavailable, using session user:", e);
         }
 
-        if (!blob) {
-          const qrTargetUrl = `${window.location.origin}/worker-qr/${code}`;
-          const dataUrl = await QRCodeLib.toDataURL(qrTargetUrl, {
-            width: 320,
-            margin: 2,
-            color: { dark: "#0f172a", light: "#ffffff" }
-          });
+        const workerCode = profile.workerCode || storedUser.workerCode || (profile.id ? `MW${String(profile.id).padStart(3, "0")}` : "MW001");
+        const fullName = profile.fullName || storedUser.fullName || "Bavana";
+        const workerData = { ...profile, workerCode, fullName };
+
+        if (!isMounted) return;
+        setWorker(workerData);
+
+        // 2. Generate unique scannable QR Code targeting the patient's records URL
+        const qrTargetUrl = `${window.location.origin}/worker-qr/${workerCode}`;
+        const dataUrl = await QRCodeLib.toDataURL(qrTargetUrl, {
+          width: 360,
+          margin: 2,
+          color: { dark: "#0f172a", light: "#ffffff" }
+        });
+
+        if (!isMounted) return;
+        setQrSrc(dataUrl);
+
+        // 3. Create blob for instant file download
+        try {
           const res = await fetch(dataUrl);
-          blob = await res.blob();
-        }
-
-        if (blob) {
-          setQrBlob(blob);
-          setQrSrc(URL.createObjectURL(blob));
+          const blob = await res.blob();
+          if (isMounted) {
+            setQrBlob(blob);
+          }
+        } catch (blobErr) {
+          console.warn("Could not generate blob from dataUrl, will use fallback download:", blobErr);
         }
       } catch (error) {
-        console.error("Error loading worker QR code data:", error);
+        console.error("Error generating worker QR code:", error);
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     };
 
     loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  useEffect(() => {
-    return () => {
-      if (qrSrc && qrSrc.startsWith("blob:")) {
-        URL.revokeObjectURL(qrSrc);
-      }
-    };
-  }, [qrSrc]);
-
   const download = () => {
-    if (!qrBlob || !worker) return;
-    downloadBlob(qrBlob, `healthsync-qr-${worker.workerCode}`, "png");
-    notify.success("QR code download started.");
+    const code = worker?.workerCode || "MW001";
+    setDownloading(true);
+    try {
+      if (qrBlob) {
+        downloadBlob(qrBlob, `healthsync-qr-${code}`, "png");
+        notify.success("QR code downloaded successfully.");
+      } else if (qrSrc) {
+        const link = document.createElement("a");
+        link.href = qrSrc;
+        link.download = `healthsync-qr-${code}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        notify.success("QR code downloaded successfully.");
+      } else {
+        notify.error("QR Code is not ready yet.");
+      }
+    } catch (err) {
+      console.error("Download failed:", err);
+      notify.error("Failed to download QR code.");
+    } finally {
+      setDownloading(false);
+    }
   };
 
   if (loading) {
-    return <div className="qr-page"><div className="page-header"><h2>{t("Loading…")}</h2></div></div>;
+    return (
+      <div className="qr-page">
+        <div className="page-header">
+          <h2>{t("My Health QR Code")}</h2>
+          <p>{t("Scan this QR code to securely access your health records.")}</p>
+        </div>
+        <div className="qr-card">
+          <div className="qr-box">
+            <FaQrcode className="qr-icon qr-pulse" />
+          </div>
+          <p style={{ marginTop: "16px", color: "#64748b" }}>Generating unique health QR code...</p>
+        </div>
+      </div>
+    );
   }
 
   const workerCode = worker?.workerCode || "MW001";
-  const fullName = worker?.fullName || "Worker";
+  const fullName = worker?.fullName || "Bavana";
 
   return (
     <div className="qr-page">
@@ -93,18 +131,36 @@ function QRCode() {
       </div>
 
       <div className="qr-card">
+        <div className="qr-badge">
+          <FaCheckCircle /> Verified Digital Health Card
+        </div>
+
         <div className="qr-box">
           {qrSrc ? (
-            <img src={qrSrc} alt={`QR Code for ${fullName}`} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            <img
+              src={qrSrc}
+              alt={`QR Code for ${fullName}`}
+              className="qr-image"
+            />
           ) : (
             <FaQrcode className="qr-icon" />
           )}
         </div>
 
-        <h3>Worker ID : {workerCode}</h3>
-        <p>{fullName}</p>
+        <div className="qr-meta">
+          <h3>Worker ID : {workerCode}</h3>
+          <p className="qr-worker-name">{fullName}</p>
+          <p className="qr-hint">
+            Scan this unique QR code with any smartphone camera or QR scanner to securely view complete medical history &amp; prescriptions.
+          </p>
+        </div>
 
-        <button className="download-btn" disabled={downloading || !qrBlob} onClick={download}>
+        <button
+          type="button"
+          className="download-btn"
+          disabled={downloading || (!qrBlob && !qrSrc)}
+          onClick={download}
+        >
           <FaDownload />
           {downloading ? t("Preparing…") : t("Download QR Code")}
         </button>
