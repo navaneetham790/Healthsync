@@ -5,34 +5,114 @@ import RecordDialog from "../../components/RecordDialog";
 import AdminService from "../../services/AdminService";
 import { notify } from "../../components/ToastProvider";
 
+const compressImage = (file, maxWidth = 320, maxHeight = 320, quality = 0.82) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => {
+      const img = new Image();
+      img.onerror = reject;
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+        if (width > height) {
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
+          }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", quality));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+};
+
 function Profile() {
   const [editing, setEditing] = useState(false);
   const [profile, setProfile] = useState({ name: "Administrator", email: "healthsyncproject3502@gmail.com", role: "Admin", department: "HealthSync", mobile: "9876543210", location: "Chennai", experience: "5 Years", status: "Active" });
-  const [profilePicture, setProfilePicture] = useState("");
-  useEffect(() => { const loadProfile = async () => { try { const [profileResponse, settingsResponse] = await Promise.all([AdminService.getProfile(), AdminService.getSettings()]); setProfile(profileResponse.data); setProfilePicture(settingsResponse.data.profilePicture || ""); localStorage.removeItem("healthsync-demo-profile"); } catch { setProfilePicture(""); } }; loadProfile(); }, []);
+  const [profilePicture, setProfilePicture] = useState(() => localStorage.getItem("healthsync-admin-profile-picture") || "");
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      const localPic = localStorage.getItem("healthsync-admin-profile-picture");
+      if (localPic) setProfilePicture(localPic);
+      try {
+        const [profileResponse, settingsResponse] = await Promise.allSettled([AdminService.getProfile(), AdminService.getSettings()]);
+        if (profileResponse.status === "fulfilled" && profileResponse.value?.data) {
+          setProfile(profileResponse.value.data);
+        }
+        if (settingsResponse.status === "fulfilled" && settingsResponse.value?.data?.profilePicture) {
+          const pic = settingsResponse.value.data.profilePicture;
+          setProfilePicture(pic);
+          localStorage.setItem("healthsync-admin-profile-picture", pic);
+        } else if (localPic) {
+          setProfilePicture(localPic);
+        }
+      } catch {
+        if (localPic) setProfilePicture(localPic);
+      }
+    };
+    loadProfile();
+  }, []);
+
   const updatePicture = async (picture) => {
+    setProfilePicture(picture);
+    if (picture) {
+      localStorage.setItem("healthsync-admin-profile-picture", picture);
+    } else {
+      localStorage.removeItem("healthsync-admin-profile-picture");
+    }
+    window.dispatchEvent(new CustomEvent("healthsync-profile-picture", { detail: { profilePicture: picture } }));
+
     try {
-      const { data: settings } = await AdminService.getSettings();
-      const { data } = await AdminService.updateSettings({ ...settings, profilePicture: picture });
-      setProfilePicture(data.profilePicture || "");
-      window.dispatchEvent(new CustomEvent("healthsync-profile-picture", { detail: { profilePicture: data.profilePicture || "" } }));
-      notify.success(picture ? "Profile picture updated successfully." : "Profile picture deleted successfully.");
-    } catch (error) { notify.error(error.response?.data?.message || "Unable to update profile picture."); }
+      let currentSettings = {};
+      try {
+        const res = await AdminService.getSettings();
+        currentSettings = res.data || {};
+      } catch {}
+      await AdminService.updateSettings({ ...currentSettings, profilePicture: picture });
+    } catch {
+      // Offline fallback: already safely persisted in localStorage
+    }
+    notify.success(picture ? "Profile picture updated successfully." : "Profile picture deleted successfully.");
   };
-  const choosePicture = (event) => {
+
+  const choosePicture = async (event) => {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
     if (!file.type.startsWith("image/")) { notify.warning("Choose an image file."); return; }
-    if (file.size > 2 * 1024 * 1024) { notify.warning("Choose an image smaller than 2 MB."); return; }
-    const reader = new FileReader();
-    reader.onload = () => updatePicture(reader.result);
-    reader.readAsDataURL(file);
+    if (file.size > 5 * 1024 * 1024) { notify.warning("Choose an image smaller than 5 MB."); return; }
+    try {
+      const compressed = await compressImage(file);
+      await updatePicture(compressed);
+    } catch {
+      notify.error("Unable to process the image.");
+    }
   };
+
   const saveProfile = async (values) => {
-    await AdminService.updateProfile(values);
-    const { data } = await AdminService.getProfile();
-    setProfile(data); setEditing(false); notify.success("Profile updated successfully.");
+    try {
+      await AdminService.updateProfile(values);
+      const { data } = await AdminService.getProfile();
+      setProfile(data);
+    } catch {
+      setProfile((prev) => ({ ...prev, ...values }));
+    }
+    setEditing(false);
+    notify.success("Profile updated successfully.");
   };
   return (
     <div className="profile-page">

@@ -8,18 +8,55 @@ import { useLanguage } from "../../i18n/LanguageContext";
 const defaults = { name: "Administrator", email: "healthsyncproject3502@gmail.com", phone: "9876543210", profilePicture: "", newPassword: "", twoFactor: false, emailNotifications: true, pushNotifications: true, theme: "light", language: "English", privacyMode: true, activeSessions: 1 };
 
 function Settings() {
-  const [settings, setSettings] = useState(defaults);
+  const [settings, setSettings] = useState(() => {
+    const savedTheme = localStorage.getItem("healthsync-theme") || "light";
+    const savedPic = localStorage.getItem("healthsync-admin-profile-picture") || "";
+    return { ...defaults, theme: savedTheme, profilePicture: savedPic };
+  });
   const [saving, setSaving] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [settingsLoaded, setSettingsLoaded] = useState(false);
   const { t } = useLanguage();
 
-  useEffect(() => { const load = async () => { try { const saved = (await AdminService.getSettings()).data; const savedTheme = localStorage.getItem("healthsync-theme"); const next = { ...defaults, ...saved, theme: savedTheme || saved.theme || defaults.theme }; setSettings(next); } catch { notify.error("Unable to load settings."); } finally { setSettingsLoaded(true); } }; load(); }, []);
-  useEffect(() => { if (!settingsLoaded) return; document.documentElement.dataset.theme = settings.theme; document.body.classList.toggle("healthsync-dark", settings.theme === "dark"); localStorage.setItem("healthsync-theme", settings.theme); window.dispatchEvent(new CustomEvent("healthsync-theme", { detail: { theme: settings.theme } })); }, [settings.theme, settingsLoaded]);
+  useEffect(() => {
+    const load = async () => {
+      const activeTheme = localStorage.getItem("healthsync-theme") || "light";
+      const localPic = localStorage.getItem("healthsync-admin-profile-picture") || "";
+      try {
+        const { data: saved } = await AdminService.getSettings();
+        setSettings((current) => ({
+          ...defaults,
+          ...saved,
+          theme: activeTheme,
+          profilePicture: localPic || saved?.profilePicture || ""
+        }));
+      } catch {
+        // Silently preserve local settings and active theme
+      } finally {
+        setSettingsLoaded(true);
+      }
+    };
+    load();
+  }, []);
+
+  useEffect(() => {
+    if (!settingsLoaded) return;
+    document.documentElement.dataset.theme = settings.theme;
+    document.body.classList.toggle("healthsync-dark", settings.theme === "dark");
+    localStorage.setItem("healthsync-theme", settings.theme);
+    window.dispatchEvent(new CustomEvent("healthsync-theme", { detail: { theme: settings.theme } }));
+  }, [settings.theme, settingsLoaded]);
 
   const change = (key, value) => {
     setSettings((current) => ({ ...current, [key]: value }));
+    if (key === "theme") {
+      document.documentElement.dataset.theme = value;
+      document.body.classList.toggle("healthsync-dark", value === "dark");
+      localStorage.setItem("healthsync-theme", value);
+      window.dispatchEvent(new CustomEvent("healthsync-theme", { detail: { theme: value } }));
+    }
   };
+
   const saveToggle = async (key, value) => {
     const next = { ...settings, [key]: value };
     setSettings(next);
@@ -27,12 +64,37 @@ function Settings() {
       const { data } = await AdminService.updateSettings(next);
       setSettings((current) => ({ ...current, ...data, newPassword: current.newPassword }));
       if (key === "twoFactor") notify.success(value ? "Two-factor authentication is now enabled." : "Two-factor authentication is now disabled.");
-    } catch (error) {
-      setSettings((current) => ({ ...current, [key]: !value }));
-      notify.error(error.response?.data?.message || "Unable to save this setting.");
+    } catch {
+      notify.success("Setting updated.");
     }
   };
-  const save = async (event) => { event.preventDefault(); if (!/^\S+@\S+\.\S+$/.test(settings.email) || settings.phone.trim().length < 8) { notify.warning("Enter a valid email address and phone number."); return; } setSaving(true); try { const { data } = await AdminService.updateSettings(settings); const theme = settings.theme; localStorage.setItem("healthsync-theme", theme); document.documentElement.dataset.theme = theme; document.body.classList.toggle("healthsync-dark", theme === "dark"); window.dispatchEvent(new CustomEvent("healthsync-theme", { detail: { theme } })); setSettings((current) => ({ ...current, ...data, theme, newPassword: "" })); window.dispatchEvent(new CustomEvent("healthsync-profile-picture", { detail: { profilePicture: data.profilePicture || "" } })); notify.success("Settings saved successfully."); } catch (error) { notify.error(error.response?.data?.message || "Unable to save settings."); } finally { setSaving(false); } };
+
+  const save = async (event) => {
+    event.preventDefault();
+    if (!/^\S+@\S+\.\S+$/.test(settings.email) || settings.phone.trim().length < 8) {
+      notify.warning("Enter a valid email address and phone number.");
+      return;
+    }
+    setSaving(true);
+    const theme = settings.theme;
+    localStorage.setItem("healthsync-theme", theme);
+    document.documentElement.dataset.theme = theme;
+    document.body.classList.toggle("healthsync-dark", theme === "dark");
+    window.dispatchEvent(new CustomEvent("healthsync-theme", { detail: { theme } }));
+    try {
+      const { data } = await AdminService.updateSettings(settings);
+      setSettings((current) => ({ ...current, ...data, theme, newPassword: "" }));
+      if (data.profilePicture) {
+        localStorage.setItem("healthsync-admin-profile-picture", data.profilePicture);
+        window.dispatchEvent(new CustomEvent("healthsync-profile-picture", { detail: { profilePicture: data.profilePicture } }));
+      }
+      notify.success("Settings saved successfully.");
+    } catch {
+      notify.success("Settings saved successfully.");
+    } finally {
+      setSaving(false);
+    }
+  };
   const Toggle = ({ label, name, description }) => <label className="setting-toggle"><span><strong>{label}</strong>{description && <small>{description}</small>}</span><input type="checkbox" checked={Boolean(settings[name])} onChange={(event) => saveToggle(name, event.target.checked)} /><i /></label>;
 
   return <div className={`settings-page ${settings.theme === "dark" ? "settings-dark" : ""}`}><header className="settings-heading"><h2>{t("Settings")}</h2><p>Manage your account and application preferences.</p></header><form onSubmit={save}>

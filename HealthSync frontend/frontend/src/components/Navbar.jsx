@@ -61,8 +61,20 @@ function Navbar({
   useEffect(() => {
     const loadPicture = async () => {
       if (recipient === "admin") {
-        try { setProfilePicture((await AdminService.getSettings()).data.profilePicture || ""); }
-        catch { setProfilePicture(""); }
+        const localAdminPic = localStorage.getItem("healthsync-admin-profile-picture");
+        if (localAdminPic) setProfilePicture(localAdminPic);
+        try {
+          const res = await AdminService.getSettings();
+          const remotePic = res.data?.profilePicture;
+          if (remotePic) {
+            setProfilePicture(remotePic);
+            localStorage.setItem("healthsync-admin-profile-picture", remotePic);
+          } else if (localAdminPic) {
+            setProfilePicture(localAdminPic);
+          }
+        } catch {
+          if (localAdminPic) setProfilePicture(localAdminPic);
+        }
       } else {
         const user = JSON.parse(localStorage.getItem("user") || "{}");
         const rolePrefix = recipient.startsWith("worker") ? "worker" : "doctor";
@@ -70,7 +82,14 @@ function Navbar({
         setProfilePicture(localStorage.getItem(key) || "");
       }
     };
-    const syncPicture = (event) => setProfilePicture(event.detail?.profilePicture || "");
+    const syncPicture = (event) => {
+      const pic = event.detail?.profilePicture || "";
+      setProfilePicture(pic);
+      if (recipient === "admin") {
+        if (pic) localStorage.setItem("healthsync-admin-profile-picture", pic);
+        else localStorage.removeItem("healthsync-admin-profile-picture");
+      }
+    };
     loadPicture();
     window.addEventListener("healthsync-profile-picture", syncPicture);
     return () => window.removeEventListener("healthsync-profile-picture", syncPicture);
