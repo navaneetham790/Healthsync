@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./GenerateQR.css";
-import { FaQrcode, FaDownload } from "react-icons/fa";
+import { FaQrcode, FaDownload, FaCheckCircle, FaRedo } from "react-icons/fa";
 import QRCode from "qrcode";
 import DoctorService from "../../services/DoctorService";
 import { downloadBlob } from "../../utils/download";
@@ -13,6 +13,7 @@ function GenerateQR() {
   const [previewUrl, setPreviewUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [workersList, setWorkersList] = useState([]);
+  const [qrAlreadyExists, setQrAlreadyExists] = useState(false);
 
   useEffect(() => {
     const fetchWorkers = async () => {
@@ -26,43 +27,6 @@ function GenerateQR() {
     fetchWorkers();
   }, []);
 
-  useEffect(() => {
-    if (worker.id.trim()) {
-      const match = workersList.find(
-        (item) => item.workerCode?.trim().toLowerCase() === worker.id.trim().toLowerCase()
-      );
-      if (match) {
-        setWorker((prev) => ({ ...prev, name: match.fullName.trim() }));
-      }
-    }
-  }, [worker.id, workersList]);
-
-  useEffect(() => () => {
-    if (previewUrl) URL.revokeObjectURL(previewUrl);
-  }, [previewUrl]);
-
-  const findWorker = async () => {
-    const { data } = await DoctorService.getWorkerDirectory();
-    const list = Array.isArray(data) ? data : [];
-    const match = list.find(
-      (item) => item.workerCode?.trim().toLowerCase() === worker.id.trim().toLowerCase()
-    );
-    if (!match) throw new Error("Worker ID was not found in the database.");
-    if (worker.name.trim() && match.fullName.trim().toLowerCase() !== worker.name.trim().toLowerCase()) {
-      throw new Error("Worker name does not match the entered Worker ID.");
-    }
-    return match;
-  };
-
-  const showQr = (blob) => {
-    const url = URL.createObjectURL(blob);
-    setPreviewUrl((current) => {
-      if (current) URL.revokeObjectURL(current);
-      return url;
-    });
-    setQrBlob(blob);
-  };
-
   const createLocalQrBlob = async (workerIdentifier) => {
     const qrTargetUrl = `${window.location.origin}/worker-qr/${workerIdentifier}`;
     const dataUrl = await QRCode.toDataURL(qrTargetUrl, {
@@ -74,21 +38,90 @@ function GenerateQR() {
     return await res.blob();
   };
 
-  const generate = async () => {
+  const showQr = (blob) => {
+    const url = URL.createObjectURL(blob);
+    setPreviewUrl((current) => {
+      if (current) URL.revokeObjectURL(current);
+      return url;
+    });
+    setQrBlob(blob);
+  };
+
+  // When worker ID changes, match with directory and check if QR code already exists
+  useEffect(() => {
+    if (worker.id.trim()) {
+      const match = workersList.find(
+        (item) =>
+          item.workerCode?.trim().toLowerCase() === worker.id.trim().toLowerCase() ||
+          String(item.id).trim() === worker.id.trim()
+      );
+      if (match) {
+        setWorker((prev) => ({ ...prev, name: match.fullName.trim() }));
+        const code = match.workerCode || `MW${match.id}`;
+        if (hasGeneratedQr(match.id, code)) {
+          setQrAlreadyExists(true);
+          createLocalQrBlob(code).then((blob) => {
+            showQr(blob);
+          });
+        } else {
+          setQrAlreadyExists(false);
+          setPreviewUrl("");
+          setQrBlob(null);
+        }
+      }
+    }
+  }, [worker.id, workersList]);
+
+  useEffect(() => () => {
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+  }, [previewUrl]);
+
+  const findWorker = async () => {
+    let list = workersList;
+    if (!list || list.length === 0) {
+      try {
+        const { data } = await DoctorService.getWorkerDirectory();
+        list = Array.isArray(data) ? data : [];
+        setWorkersList(list);
+      } catch (_) {}
+    }
+    const match = list.find(
+      (item) =>
+        item.workerCode?.trim().toLowerCase() === worker.id.trim().toLowerCase() ||
+        String(item.id).trim() === worker.id.trim()
+    );
+    if (!match) throw new Error("Worker ID was not found in the database.");
+    if (
+      worker.name.trim() &&
+      match.fullName.trim().toLowerCase() !== worker.name.trim().toLowerCase()
+    ) {
+      throw new Error("Worker name does not match the entered Worker ID.");
+    }
+    return match;
+  };
+
+  const generate = async (isRegenerate = false) => {
     if (!worker.id.trim() || !worker.name.trim()) {
       notify.warning("Enter both worker ID and worker name.");
       return;
     }
     setLoading(true);
-    let match;
     try {
-      match = await findWorker();
+      const match = await findWorker();
       const code = match.workerCode || `MW${match.id}`;
       const blob = await createLocalQrBlob(code);
-
       showQr(blob);
-      markQrGenerated(match.id);
-      notify.success("QR code generated successfully.");
+
+      const exists = hasGeneratedQr(match.id, code);
+
+      if (exists && !isRegenerate) {
+        setQrAlreadyExists(true);
+        notify.info(`QR code already exists for ${match.fullName || worker.name} (${code}). Existing QR displayed.`);
+      } else {
+        markQrGenerated(match.id, code);
+        setQrAlreadyExists(true);
+        notify.success(isRegenerate ? "QR code regenerated successfully." : "QR code generated successfully.");
+      }
     } catch (error) {
       notify.error(error.message || "Unable to generate QR code.");
     } finally {
@@ -114,7 +147,7 @@ function GenerateQR() {
           className="doctor-qr-form"
           onSubmit={(event) => {
             event.preventDefault();
-            generate();
+            generate(false);
           }}
         >
           <div className="doctor-form-group">
@@ -124,7 +157,7 @@ function GenerateQR() {
               type="text"
               value={worker.id}
               onChange={(event) => setWorker({ ...worker, id: event.target.value })}
-              placeholder="Enter Worker ID"
+              placeholder="Enter Worker ID (e.g. MW001)"
               required
             />
           </div>
@@ -141,10 +174,42 @@ function GenerateQR() {
             />
           </div>
 
-          <button type="submit" className="doctor-generate-btn" disabled={loading}>
-            <FaQrcode />
-            {loading ? "Generating…" : "Generate QR"}
-          </button>
+          {qrAlreadyExists && (
+            <div className="doctor-qr-exists-alert">
+              <FaCheckCircle className="exists-icon" />
+              <div>
+                <strong>QR Code Already Exists</strong>
+                <p>This worker already has an active QR code in the system. The existing QR code is displayed on the right.</p>
+              </div>
+            </div>
+          )}
+
+          <div className="qr-actions-row">
+            <button
+              type="submit"
+              className={`doctor-generate-btn ${qrAlreadyExists ? "btn-already-exists" : ""}`}
+              disabled={loading}
+            >
+              <FaQrcode />
+              {loading
+                ? "Checking…"
+                : qrAlreadyExists
+                ? "QR Code Already Exists"
+                : "Generate QR"}
+            </button>
+
+            {qrAlreadyExists && (
+              <button
+                type="button"
+                className="doctor-regenerate-btn"
+                disabled={loading}
+                onClick={() => generate(true)}
+                title="Regenerate a fresh QR code if needed"
+              >
+                <FaRedo /> Regenerate QR
+              </button>
+            )}
+          </div>
         </form>
 
         <div className="doctor-qr-preview">
@@ -155,8 +220,13 @@ function GenerateQR() {
               <FaQrcode />
             )}
           </div>
-          <p>{previewUrl ? `QR ready for ${worker.name}` : "QR Preview"}</p>
+          {previewUrl && (
+            <div className={`qr-preview-tag ${qrAlreadyExists ? "tag-exists" : "tag-ready"}`}>
+              {qrAlreadyExists ? `✅ Existing QR Code for ${worker.name}` : `QR ready for ${worker.name}`}
+            </div>
+          )}
           <button
+            type="button"
             className="doctor-download-btn"
             disabled={!previewUrl || loading}
             onClick={download}
