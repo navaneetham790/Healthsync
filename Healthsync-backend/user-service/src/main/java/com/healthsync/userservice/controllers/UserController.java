@@ -97,108 +97,6 @@ public class UserController {
             doctorRepository.save(doctor);
         });
 
-        // Seed comprehensive dataset if database is newly initialized
-        if (doctorRepository.count() == 0) {
-            String encodedDocPass = passwordEncoder.encode("doctor123");
-            java.time.LocalDateTime now = java.time.LocalDateTime.now();
-
-            Doctor d1 = new Doctor("Dr. Rajesh Sharma", "rajesh.sharma@healthsync.com", encodedDocPass, "9840123456", "Cardiology", "Apollo Hospital");
-            d1.setHospitalAddress("Greams Road, Thousand Lights, Chennai, Tamilnadu - 600006");
-            d1.setCreatedAt(now.minusMonths(5));
-            doctorRepository.save(d1);
-
-            Doctor d2 = new Doctor("Dr. Priya Venkatesh", "priya.v@healthsync.com", encodedDocPass, "9840234567", "General Medicine", "MIOT International");
-            d2.setHospitalAddress("4/112, Mount Poonamallee Road, Manapakkam, Chennai, Tamilnadu - 600089");
-            d2.setCreatedAt(now.minusMonths(4));
-            doctorRepository.save(d2);
-
-            Doctor d3 = new Doctor("Dr. Anitha Raman", "anitha.r@healthsync.com", encodedDocPass, "9840345678", "Pulmonology", "Fortis Malar Hospital");
-            d3.setHospitalAddress("No. 52, 1st Main Road, Gandhi Nagar, Adyar, Chennai, Tamilnadu - 600020");
-            d3.setCreatedAt(now.minusMonths(3));
-            doctorRepository.save(d3);
-
-            Doctor d4 = new Doctor("Dr. Suresh Kumar", "suresh.k@healthsync.com", encodedDocPass, "9840456789", "Endocrinology", "Kauvery Hospital");
-            d4.setHospitalAddress("199, Luz Church Road, Mylapore, Chennai, Tamilnadu - 600004");
-            d4.setCreatedAt(now.minusMonths(2));
-            doctorRepository.save(d4);
-
-            Doctor d5 = new Doctor("Dr. Meenakshi Sundaram", "meenakshi.s@healthsync.com", encodedDocPass, "9840567890", "Nephrology", "PSG Hospitals");
-            d5.setHospitalAddress("Avinashi Road, Peelamedu, Coimbatore, Tamilnadu - 641004");
-            d5.setCreatedAt(now.minusMonths(1));
-            doctorRepository.save(d5);
-        }
-
-        if (workerRepository.count() == 0) {
-            String encodedWorkerPass = passwordEncoder.encode("worker123");
-            java.time.LocalDateTime now = java.time.LocalDateTime.now();
-
-            Worker w1 = new Worker("Ramesh Kumar", "ramesh.k@gmail.com", encodedWorkerPass, "9876543210", "WK001", 42, "None", "Regular health checkup passed");
-            w1.setRiskLevel("LOW");
-            w1.setCreatedAt(now.minusMonths(5));
-            workerRepository.save(w1);
-
-            Worker w2 = new Worker("Murugan S", "murugan.s@gmail.com", encodedWorkerPass, "9876543211", "WK002", 38, "Mild Hypertension", "Blood pressure monitoring advised");
-            w2.setRiskLevel("MEDIUM");
-            w2.setCreatedAt(now.minusMonths(4));
-            workerRepository.save(w2);
-
-            Worker w3 = new Worker("Saravanan P", "saravanan.p@gmail.com", encodedWorkerPass, "9876543212", "WK003", 50, "Type 2 Diabetes, Hypertension", "High fasting blood sugar (165 mg/dL), prescribed Metformin");
-            w3.setRiskLevel("HIGH");
-            w3.setCreatedAt(now.minusMonths(4));
-            workerRepository.save(w3);
-
-            Worker w4 = new Worker("Karthik R", "karthik.r@gmail.com", encodedWorkerPass, "9876543213", "WK004", 29, "None", "No known allergies or medical issues");
-            w4.setRiskLevel("LOW");
-            w4.setCreatedAt(now.minusMonths(3));
-            workerRepository.save(w4);
-
-            Worker w5 = new Worker("Vignesh M", "vignesh.m@gmail.com", encodedWorkerPass, "9876543214", "WK005", 45, "Chronic Bronchitis, Asthma", "Frequent wheezing, inhaler prescribed");
-            w5.setRiskLevel("HIGH");
-            w5.setCreatedAt(now.minusMonths(3));
-            workerRepository.save(w5);
-
-            Worker w6 = new Worker("Selvam T", "selvam.t@gmail.com", encodedWorkerPass, "9876543215", "WK006", 35, "Elevated Cholesterol", "Lipid profile shows LDL 155 mg/dL, dietary changes advised");
-            w6.setRiskLevel("MEDIUM");
-            w6.setCreatedAt(now.minusMonths(2));
-            workerRepository.save(w6);
-
-            Worker w7 = new Worker("Manikandan G", "manikandan.g@gmail.com", encodedWorkerPass, "9876543216", "WK007", 41, "None", "Annual wellness exam normal");
-            w7.setRiskLevel("LOW");
-            w7.setCreatedAt(now.minusMonths(2));
-            workerRepository.save(w7);
-
-            Worker w8 = new Worker("Prakash V", "prakash.v@gmail.com", encodedWorkerPass, "9876543217", "WK008", 53, "Coronary Artery Disease, Hypertension", "ECG shows mild ST elevation, under cardiologist care");
-            w8.setRiskLevel("HIGH");
-            w8.setCreatedAt(now.minusMonths(1));
-            workerRepository.save(w8);
-
-            Worker w9 = new Worker("Dinesh K", "dinesh.k@gmail.com", encodedWorkerPass, "9876543218", "WK009", 31, "None", "Healthy worker profile");
-            w9.setRiskLevel("LOW");
-            w9.setCreatedAt(now.minusMonths(1));
-            workerRepository.save(w9);
-
-            Worker w10 = new Worker("Anand Babu", "anand.babu@gmail.com", encodedWorkerPass, "9876543219", "WK010", 47, "Pre-diabetes", "HbA1c 6.1%, regular exercise recommended");
-            w10.setRiskLevel("MEDIUM");
-            w10.setCreatedAt(now.minusDays(15));
-            workerRepository.save(w10);
-
-            Worker w11 = new Worker("Senthil Nathan", "senthil.n@gmail.com", encodedWorkerPass, "9876543220", "WK011", 36, "None", "Good physical condition");
-            w11.setRiskLevel("LOW");
-            w11.setCreatedAt(now.minusDays(7));
-            workerRepository.save(w11);
-
-            Worker w12 = new Worker("Vijay Anand", "vijay.anand@gmail.com", encodedWorkerPass, "9876543221", "WK012", 49, "Severe Hypertension, Fatty Liver", "BP 160/100, SGOT/SGPT elevated");
-            w12.setRiskLevel("HIGH");
-            w12.setCreatedAt(now.minusDays(2));
-            workerRepository.save(w12);
-        }
-
-        if (auditLogRepository.count() == 0) {
-            saveAuditLog("System Initialized", "HealthSync cloud dataset synchronized with 12 workers and 5 doctors", "system");
-            saveAuditLog("Risk Assessment Completed", "AI health risk classification updated for workforce", "system");
-            saveAuditLog("Doctor Registered", "Dr. Rajesh Sharma onboarded to Cardiology", "admin");
-            saveAuditLog("Doctor Registered", "Dr. Priya Venkatesh onboarded to General Medicine", "admin");
-        }
     }
 
     private boolean passwordMatches(String rawPassword, String storedPassword) {
@@ -740,9 +638,6 @@ public class UserController {
 
     @GetMapping("/admin/analytics")
     public ResponseEntity<?> getAnalytics() {
-        if (doctorRepository.count() == 0 || workerRepository.count() == 0) {
-            initData();
-        }
         long docCount = doctorRepository.count();
         long workerCount = workerRepository.count();
         long auditCount = auditLogRepository.count();

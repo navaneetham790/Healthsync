@@ -43,40 +43,7 @@ public class HealthController {
 
     @PostConstruct
     public void initData() {
-        if (appointmentRepository.count() == 0) {
-            Appointment a1 = new Appointment(3L, "Saravanan P", "Dr. Rajesh Sharma", "rajesh.sharma@healthsync.com", "2026-09-25T10:30:00", "Diabetic follow-up consultation", "CONFIRMED");
-            appointmentRepository.save(a1);
-
-            Appointment a2 = new Appointment(5L, "Vignesh M", "Dr. Anitha Raman", "anitha.r@healthsync.com", "2026-09-26T11:00:00", "Pulmonary function test review", "CONFIRMED");
-            appointmentRepository.save(a2);
-
-            Appointment a3 = new Appointment(8L, "Prakash V", "Dr. Rajesh Sharma", "rajesh.sharma@healthsync.com", "2026-09-27T14:00:00", "Cardiology stress test evaluation", "CONFIRMED");
-            appointmentRepository.save(a3);
-
-            Appointment a4 = new Appointment(2L, "Murugan S", "Dr. Priya Venkatesh", "priya.v@healthsync.com", "2026-09-28T09:30:00", "BP review consultation", "PENDING");
-            appointmentRepository.save(a4);
-        }
-
-        if (clinicalDocumentRepository.count() == 0) {
-            ClinicalDocument d1 = ClinicalDocument.createRecord(3L, "Type 2 Diabetes Mellitus with Stage 1 Hypertension", "Diabetic & BP Health Record", "142/90", "165", 26.4, "Patient advised low carb diet, 30 min daily walking, and HbA1c retest in 3 months.", "2026-09-18");
-            d1.setDoctorName("Dr. Rajesh Sharma");
-            d1.setDoctorEmail("rajesh.sharma@healthsync.com");
-            d1.setHospitalName("Apollo Hospital");
-            d1.setHospitalAddress("Greams Road, Thousand Lights, Chennai");
-            clinicalDocumentRepository.save(d1);
-
-            ClinicalDocument d2 = ClinicalDocument.createRecord(5L, "Chronic Bronchitis with Moderate Persistent Asthma", "Pulmonary Health Record", "125/82", "98", 24.1, "Spirometry shows FEV1 at 72%. Avoid factory dust exposure and use N95 protective mask.", "2026-09-19");
-            d2.setDoctorName("Dr. Anitha Raman");
-            d2.setDoctorEmail("anitha.r@healthsync.com");
-            d2.setHospitalName("Fortis Malar Hospital");
-            d2.setHospitalAddress("Gandhi Nagar, Adyar, Chennai");
-            clinicalDocumentRepository.save(d2);
-
-            ClinicalDocument p1 = ClinicalDocument.createPrescription(3L, "Metformin 500mg, Telmisartan 40mg", "1 tablet twice daily", "Twice daily", "30 days", "Take Metformin after food and Telmisartan morning empty stomach.", "2026-09-18", "Dr. Rajesh Sharma");
-            p1.setDoctorEmail("rajesh.sharma@healthsync.com");
-            p1.setHospitalName("Apollo Hospital");
-            clinicalDocumentRepository.save(p1);
-        }
+        // No dummy data — records created by doctors/workers only
     }
 
 
