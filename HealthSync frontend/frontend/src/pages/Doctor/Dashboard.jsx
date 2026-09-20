@@ -10,19 +10,35 @@ function Dashboard() {
 
   const load = useCallback(async () => {
     setLoading(true);
+
+    // 1. Fetch workers directly (< 200ms from user-service)
     try {
-      // Fetch both independently — never show error toast for empty data
-      const [profileRes, workersRes, appointmentsRes] = await Promise.allSettled([DoctorService.getProfile(), DoctorService.getWorkers(), DoctorService.getAppointments()]);
-      const workers = workersRes.status === "fulfilled" && Array.isArray(workersRes.value?.data) ? workersRes.value.data : [];
-      const signedInEmail = String(profileRes.status === "fulfilled" ? profileRes.value?.data?.email : JSON.parse(localStorage.getItem("user") || "{}").email || "").trim().toLowerCase();
+      const dirRes = await DoctorService.getWorkerDirectory().catch(() => DoctorService.getWorkers());
+      const workers = dirRes?.data && Array.isArray(dirRes.data) ? dirRes.data : [];
+      setData((prev) => ({ ...prev, workers }));
+      setLoading(false);
+    } catch (_) {
+      setLoading(false);
+    }
+
+    // 2. Fetch profile & appointments asynchronously with fast timeout
+    try {
+      const [profileRes, appointmentsRes] = await Promise.allSettled([
+        DoctorService.getProfile(),
+        DoctorService.getAppointments()
+      ]);
+      const signedInEmail = String(
+        profileRes.status === "fulfilled"
+          ? profileRes.value?.data?.email
+          : JSON.parse(localStorage.getItem("user") || "{}").email || ""
+      ).trim().toLowerCase();
+
       const appointments = appointmentsRes.status === "fulfilled" && Array.isArray(appointmentsRes.value?.data)
         ? appointmentsRes.value.data.filter((appointment) => String(appointment.doctorEmail || "").trim().toLowerCase() === signedInEmail)
         : [];
 
-      setData({ workers, appointments });
+      setData((prev) => ({ ...prev, appointments }));
     } catch (_) {
-      // Silent fail — dashboard shows zeros, no red error popups
-      setData({ workers: [], appointments: [] });
     } finally {
       setLoading(false);
     }
