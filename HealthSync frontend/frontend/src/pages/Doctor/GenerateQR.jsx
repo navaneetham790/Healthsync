@@ -83,39 +83,12 @@ function GenerateQR() {
     let match;
     try {
       match = await findWorker();
-      const alreadyHas = hasGeneratedQr(match.id);
-      let blob = null;
-
-      // 1. Try to fetch existing or generate from backend
-      try {
-        if (alreadyHas) {
-          const response = await DoctorService.downloadQR(match.id);
-          if (response.data instanceof Blob && response.data.size > 0 && response.data.type?.includes("image")) {
-            blob = response.data;
-          }
-        } else {
-          const response = await DoctorService.generateQR(match.id);
-          if (response.data instanceof Blob && response.data.size > 0 && response.data.type?.includes("image")) {
-            blob = response.data;
-          }
-        }
-      } catch (backendErr) {
-        console.warn("Backend QR service unreachable (using client-side generator):", backendErr);
-      }
-
-      // 2. If backend is sleeping/unreachable or returned 502/empty, generate high-quality QR client-side
-      if (!blob) {
-        blob = await createLocalQrBlob(match.workerCode || match.id);
-      }
+      const code = match.workerCode || `MW${match.id}`;
+      const blob = await createLocalQrBlob(code);
 
       showQr(blob);
       markQrGenerated(match.id);
-
-      if (alreadyHas) {
-        notify.info("Worker QR code ready.");
-      } else {
-        notify.success("QR code generated successfully.");
-      }
+      notify.success("QR code generated successfully.");
     } catch (error) {
       notify.error(error.message || "Unable to generate QR code.");
     } finally {

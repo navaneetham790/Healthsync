@@ -44,7 +44,9 @@ app.use('/api/worker/settings', createProxyMiddleware({ target: USER_SERVICE_URL
 // Other Worker routes (appointments, healthrecords, prescriptions, riskprediction, qr) go to Health Service
 app.use('/api/worker', createProxyMiddleware({ target: HEALTH_SERVICE_URL, changeOrigin: true }));
 
-// 4. Public API routes (e.g., QR profile view) go to Health Service
+// 4. Public API routes (e.g., QR profile view)
+app.use('/api/public/workers', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
+app.use('/api/internal', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 app.use('/api/public', createProxyMiddleware({ target: HEALTH_SERVICE_URL, changeOrigin: true }));
 
 // 5. ML Service routes (AI Risk Prediction)

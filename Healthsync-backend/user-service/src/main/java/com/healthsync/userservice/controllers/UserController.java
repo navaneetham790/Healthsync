@@ -1101,12 +1101,36 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Worker not found."));
     }
 
-    // Used only by health-service while composing the QR medical history.
-    // It prevents the QR response from falling back to a demo worker name.
-    @GetMapping("/internal/workers/{id}")
-    public ResponseEntity<?> getInternalWorkerProfile(@PathVariable Long id) {
-        return workerRepository.findById(id).<ResponseEntity<?>>map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Worker not found.")));
+    // Used by health-service and public QR scan while composing the medical history.
+    @GetMapping({"/internal/workers/{identifier}", "/public/workers/{identifier}"})
+    public ResponseEntity<?> getPublicWorkerProfile(@PathVariable String identifier) {
+        Optional<Worker> worker = Optional.empty();
+        try {
+            Long numId = Long.parseLong(identifier.trim());
+            worker = workerRepository.findById(numId);
+        } catch (Exception ignored) {}
+
+        if (worker.isEmpty()) {
+            worker = workerRepository.findByWorkerCode(identifier.trim().toUpperCase());
+        }
+        if (worker.isEmpty()) {
+            worker = workerRepository.findAll().stream()
+                    .filter(w -> identifier.equalsIgnoreCase(w.getWorkerCode()) || String.valueOf(w.getId()).equals(identifier.trim()))
+                    .findFirst();
+        }
+
+        return worker.<ResponseEntity<?>>map(w -> {
+            Map<String, Object> map = new LinkedHashMap<>();
+            map.put("id", w.getId());
+            map.put("workerCode", w.getWorkerCode() == null ? "MW" + w.getId() : w.getWorkerCode());
+            map.put("fullName", w.getFullName());
+            map.put("age", w.getAge());
+            map.put("phone", w.getPhone());
+            map.put("diseases", w.getDiseases());
+            map.put("healthHistory", w.getHealthHistory());
+            map.put("riskLevel", w.getRiskLevel() == null ? "Not assessed" : w.getRiskLevel());
+            return ResponseEntity.ok(Map.of("worker", map, "healthRecords", List.of(), "prescriptions", List.of()));
+        }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Worker not found.")));
     }
 
     @PostMapping("/internal/workers/{id}/qr-otp/send")
