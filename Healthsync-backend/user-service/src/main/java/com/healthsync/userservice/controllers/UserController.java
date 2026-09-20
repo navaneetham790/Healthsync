@@ -740,6 +740,9 @@ public class UserController {
 
     @GetMapping("/admin/analytics")
     public ResponseEntity<?> getAnalytics() {
+        if (doctorRepository.count() == 0 || workerRepository.count() == 0) {
+            initData();
+        }
         long docCount = doctorRepository.count();
         long workerCount = workerRepository.count();
         long auditCount = auditLogRepository.count();

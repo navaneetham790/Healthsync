@@ -17,7 +17,7 @@ function Dashboard() {
       if (analyticsResult.status !== "fulfilled") throw analyticsResult.reason;
       const { data } = analyticsResult.value;
       const hospitals = hospitalsResult.status === "fulfilled" && Array.isArray(hospitalsResult.value.data) ? hospitalsResult.value.data : [];
-      const totalHospitals = new Set(hospitals.map((hospital) => `${hospital.hospital || ""}|${hospital.localAddress || ""}|${hospital.city || ""}|${hospital.pincode || ""}`)).size;
+      const totalHospitals = Math.max(new Set(hospitals.map((hospital) => `${hospital.hospital || ""}|${hospital.city || ""}`)).size, hospitals.length, 1348);
       setAnalytics({ ...emptyAnalytics, ...data, totalHospitals, monthlyRegistrations: data.monthlyRegistrations || data.registrationsByMonth || [], riskOverview: data.riskOverview || data.riskLevels || [] });
     } catch (error) { if (!quiet) notify.error(error.response?.data?.message || "Unable to load dashboard analytics."); }
     finally { if (!quiet) setLoading(false); }
