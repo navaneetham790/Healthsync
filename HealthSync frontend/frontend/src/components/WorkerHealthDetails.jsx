@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaQrcode } from "react-icons/fa";
+import QRCode from "qrcode";
 import DoctorService from "../services/DoctorService";
 import { notify } from "./ToastProvider";
 import "./WorkerHealthDetails.css";
@@ -42,12 +43,18 @@ export default function WorkerHealthDetails({ worker, onClose, latestOnly = fals
           prescriptions: prescriptions
         });
 
-        if (qr instanceof Blob && qr.size > 0) {
+        if (qr instanceof Blob && qr.size > 0 && qr.type?.includes("image")) {
           setQrSrc(URL.createObjectURL(qr));
         } else if (typeof qr === "string" && qr) {
           setQrSrc(qr.startsWith("data:") || qr.startsWith("http") ? qr : `data:image/png;base64,${qr}`);
         } else {
-          setQrSrc("");
+          try {
+            const qrTargetUrl = `${window.location.origin}/worker-qr/${worker.workerCode || worker.id}`;
+            const dataUrl = await QRCode.toDataURL(qrTargetUrl, { width: 250, margin: 2 });
+            setQrSrc(dataUrl);
+          } catch {
+            setQrSrc("");
+          }
         }
       } catch (error) {
         if (current) notify.error("Unable to load the complete worker record.");

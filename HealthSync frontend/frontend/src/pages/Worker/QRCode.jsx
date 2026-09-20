@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./QRCode.css";
+import QRCodeLib from "qrcode";
 import WorkerService from "../../services/WorkerService";
 import { notify } from "../../components/ToastProvider";
 import { downloadBlob } from "../../utils/download";
@@ -28,10 +29,30 @@ function QRCode() {
         setWorker({ ...profile, workerCode: code });
 
         // 2. Fetch/Download QR Blob
-        const qrRes = await WorkerService.downloadQR(workerId);
-        if (qrRes.data instanceof Blob && qrRes.data.size > 0) {
-          setQrBlob(qrRes.data);
-          setQrSrc(URL.createObjectURL(qrRes.data));
+        let blob = null;
+        try {
+          const qrRes = await WorkerService.downloadQR(workerId);
+          if (qrRes.data instanceof Blob && qrRes.data.size > 0 && qrRes.data.type?.includes("image")) {
+            blob = qrRes.data;
+          }
+        } catch (e) {
+          console.warn("Backend QR download unavailable, using client-side generation:", e);
+        }
+
+        if (!blob) {
+          const qrTargetUrl = `${window.location.origin}/worker-qr/${code}`;
+          const dataUrl = await QRCodeLib.toDataURL(qrTargetUrl, {
+            width: 320,
+            margin: 2,
+            color: { dark: "#0f172a", light: "#ffffff" }
+          });
+          const res = await fetch(dataUrl);
+          blob = await res.blob();
+        }
+
+        if (blob) {
+          setQrBlob(blob);
+          setQrSrc(URL.createObjectURL(blob));
         }
       } catch (error) {
         console.error("Error loading worker QR code data:", error);

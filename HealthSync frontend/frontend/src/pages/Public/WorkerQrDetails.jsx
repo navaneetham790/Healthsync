@@ -9,10 +9,34 @@ function WorkerQrDetails() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/api/public/workers/${token}`);
-        setData(response.data);
+        if (response.data && response.data.worker) {
+          setData(response.data);
+          return;
+        }
       } catch (e) {
-        setError(e.response?.data?.message || "Unable to load patient details.");
+        console.warn("Public worker endpoint error, checking directory fallback:", e);
       }
+
+      try {
+        const dirRes = await axios.get("/api/doctor/workers/directory");
+        if (dirRes?.data && Array.isArray(dirRes.data)) {
+          const match = dirRes.data.find(
+            (w) => String(w.id) === String(token) || (w.workerCode && w.workerCode.toLowerCase() === String(token).toLowerCase())
+          );
+          if (match) {
+            setData({
+              worker: match,
+              healthRecords: [],
+              prescriptions: []
+            });
+            return;
+          }
+        }
+      } catch (dirErr) {
+        console.warn("Worker fallback search failed:", dirErr);
+      }
+
+      setError("Unable to load patient details.");
     };
     fetchData();
   }, [token]);
