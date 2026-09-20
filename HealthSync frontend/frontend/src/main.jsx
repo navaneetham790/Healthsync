@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
-axios.defaults.baseURL = "https://healthsync-gateway.onrender.com";
+const isLocal = typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+axios.defaults.baseURL = isLocal ? "" : (import.meta.env.VITE_API_BASE_URL || "https://healthsync-gateway.onrender.com");
 
 import App from "./App.jsx";
 import "./App.css";

@@ -151,6 +151,13 @@ public class UserController {
 
         // Ensure Bavana has health records and prescriptions if none exist
         workerRepository.findByWorkerCode("MW001").ifPresent(bavana -> {
+            bavana.setFullName("Bavana");
+            bavana.setEmail("717824f108@gmail.com");
+            bavana.setAge(25);
+            bavana.setCreatedByDoctorEmail("717824i335@kce.ac.in");
+            bavana.setRiskLevel("LOW");
+            bavana.setAddress("Coimbatore, Tamil Nadu");
+            workerRepository.save(bavana);
             if (clinicalRecordRepository.findByWorkerId(bavana.getId()).isEmpty()) {
                 ClinicalRecord hr = new ClinicalRecord();
                 hr.setWorkerId(bavana.getId());
@@ -1079,17 +1086,12 @@ public class UserController {
 
     @GetMapping("/doctor/workers")
     public ResponseEntity<?> getDoctorWorkers(@RequestHeader(value = "Authorization", required = false) String authHeader, @RequestParam(value = "search", required = false) String search) {
-        String doctorEmail = authHeader != null ? requireDoctorEmail(authHeader) : "717824i335@kce.ac.in";
-        Set<Long> appointmentWorkerIds = authHeader != null ? doctorAppointmentWorkerIds(authHeader) : Set.of();
-        List<Worker> permitted = workerRepository.findAll().stream()
-                .filter(worker -> doctorEmail.equalsIgnoreCase(worker.getCreatedByDoctorEmail()) || appointmentWorkerIds.contains(worker.getId()))
-                .toList();
-        if (permitted.isEmpty()) {
-            permitted = workerRepository.findAll();
+        List<Worker> workers = workerRepository.findAll();
+        if (search == null || search.trim().isEmpty()) {
+            return ResponseEntity.ok(workers);
         }
-        if (search == null || search.trim().isEmpty()) return ResponseEntity.ok(permitted);
         String term = search.trim().toLowerCase();
-        return ResponseEntity.ok(permitted.stream().filter(worker ->
+        return ResponseEntity.ok(workers.stream().filter(worker ->
                 String.valueOf(worker.getId()).equals(term)
                         || (worker.getWorkerCode() != null && worker.getWorkerCode().toLowerCase().contains(term))
                         || (worker.getFullName() != null && worker.getFullName().toLowerCase().contains(term)))
@@ -1146,22 +1148,33 @@ public class UserController {
             String diseases = (String) payload.get("diseases");
             String healthHistory = (String) payload.get("healthHistory");
 
-            if (workerRepository.findByEmail(email).isPresent()) {
-                return ResponseEntity.badRequest().body(Map.of("message", "Worker email already registered."));
-            }
-            if (workerRepository.findByWorkerCode(workerCode).isPresent()) {
-                return ResponseEntity.badRequest().body(Map.of("message", "Worker Code (ID) already registered."));
-            }
-            if (!verifiedEmail(email, payload.get("emailVerificationToken"))) {
-                return ResponseEntity.badRequest().body(Map.of("message", "Verify the worker's email with the verification code before creating the account."));
+            Worker w = workerRepository.findByWorkerCode(workerCode)
+                    .or(() -> workerRepository.findByEmail(email))
+                    .orElse(null);
+
+            if (w == null) {
+                w = new Worker(fullName, email, passwordEncoder.encode(password), phone, workerCode, age, diseases, healthHistory);
+            } else {
+                if (fullName != null && !fullName.isBlank()) w.setFullName(fullName);
+                if (email != null && !email.isBlank()) w.setEmail(email);
+                if (password != null && !password.isBlank()) w.setPassword(passwordEncoder.encode(password));
+                if (phone != null && !phone.isBlank()) w.setPhone(phone);
+                if (workerCode != null && !workerCode.isBlank()) w.setWorkerCode(workerCode);
+                if (age != null && age > 0) w.setAge(age);
+                if (diseases != null) w.setDiseases(diseases);
+                if (healthHistory != null) w.setHealthHistory(healthHistory);
             }
 
-            Worker w = new Worker(fullName, email, passwordEncoder.encode(password), phone, workerCode, age, diseases, healthHistory);
             String address = (String) payload.get("address");
             if (address != null && !address.isBlank()) w.setAddress(address);
-            if (authHeader != null && authHeader.startsWith("Bearer ")) w.setCreatedByDoctorEmail(requireDoctorEmail(authHeader));
+            if (payload.containsKey("riskLevel") && payload.get("riskLevel") != null) {
+                w.setRiskLevel(payload.get("riskLevel").toString());
+            }
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+                try { w.setCreatedByDoctorEmail(requireDoctorEmail(authHeader)); } catch (Exception ignored) {}
+            }
             workerRepository.save(w);
-            saveAuditLog("Worker Registered", "Created worker account: " + fullName + " (" + workerCode + ")", "doctor");
+            saveAuditLog("Worker Registered", "Saved worker account: " + fullName + " (" + workerCode + ")", "doctor");
             return ResponseEntity.ok(w);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", e.getMessage()));

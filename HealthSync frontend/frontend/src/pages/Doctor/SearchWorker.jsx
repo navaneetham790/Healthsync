@@ -13,34 +13,44 @@ function SearchWorker() {
 
   const loadWorkers = useCallback(async () => {
     setLoading(true);
-    let list = [];
+    let apiList = [];
     try {
       try {
-        const res = await DoctorService.getWorkerDirectory();
-        if (Array.isArray(res?.data) && res.data.length > 0) list = res.data;
+        const res = await DoctorService.getWorkers();
+        if (Array.isArray(res?.data) && res.data.length > 0) apiList = res.data;
       } catch (_) {}
 
-      if (!list.length) {
+      if (!apiList.length) {
         try {
-          const res = await DoctorService.getWorkers();
-          if (Array.isArray(res?.data) && res.data.length > 0) list = res.data;
+          const res = await DoctorService.getWorkerDirectory();
+          if (Array.isArray(res?.data) && res.data.length > 0) apiList = res.data;
         } catch (_) {}
       }
 
-      if (!list.length) {
+      if (!apiList.length) {
         try {
           const res = await axios.get("/api/admin/workers");
-          if (Array.isArray(res?.data) && res.data.length > 0) list = res.data;
+          if (Array.isArray(res?.data) && res.data.length > 0) apiList = res.data;
         } catch (_) {}
       }
 
-      if (!list.length) {
-        const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
-        const regValues = Object.values(localRegistry);
-        if (regValues.length > 0) list = regValues;
-      }
+      const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+      const mergedMap = new Map();
 
-      setWorkers(list);
+      apiList.forEach((w) => {
+        const code = (w.workerCode || (w.id ? `MW${w.id}` : "") || "").toUpperCase();
+        if (code) mergedMap.set(code, w);
+      });
+
+      Object.values(localRegistry).forEach((w) => {
+        const code = (w.workerCode || w.workerId || "").toUpperCase();
+        if (code) {
+          const existing = mergedMap.get(code) || {};
+          mergedMap.set(code, { ...existing, ...w });
+        }
+      });
+
+      setWorkers(Array.from(mergedMap.values()));
     } catch (error) {
       setWorkers([]);
       notify.error(error.response?.data?.message || "Unable to load workers.");
@@ -69,7 +79,7 @@ function SearchWorker() {
           <thead><tr><th>Worker ID</th><th>Name</th><th>Age</th><th>Risk level</th><th>Action</th></tr></thead>
           <tbody>
             {loading ? <tr><td colSpan="5">Loading workers...</td></tr>
-              : filtered.length ? filtered.map((worker) => <tr key={worker.id}>
+              : filtered.length ? filtered.map((worker) => <tr key={worker.id || worker.workerCode || Math.random()}>
                 <td>{worker.workerCode || `MW${worker.id}`}</td><td>{worker.fullName}</td><td>{worker.age ?? "-"}</td>
                 <td>{worker.riskLevel || "Not assessed"}</td><td><button className="doctor-view-btn" onClick={() => setViewing(worker)}>View record</button></td>
               </tr>) : <tr><td colSpan="5">No workers found.</td></tr>}

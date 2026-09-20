@@ -12,26 +12,38 @@ function Dashboard() {
     setLoading(true);
 
     // 1. Fetch workers directly (< 200ms from user-service)
-    let workersList = [];
+    let apiWorkers = [];
     try {
-      const dirRes = await DoctorService.getWorkerDirectory().catch(() => DoctorService.getWorkers());
-      if (Array.isArray(dirRes?.data) && dirRes.data.length > 0) workersList = dirRes.data;
+      const res = await DoctorService.getWorkers().catch(() => DoctorService.getWorkerDirectory());
+      if (Array.isArray(res?.data) && res.data.length > 0) apiWorkers = res.data;
     } catch (_) {}
 
-    if (!workersList.length) {
+    if (!apiWorkers.length) {
       try {
-        const res = await DoctorService.getWorkers();
-        if (Array.isArray(res?.data) && res.data.length > 0) workersList = res.data;
+        const dirRes = await DoctorService.getWorkerDirectory();
+        if (Array.isArray(dirRes?.data) && dirRes.data.length > 0) apiWorkers = dirRes.data;
       } catch (_) {}
     }
 
-    if (!workersList.length) {
-      const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
-      const list = Object.values(localRegistry);
-      if (list.length > 0) workersList = list;
-    }
+    // Always merge backend workers with local registered workers (e.g. newly added workers like Bavana)
+    const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+    const mergedMap = new Map();
 
-    setData((prev) => ({ ...prev, workers: workersList }));
+    apiWorkers.forEach((w) => {
+      const code = (w.workerCode || (w.id ? `MW${w.id}` : "") || "").toUpperCase();
+      if (code) mergedMap.set(code, w);
+    });
+
+    Object.values(localRegistry).forEach((w) => {
+      const code = (w.workerCode || w.workerId || "").toUpperCase();
+      if (code) {
+        const existing = mergedMap.get(code) || {};
+        mergedMap.set(code, { ...existing, ...w });
+      }
+    });
+
+    const finalWorkers = Array.from(mergedMap.values());
+    setData((prev) => ({ ...prev, workers: finalWorkers }));
 
     // 2. Fetch profile & appointments asynchronously with fast timeout
     try {
@@ -130,10 +142,10 @@ function Dashboard() {
               <tr><td colSpan="4">Loading live data…</td></tr>
             ) : recent.length ? (
               recent.map((worker) => (
-                <tr key={worker.id}>
+                <tr key={worker.id || worker.workerCode || Math.random()}>
                   <td>{worker.workerCode || `MW${worker.id}`}</td>
                   <td>{worker.fullName}</td>
-                  <td>{worker.healthHistory || "—"}</td>
+                  <td>{worker.address || worker.healthHistory || "—"}</td>
                   <td>
                     <span className={riskClass(worker.riskLevel)}>
                       {worker.riskLevel || "Not assessed"}
