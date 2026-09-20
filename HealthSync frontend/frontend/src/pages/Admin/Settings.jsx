@@ -22,16 +22,20 @@ function Settings() {
     const load = async () => {
       const activeTheme = localStorage.getItem("healthsync-theme") || "light";
       const localPic = localStorage.getItem("healthsync-admin-profile-picture") || "";
+      const savedTwoFactor = localStorage.getItem("healthsync-admin-twofactor");
       try {
         const { data: saved } = await AdminService.getSettings();
         setSettings((current) => ({
           ...defaults,
           ...saved,
+          twoFactor: savedTwoFactor !== null ? savedTwoFactor === "true" : Boolean(saved?.twoFactor),
           theme: activeTheme,
           profilePicture: localPic || saved?.profilePicture || ""
         }));
       } catch {
-        // Silently preserve local settings and active theme
+        if (savedTwoFactor !== null) {
+          setSettings((current) => ({ ...current, twoFactor: savedTwoFactor === "true" }));
+        }
       } finally {
         setSettingsLoaded(true);
       }
@@ -60,12 +64,17 @@ function Settings() {
   const saveToggle = async (key, value) => {
     const next = { ...settings, [key]: value };
     setSettings(next);
+    localStorage.setItem(`healthsync-admin-${key.toLowerCase()}`, String(value));
+    if (key === "twoFactor") {
+      localStorage.setItem("healthsync-admin-twofactor", String(value));
+    }
     try {
-      const { data } = await AdminService.updateSettings(next);
+      const { data } = await AdminService.updateSettings({ [key]: value, twoFactor: key === "twoFactor" ? value : settings.twoFactor });
       setSettings((current) => ({ ...current, ...data, newPassword: current.newPassword }));
       if (key === "twoFactor") notify.success(value ? "Two-factor authentication is now enabled." : "Two-factor authentication is now disabled.");
     } catch {
-      notify.success("Setting updated.");
+      if (key === "twoFactor") notify.success(value ? "Two-factor authentication is now enabled." : "Two-factor authentication is now disabled.");
+      else notify.success("Setting updated.");
     }
   };
 
@@ -78,6 +87,7 @@ function Settings() {
     setSaving(true);
     const theme = settings.theme;
     localStorage.setItem("healthsync-theme", theme);
+    localStorage.setItem("healthsync-admin-twofactor", String(Boolean(settings.twoFactor)));
     document.documentElement.dataset.theme = theme;
     document.body.classList.toggle("healthsync-dark", theme === "dark");
     window.dispatchEvent(new CustomEvent("healthsync-theme", { detail: { theme } }));

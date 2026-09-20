@@ -14,17 +14,21 @@ function getInitialSettings(role) {
   const defaultEmail = role === "doctor" ? (user.email || "717824i335@kce.ac.in") : (user.email || "717824f108@gmail.com");
   const defaultPhone = user.phone || "9876543210";
 
+  const savedTwoFactor = localStorage.getItem(`healthsync-${role}-twofactor`);
+  const initialTwoFactor = savedTwoFactor !== null ? savedTwoFactor === "true" : (localSettings.twoFactor ?? false);
+
   return {
     name: user.fullName || user.name || defaultName,
     email: user.email || defaultEmail,
     phone: user.phone || defaultPhone,
     newPassword: "",
-    twoFactor: false,
+    twoFactor: initialTwoFactor,
     emailNotifications: true,
     pushNotifications: true,
     theme: activeTheme,
     language: savedLanguage,
     ...localSettings,
+    twoFactor: initialTwoFactor,
     ...(user.fullName ? { name: user.fullName } : {}),
     ...(user.email ? { email: user.email } : {}),
     ...(user.phone ? { phone: user.phone } : {})
@@ -89,6 +93,9 @@ function TwoFactorSettings({ role, service }) {
     setSettings((current) => ({ ...current, [key]: value }));
     if (key === "theme") applyTheme(value);
     if (key === "language") setLanguage(value);
+    if (key === "twoFactor") {
+      localStorage.setItem(`healthsync-${role}-twofactor`, String(value));
+    }
   };
 
   const save = async (event) => {
@@ -99,6 +106,7 @@ function TwoFactorSettings({ role, service }) {
     setSaving(true);
     try {
       localStorage.setItem(`healthsync-settings-${role}`, JSON.stringify(settings));
+      localStorage.setItem(`healthsync-${role}-twofactor`, String(Boolean(settings.twoFactor)));
       if (settings.language) {
         localStorage.setItem("healthsync-language", settings.language);
       }
