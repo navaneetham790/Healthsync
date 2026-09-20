@@ -6,17 +6,10 @@ import { addNotification } from "../../utils/notifications";
 import RecordDialog from "../../components/RecordDialog";
 import { notify } from "../../components/ToastProvider";
 
-const getDoctorDisplayId = (doctor) => {
-  if (doctor.doctorId && String(doctor.doctorId).toUpperCase().startsWith("DR")) return doctor.doctorId;
-  if (doctor.email && (doctor.email.includes("kce.ac.in") || doctor.fullName?.includes("Navaneetha"))) return "DR001";
-  const customId = localStorage.getItem(`doctor_id_${doctor.id}`) || localStorage.getItem(`doctor_id_${doctor.email?.toLowerCase()}`);
-  if (customId) return customId;
-  return `DR${String(doctor.id || 1).padStart(3, "0")}`;
-};
+const getDoctorDisplayId = () => "DR001";
 
 const normalizeDoctor = (doctor) => {
-  const doctorId = getDoctorDisplayId(doctor);
-  return { ...doctor, doctorId, name: doctor.fullName ?? doctor.name, mobile: doctor.phone ?? doctor.mobile };
+  return { ...doctor, doctorId: "DR001", name: doctor.fullName ?? doctor.name, mobile: doctor.phone ?? doctor.mobile };
 };
 
 function ManageDoctors() {
