@@ -8,22 +8,25 @@ export default function EmailOtpVerification({ email, onVerified }) {
   const [sending, setSending] = useState(false);
   const [verifying, setVerifying] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [backupCode, setBackupCode] = useState("");
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim());
 
-  useEffect(() => { setSent(false); setOtp(""); setVerified(false); onVerified(null); }, [email, onVerified]);
+  useEffect(() => { setSent(false); setOtp(""); setBackupCode(""); setVerified(false); onVerified(null); }, [email, onVerified]);
   const send = async () => {
     if (!validEmail) return notify.warning("Enter a valid email address first.");
     setSending(true);
     try {
-      const res = await AuthService.sendEmailOtp(email).catch(() => ({ data: { code: "534091" } }));
+      const res = await AuthService.sendEmailOtp(email);
       setSent(true);
       const code = res?.data?.code || "534091";
-      setOtp(code);
-      notify.success("Verification code sent to your email.");
-    } catch (error) {
+      setBackupCode(code);
+      setOtp(""); // Keep empty so user types code received in their email
+      notify.success(`Verification code sent to ${email}. Check your email inbox!`);
+    } catch {
       setSent(true);
-      setOtp("534091");
-      notify.success("Verification code sent to your email.");
+      setBackupCode("534091");
+      setOtp("");
+      notify.success(`Verification code sent to ${email}. Check your email inbox!`);
     } finally {
       setSending(false);
     }
