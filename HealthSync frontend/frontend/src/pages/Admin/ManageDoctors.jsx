@@ -6,7 +6,18 @@ import { addNotification } from "../../utils/notifications";
 import RecordDialog from "../../components/RecordDialog";
 import { notify } from "../../components/ToastProvider";
 
-const normalizeDoctor = (doctor) => ({ ...doctor, name: doctor.fullName ?? doctor.name, mobile: doctor.phone ?? doctor.mobile });
+const getDoctorDisplayId = (doctor) => {
+  if (doctor.doctorId && String(doctor.doctorId).toUpperCase().startsWith("DR")) return doctor.doctorId;
+  const customId = localStorage.getItem(`doctor_id_${doctor.id}`) || localStorage.getItem(`doctor_id_${doctor.email?.toLowerCase()}`);
+  if (customId) return customId;
+  if (Number(doctor.id) === 6 || Number(doctor.id) === 1) return "DR001";
+  return `DR${String(doctor.id).padStart(3, "0")}`;
+};
+
+const normalizeDoctor = (doctor) => {
+  const doctorId = getDoctorDisplayId(doctor);
+  return { ...doctor, doctorId, name: doctor.fullName ?? doctor.name, mobile: doctor.phone ?? doctor.mobile };
+};
 
 function ManageDoctors() {
   const [doctors, setDoctors] = useState([]);
@@ -32,7 +43,7 @@ function ManageDoctors() {
   const visibleDoctors = useMemo(() => {
     const query = search.trim().toLowerCase();
     if (!query) return doctors;
-    return doctors.filter((doctor) => String(doctor.id).includes(query) || (doctor.name || "").toLowerCase().includes(query));
+    return doctors.filter((doctor) => String(doctor.doctorId || doctor.id).toLowerCase().includes(query) || (doctor.name || "").toLowerCase().includes(query));
   }, [doctors, search]);
 
   const remove = async () => {
@@ -51,6 +62,6 @@ function ManageDoctors() {
     catch (error) { notify.error(error.response?.data?.message || "Unable to update doctor."); }
   };
 
-  return <div className="manageDoctors"><div className="pageHeader"><h2>Manage Doctors</h2><p>Search, update, or remove doctors stored in the HealthSync database.</p></div><div className="tableContainer"><div className="table-toolbar"><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search by doctor name or ID..." aria-label="Search doctors by name or ID" /></div><table><thead><tr><th>ID</th><th>Name</th><th>Specialization</th><th>Hospital</th><th>Mobile</th><th>Action</th></tr></thead><tbody>{loading ? <tr><td colSpan="6">Loading real database data...</td></tr> : visibleDoctors.length ? visibleDoctors.map((doctor) => <tr key={doctor.id}><td>{doctor.id}</td><td>{doctor.name}</td><td>{doctor.specialization || "—"}</td><td>{doctor.hospital || "—"}</td><td>{doctor.mobile || "—"}</td><td><button className="editBtn" onClick={() => setEditing(doctor)}>Edit</button><button className="deleteBtn" onClick={() => { setTerminationMessage("Your HealthSync account has been terminated."); setSelected(doctor); }}>Delete</button></td></tr>) : <tr><td colSpan="6">No doctors found in the database.</td></tr>}</tbody></table></div><RecordDialog record={editing} mode="edit" title="Edit doctor" fields={["id", "name", "specialization", "hospital", "mobile"]} onClose={() => setEditing(null)} onSave={save}/><ConfirmDialog open={Boolean(selected)} title="Send termination message" message={`This message will be sent only to ${selected?.name || "this doctor"}'s registered email. The doctor will be deleted after the email is sent.`} textValue={terminationMessage} onTextChange={setTerminationMessage} textPlaceholder="Type the message for the doctor..." onCancel={() => { setSelected(null); setTerminationMessage(""); }} onConfirm={remove} busy={deleting} confirmLabel="Send and delete"/></div>;
+  return <div className="manageDoctors"><div className="pageHeader"><h2>Manage Doctors</h2><p>Search, update, or remove doctors stored in the HealthSync database.</p></div><div className="tableContainer"><div className="table-toolbar"><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search by doctor name or ID..." aria-label="Search doctors by name or ID" /></div><table><thead><tr><th>Doctor ID</th><th>Name</th><th>Specialization</th><th>Hospital</th><th>Mobile</th><th>Action</th></tr></thead><tbody>{loading ? <tr><td colSpan="6">Loading real database data...</td></tr> : visibleDoctors.length ? visibleDoctors.map((doctor) => <tr key={doctor.id}><td><strong>{doctor.doctorId}</strong></td><td>{doctor.name}</td><td>{doctor.specialization || "—"}</td><td>{doctor.hospital || "—"}</td><td>{doctor.mobile || "—"}</td><td><button className="editBtn" onClick={() => setEditing(doctor)}>Edit</button><button className="deleteBtn" onClick={() => { setTerminationMessage("Your HealthSync account has been terminated."); setSelected(doctor); }}>Delete</button></td></tr>) : <tr><td colSpan="6">No doctors found in the database.</td></tr>}</tbody></table></div><RecordDialog record={editing} mode="edit" title="Edit doctor" fields={["doctorId", "name", "specialization", "hospital", "mobile"]} onClose={() => setEditing(null)} onSave={save}/><ConfirmDialog open={Boolean(selected)} title="Send termination message" message={`This message will be sent only to ${selected?.name || "this doctor"}'s registered email. The doctor will be deleted after the email is sent.`} textValue={terminationMessage} onTextChange={setTerminationMessage} textPlaceholder="Type the message for the doctor..." onCancel={() => { setSelected(null); setTerminationMessage(""); }} onConfirm={remove} busy={deleting} confirmLabel="Send and delete"/></div>;
 }
 export default ManageDoctors;
