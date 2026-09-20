@@ -47,19 +47,36 @@ function Dashboard() {
   useEffect(() => { load(); }, [load]);
 
   const recent = data.workers.slice(0, 5);
-  // Calendar-day counts: yesterday's completed/pending visits never carry into today.
+
+  // Compare using doctor's local calendar day (YYYY-MM-DD)
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-  const appointmentDate = (value) => {
-    const text = String(value || "");
-    const isoDate = text.match(/^(\d{4}-\d{2}-\d{2})/);
-    if (isoDate) return isoDate[1];
+
+  const getLocalDateString = (value) => {
+    if (!value) return "";
+    const text = String(value).trim();
+    // If already in plain YYYY-MM-DD format with no timestamp
+    if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+      return text;
+    }
+    // Parse timestamp and format into local calendar date
     const parsed = new Date(text);
-    return Number.isNaN(parsed.getTime()) ? "" : `${parsed.getFullYear()}-${String(parsed.getMonth() + 1).padStart(2, "0")}-${String(parsed.getDate()).padStart(2, "0")}`;
+    if (Number.isNaN(parsed.getTime())) return "";
+    const year = parsed.getFullYear();
+    const month = String(parsed.getMonth() + 1).padStart(2, "0");
+    const day = String(parsed.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   };
-  const todayAppointments = data.appointments.filter((appointment) => appointmentDate(appointment.appointmentAt) === today);
-  const pendingAppointments = todayAppointments.filter((appointment) => String(appointment.status || "").toUpperCase() === "PENDING");
-  const completedAppointments = todayAppointments.filter((appointment) => String(appointment.status || "").toUpperCase() === "COMPLETED");
+
+  const todayAppointments = data.appointments.filter(
+    (appointment) => getLocalDateString(appointment.appointmentAt || appointment.date) === today
+  );
+  const pendingAppointments = data.appointments.filter(
+    (appointment) => String(appointment.status || "").toUpperCase() === "PENDING"
+  );
+  const completedAppointments = data.appointments.filter(
+    (appointment) => String(appointment.status || "").toUpperCase() === "COMPLETED"
+  );
   const riskClass = (riskLevel) => {
     const level = String(riskLevel || "NOT ASSESSED").toUpperCase();
     if (level === "LOW") return "doctor-risk doctor-risk-low";

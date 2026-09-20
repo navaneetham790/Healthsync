@@ -120,6 +120,7 @@ export function getAllLocalAppointments() {
 export function saveLocalAppointment(data) {
   const list = getAllLocalAppointments();
   const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const appointmentDateStr = data.appointmentAt || (data.date ? (data.time ? `${data.date}T${data.time}:00` : `${data.date}T09:00:00`) : new Date(Date.now() + 86400000).toISOString());
   const newApp = {
     id: "app-" + Date.now(),
     workerId: data.workerId ? Number(data.workerId) : (user.id || 15),
@@ -127,7 +128,9 @@ export function saveLocalAppointment(data) {
     workerName: data.workerName || user.fullName || "Worker",
     doctor: data.doctor || "Dr. Navaneetha M",
     doctorEmail: data.doctorEmail || "717824i335@kce.ac.in",
-    appointmentAt: data.appointmentAt || new Date(Date.now() + 86400000).toISOString(),
+    appointmentAt: appointmentDateStr,
+    date: data.date || (appointmentDateStr.includes("T") ? appointmentDateStr.split("T")[0] : appointmentDateStr),
+    time: data.time || "09:00",
     reason: data.reason || "General Consultation",
     status: "PENDING",
     doctorNotes: "",
