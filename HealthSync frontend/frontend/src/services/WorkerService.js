@@ -33,6 +33,30 @@ const WorkerService = {
                        localRegistry[String(user.workerCode || "").toUpperCase()] ||
                        localRegistry[String(user.email || "").toLowerCase()] || {};
 
+    const resolveAddr = (...candidates) => {
+      for (const c of candidates) {
+        if (c && typeof c === "string") {
+          const t = c.trim();
+          if (
+            t &&
+            t !== "—" &&
+            !t.toLowerCase().includes("viral fever") &&
+            !t.toLowerCase().includes("paracetamol") &&
+            !t.toLowerCase().includes("infection")
+          ) {
+            return t;
+          }
+        }
+      }
+      return "Coimbatore, Tamil Nadu";
+    };
+
+    const cleanAddress = resolveAddr(
+      registered.address,
+      backendData?.address,
+      user.address
+    );
+
     const merged = {
       id: user.id || 15,
       workerCode: user.workerCode || "MW001",
@@ -41,17 +65,14 @@ const WorkerService = {
       phone: "9876543210",
       age: 25,
       riskLevel: "LOW",
-      healthHistory: "Viral fever treated with Paracetamol",
-      address: "Viral fever treated with Paracetamol",
-      diseases: "Acute Upper Respiratory Tract Infection",
+      address: cleanAddress,
       ...user,
       ...registered,
-      ...(backendData || {})
+      ...(backendData || {}),
+      address: cleanAddress
     };
 
     if (!merged.phone || merged.phone === "—") merged.phone = registered.phone || user.phone || "9876543210";
-    if (!merged.address || merged.address === "—") merged.address = registered.address || registered.healthHistory || user.address || user.healthHistory || "Viral fever treated with Paracetamol";
-    if (!merged.healthHistory || merged.healthHistory === "—") merged.healthHistory = merged.address;
     if (!merged.age || merged.age === 30) merged.age = registered.age || user.age || 25;
     if (!merged.riskLevel || merged.riskLevel === "Not assessed") merged.riskLevel = registered.riskLevel || user.riskLevel || "LOW";
 

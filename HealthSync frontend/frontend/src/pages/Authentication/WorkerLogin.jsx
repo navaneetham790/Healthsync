@@ -43,9 +43,7 @@ function WorkerLogin() {
                 phone: "9876543210",
                 age: 25,
                 riskLevel: "LOW",
-                healthHistory: "Viral fever treated with Paracetamol",
-                address: "Viral fever treated with Paracetamol",
-                diseases: "Acute Upper Respiratory Tract Infection",
+                address: registered.address || "Coimbatore, Tamil Nadu",
                 ...registered
             };
             const token = "worker-token-" + Date.now();

@@ -62,9 +62,7 @@ const LoginPortal = () => {
             phone: "9876543210",
             age: 25,
             riskLevel: "LOW",
-            diseases: "Acute Upper Respiratory Tract Infection",
-            healthHistory: "Viral fever treated with Paracetamol",
-            address: "Viral fever treated with Paracetamol",
+            address: registered.address || "Coimbatore, Tamil Nadu",
             ...registered
           }
         });

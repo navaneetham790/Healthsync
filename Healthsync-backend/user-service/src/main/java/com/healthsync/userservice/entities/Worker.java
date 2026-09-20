@@ -35,6 +35,9 @@ public class Worker {
     
     @Column(length = 2000)
     private String healthHistory;
+
+    @Column(length = 2000)
+    private String address;
     
     private String role = "worker";
     private String riskLevel = "Not assessed";
@@ -169,4 +172,7 @@ public class Worker {
     public void setLanguage(String language) { this.language = language; }
     public String getCreatedByDoctorEmail() { return createdByDoctorEmail; }
     public void setCreatedByDoctorEmail(String createdByDoctorEmail) { this.createdByDoctorEmail = createdByDoctorEmail; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 }

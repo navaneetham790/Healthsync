@@ -121,10 +121,14 @@ public class UserController {
             if (bavana.getRiskLevel() == null || "Not assessed".equalsIgnoreCase(bavana.getRiskLevel())) {
                 bavana.setRiskLevel("LOW");
             }
+            if (bavana.getAddress() == null || bavana.getAddress().isBlank() || bavana.getAddress().contains("Viral fever")) {
+                bavana.setAddress("Coimbatore, Tamil Nadu");
+            }
             workerRepository.save(bavana);
         });
         if (workerRepository.findByEmail("717824f108@gmail.com").isEmpty() && workerRepository.findByWorkerCode("MW001").isEmpty()) {
             Worker bavana = new Worker("Bavana", "717824f108@gmail.com", passwordEncoder.encode("workerbavana"), "9876543210", "MW001", 25, "Acute Upper Respiratory Tract Infection", "Viral fever treated with Paracetamol");
+            bavana.setAddress("Coimbatore, Tamil Nadu");
             bavana.setCreatedByDoctorEmail("717824i335@kce.ac.in");
             bavana.setRiskLevel("LOW");
             workerRepository.save(bavana);
@@ -1135,6 +1139,8 @@ public class UserController {
             }
 
             Worker w = new Worker(fullName, email, passwordEncoder.encode(password), phone, workerCode, age, diseases, healthHistory);
+            String address = (String) payload.get("address");
+            if (address != null && !address.isBlank()) w.setAddress(address);
             if (authHeader != null && authHeader.startsWith("Bearer ")) w.setCreatedByDoctorEmail(requireDoctorEmail(authHeader));
             workerRepository.save(w);
             saveAuditLog("Worker Registered", "Created worker account: " + fullName + " (" + workerCode + ")", "doctor");
@@ -1222,6 +1228,7 @@ public class UserController {
             Worker w = opt.get();
             if (w.getPhone() == null || w.getPhone().isBlank() || w.getPhone().equals("—")) w.setPhone("9876543210");
             if (w.getHealthHistory() == null || w.getHealthHistory().isBlank() || w.getHealthHistory().equals("—")) w.setHealthHistory("Viral fever treated with Paracetamol");
+            if (w.getAddress() == null || w.getAddress().isBlank() || w.getAddress().contains("Viral fever")) w.setAddress("Coimbatore, Tamil Nadu");
             if (w.getAge() == null || w.getAge() <= 0) w.setAge(25);
             if (w.getRiskLevel() == null || "Not assessed".equalsIgnoreCase(w.getRiskLevel())) w.setRiskLevel("LOW");
             return ResponseEntity.ok(w);

@@ -13,10 +13,28 @@ const LOCKED_FIELDS = [
 ];
 
 const EDITABLE_FIELDS = [
-  { key: "age",     label: "Age",                  type: "number" },
-  { key: "phone",   label: "Phone Number",          type: "text" },
-  { key: "address", label: "Address / Health History", type: "text" },
+  { key: "age",     label: "Age",          type: "number" },
+  { key: "phone",   label: "Phone Number", type: "text" },
+  { key: "address", label: "Address",      type: "text" },
 ];
+
+const resolveAddress = (...candidates) => {
+  for (const c of candidates) {
+    if (c && typeof c === "string") {
+      const trimmed = c.trim();
+      if (
+        trimmed &&
+        trimmed !== "—" &&
+        !trimmed.toLowerCase().includes("viral fever") &&
+        !trimmed.toLowerCase().includes("paracetamol") &&
+        !trimmed.toLowerCase().includes("infection")
+      ) {
+        return trimmed;
+      }
+    }
+  }
+  return "Coimbatore, Tamil Nadu";
+};
 
 function MyProfile() {
   const { t } = useLanguage();
@@ -37,6 +55,12 @@ function MyProfile() {
     const registered = localRegistry[String(user.workerCode || "MW001").toUpperCase()] ||
                        localRegistry[String(user.email || "").toLowerCase()] || {};
 
+    const resolvedAddr = resolveAddress(
+      registered.address,
+      user.address,
+      "Coimbatore, Tamil Nadu"
+    );
+
     const baseProfile = {
       id: user.id || 15,
       workerCode: formatWorkerCode(user),
@@ -45,7 +69,7 @@ function MyProfile() {
       phone: user.phone || registered.phone || "9876543210",
       age: user.age || registered.age || 25,
       riskLevel: user.riskLevel || registered.riskLevel || "LOW",
-      address: user.healthHistory || user.address || registered.address || registered.healthHistory || "Viral fever treated with Paracetamol"
+      address: resolvedAddr
     };
 
     try {
@@ -57,7 +81,7 @@ function MyProfile() {
         workerCode: formatWorkerCode(data || user),
         phone: data.phone && data.phone !== "—" ? data.phone : baseProfile.phone,
         age: data.age && data.age > 0 ? data.age : baseProfile.age,
-        address: data.healthHistory || data.address || baseProfile.address,
+        address: resolveAddress(data.address, registered.address, baseProfile.address),
         riskLevel: data.riskLevel && data.riskLevel !== "Not assessed" ? data.riskLevel : baseProfile.riskLevel,
       };
       setProfile(enriched);
@@ -91,7 +115,6 @@ function MyProfile() {
         phone:         profile.phone,
         age:           Number(profile.age),
         address:       profile.address,
-        healthHistory: profile.address,
       };
 
       await WorkerService.updateProfile(updatedData);
