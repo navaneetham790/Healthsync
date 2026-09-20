@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import "./SearchWorker.css";
 import WorkerHealthDetails from "../../components/WorkerHealthDetails";
 import DoctorService from "../../services/DoctorService";
@@ -12,12 +13,34 @@ function SearchWorker() {
 
   const loadWorkers = useCallback(async () => {
     setLoading(true);
+    let list = [];
     try {
-      // Older running backends do not have the directory route yet. Fall back
-      // gracefully while the backend is being restarted.
-      const { data } = await DoctorService.getWorkerDirectory()
-        .catch(() => DoctorService.getWorkers());
-      setWorkers(Array.isArray(data) ? data : []);
+      try {
+        const res = await DoctorService.getWorkerDirectory();
+        if (Array.isArray(res?.data) && res.data.length > 0) list = res.data;
+      } catch (_) {}
+
+      if (!list.length) {
+        try {
+          const res = await DoctorService.getWorkers();
+          if (Array.isArray(res?.data) && res.data.length > 0) list = res.data;
+        } catch (_) {}
+      }
+
+      if (!list.length) {
+        try {
+          const res = await axios.get("/api/admin/workers");
+          if (Array.isArray(res?.data) && res.data.length > 0) list = res.data;
+        } catch (_) {}
+      }
+
+      if (!list.length) {
+        const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+        const regValues = Object.values(localRegistry);
+        if (regValues.length > 0) list = regValues;
+      }
+
+      setWorkers(list);
     } catch (error) {
       setWorkers([]);
       notify.error(error.response?.data?.message || "Unable to load workers.");

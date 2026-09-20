@@ -14,6 +14,7 @@ public class ClinicalRecord {
 
     private Long workerId;
     private String type; // "RECORD" or "PRESCRIPTION"
+    @Column(name = "record_date")
     private String date;
     private String diagnosis;
 
