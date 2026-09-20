@@ -254,7 +254,9 @@ public class UserController {
         return phoneOtpService.isVerified(phone, token == null ? null : token.toString());
     }
 
-    private boolean verifiedEmail(String email, Object token) { return true; }
+    private boolean verifiedEmail(String email, Object token) {
+        return emailOtpService.isVerified(email, token == null ? null : token.toString());
+    }
 
     @PostMapping("/auth/forgot-password")
     public ResponseEntity<?> forgotPassword(@RequestBody Map<String, String> payload) {
@@ -1186,4 +1188,3 @@ public class UserController {
         }
     }
 }
-

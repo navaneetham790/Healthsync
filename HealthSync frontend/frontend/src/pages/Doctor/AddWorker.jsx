@@ -38,10 +38,9 @@ function AddWorker() {
     <Field label="Blood Group" name="bloodGroup"><select id="bloodGroup" value={form.bloodGroup} onChange={(e) => change("bloodGroup", e.target.value)} aria-invalid={Boolean(errors.bloodGroup)} required><option value="">Select blood group</option>{["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"].map((group) => <option key={group}>{group}</option>)}</select></Field>
     <Field label="Company" name="company"><input id="company" value={form.company} onChange={(e) => change("company", e.target.value)} placeholder="Company name" aria-invalid={Boolean(errors.company)} required /></Field>
     <Field label="Phone Number" name="phone"><input id="phone" type="tel" inputMode="numeric" value={form.phone} onChange={(e) => change("phone", e.target.value)} placeholder="10-digit phone number" aria-invalid={Boolean(errors.phone)} required /></Field>
-    <Field label="Email" name="email"><input id="email" type="email" value={form.email} onChange={(e) => change("email", e.target.value)} placeholder="Email address" aria-invalid={Boolean(errors.email)} required /></Field>
+    <Field label="Email" name="email"><input id="email" type="email" value={form.email} onChange={(e) => change("email", e.target.value)} placeholder="Email address" aria-invalid={Boolean(errors.email)} required /><EmailOtpVerification email={form.email} onVerified={setEmailVerificationToken} /></Field>
     <Field label="Address" name="address" fullWidth><textarea id="address" rows="4" value={form.address} onChange={(e) => change("address", e.target.value)} placeholder="Enter address" aria-invalid={Boolean(errors.address)} required /></Field>
     <Field label="Emergency Contact" name="emergencyContact"><input id="emergencyContact" type="tel" inputMode="numeric" value={form.emergencyContact} onChange={(e) => change("emergencyContact", e.target.value)} placeholder="10-digit contact number" aria-invalid={Boolean(errors.emergencyContact)} required /></Field>
   </div><div className="buttonArea"><button type="submit" className="createBtn" disabled={submitting}>{submitting ? "Adding…" : "Add Worker"}</button></div></form></div></div>;
 }
 export default AddWorker;
-
