@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 // 1. Auth and Admin always go to User Service
 app.use('/api/auth', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 app.use('/api/admin', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
+app.use('/api/doctor-applications', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 
 // 2. Doctor specific routes routing:
 // Profile, Workers, Settings, Health Records, and Prescriptions go to User Service
