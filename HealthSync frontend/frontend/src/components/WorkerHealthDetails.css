@@ -1,1 +1,308 @@
-.worker-detail-backdrop{position:fixed;inset:0;z-index:2600;display:grid;place-items:center;padding:1rem;background:rgba(15,23,42,.58)}.worker-health-dialog{width:min(70rem,100%);max-height:calc(100vh - 2rem);overflow:auto;background:#fff;border-radius:1rem;box-shadow:0 24px 65px rgba(0,0,0,.35)}.worker-health-dialog>header,.worker-health-dialog>footer{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid #e2e8f0}.worker-health-dialog h2{margin:0;color:#0f766e}.worker-health-dialog header p{margin:.35rem 0 0;color:#64748b}.worker-health-dialog header button{border:0;background:transparent;font-size:1.8rem;cursor:pointer}.worker-health-dialog footer{border-top:1px solid #e2e8f0;border-bottom:0;justify-content:flex-end}.worker-health-dialog footer button{border:0;border-radius:.45rem;background:#0f8f83;color:#fff;padding:.65rem 1rem;cursor:pointer}.health-detail-content{display:grid;grid-template-columns:13rem 1fr;gap:1.5rem;padding:1.5rem}.qr-panel{display:flex;flex-direction:column;align-items:center;gap:.7rem;text-align:center;color:#475569}.qr-panel small{line-height:1.5}.qr-image{width:11rem;height:11rem;display:grid;place-items:center;border:1px solid #cbd5e1;border-radius:.7rem;background:#f8fafc;color:#0f8f83;font-size:5rem}.qr-image img{width:100%;height:100%;object-fit:contain;border-radius:.7rem}.health-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}.health-summary div{padding:.75rem;border-radius:.5rem;background:#f0fdfa}.health-summary span{display:block;font-size:.8rem;color:#64748b}.health-summary strong{display:block;margin-top:.25rem;color:#0f172a}.health-detail-content main section{margin-top:1.25rem}.health-detail-content h3{margin-bottom:.65rem;color:#0f172a}.condition-list{display:flex;flex-wrap:wrap;gap:.5rem}.condition-list span{padding:.4rem .6rem;border-radius:99px;background:#fee2e2;color:#991b1b;font-size:.88rem}.health-table{overflow-x:auto}.health-table table{width:100%;border-collapse:collapse;font-size:.9rem}.health-table th,.health-table td{padding:.65rem;text-align:left;border-bottom:1px solid #e2e8f0}.health-table th{background:#f8fafc;color:#1e293b;font-weight:600}.health-loading{min-height:20rem;display:grid;place-items:center;color:#64748b}@media(max-width:700px){.health-detail-content{grid-template-columns:1fr}.health-summary{grid-template-columns:1fr}.qr-panel{align-items:flex-start;text-align:left}.qr-image{align-self:center}}
+.worker-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2600;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.worker-health-dialog {
+  width: min(72rem, 100%);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.worker-health-dialog > header,
+.worker-health-dialog > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.worker-health-dialog h2 {
+  margin: 0;
+  color: #0f766e;
+}
+
+.worker-health-dialog header p {
+  margin: 0.35rem 0 0;
+  color: #64748b;
+}
+
+.worker-health-dialog header button {
+  border: 0;
+  background: transparent;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.worker-health-dialog footer {
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 0;
+  justify-content: flex-end;
+}
+
+.worker-health-dialog footer button {
+  border: 0;
+  border-radius: 0.45rem;
+  background: #0f8f83;
+  color: #ffffff;
+  padding: 0.65rem 1.25rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.health-detail-content {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.qr-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+  color: #475569;
+}
+
+.qr-panel small {
+  line-height: 1.5;
+}
+
+.qr-image {
+  width: 11rem;
+  height: 11rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.7rem;
+  background: #f8fafc;
+  color: #0f8f83;
+  font-size: 5rem;
+}
+
+.qr-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.7rem;
+}
+
+.health-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.health-summary div {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #f0fdfa;
+}
+
+.health-summary span {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.health-summary strong {
+  display: block;
+  margin-top: 0.25rem;
+  color: #0f172a;
+}
+
+.health-detail-content main section {
+  margin-top: 1.25rem;
+}
+
+.health-detail-content h3 {
+  margin-bottom: 0.65rem;
+  color: #0f172a;
+}
+
+.condition-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.condition-list span {
+  padding: 0.4rem 0.6rem;
+  border-radius: 99px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.88rem;
+}
+
+.health-table,
+.worker-health-dialog .tableContainer {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.worker-health-dialog table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.worker-health-dialog th,
+.worker-health-dialog td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.worker-health-dialog th {
+  background: #0f8f83;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.worker-health-dialog tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.worker-health-dialog tbody tr:hover {
+  background: #f1f5f9;
+}
+
+.health-loading {
+  min-height: 20rem;
+  display: grid;
+  place-items: center;
+  color: #64748b;
+}
+
+/* ==========================================
+   Dark Theme Support for Worker Health Modal
+   ========================================== */
+:root[data-theme="dark"] .worker-health-dialog,
+body.healthsync-dark .worker-health-dialog {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.7);
+  border: 1px solid #334155;
+}
+
+:root[data-theme="dark"] .worker-health-dialog > header,
+body.healthsync-dark .worker-health-dialog > header,
+:root[data-theme="dark"] .worker-health-dialog > footer,
+body.healthsync-dark .worker-health-dialog > footer {
+  border-color: #334155 !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog h2,
+body.healthsync-dark .worker-health-dialog h2 {
+  color: #2dd4bf !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog h3,
+body.healthsync-dark .worker-health-dialog h3 {
+  color: #f1f5f9 !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog header p,
+body.healthsync-dark .worker-health-dialog header p {
+  color: #94a3b8 !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog header button,
+body.healthsync-dark .worker-health-dialog header button {
+  color: #94a3b8 !important;
+}
+
+:root[data-theme="dark"] .qr-panel,
+body.healthsync-dark .qr-panel {
+  color: #cbd5e1 !important;
+}
+
+:root[data-theme="dark"] .health-summary div,
+body.healthsync-dark .health-summary div {
+  background: #1e293b !important;
+  border: 1px solid #334155;
+}
+
+:root[data-theme="dark"] .health-summary span,
+body.healthsync-dark .health-summary span {
+  color: #94a3b8 !important;
+}
+
+:root[data-theme="dark"] .health-summary strong,
+body.healthsync-dark .health-summary strong {
+  color: #f8fafc !important;
+}
+
+:root[data-theme="dark"] .qr-image,
+body.healthsync-dark .qr-image {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #2dd4bf !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog table,
+body.healthsync-dark .worker-health-dialog table {
+  background: #0f172a !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog th,
+body.healthsync-dark .worker-health-dialog th {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog td,
+body.healthsync-dark .worker-health-dialog td {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+/* Strict fix: Never turn full white on hover or click in dark mode */
+:root[data-theme="dark"] .worker-health-dialog tbody tr:hover,
+:root[data-theme="dark"] .worker-health-dialog tbody tr:active,
+:root[data-theme="dark"] .worker-health-dialog tbody tr:focus,
+body.healthsync-dark .worker-health-dialog tbody tr:hover,
+body.healthsync-dark .worker-health-dialog tbody tr:active,
+body.healthsync-dark .worker-health-dialog tbody tr:focus {
+  background: #1e293b !important;
+}
+
+:root[data-theme="dark"] .worker-health-dialog tbody tr:hover td,
+:root[data-theme="dark"] .worker-health-dialog tbody tr:active td,
+body.healthsync-dark .worker-health-dialog tbody tr:hover td,
+body.healthsync-dark .worker-health-dialog tbody tr:active td {
+  background: #1e293b !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 700px) {
+  .health-detail-content {
+    grid-template-columns: 1fr;
+  }
+  .health-summary {
+    grid-template-columns: 1fr;
+  }
+  .qr-panel {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .qr-image {
+    align-self: center;
+  }
+}

@@ -24,9 +24,11 @@ app.use('/api/auth', createProxyMiddleware({ target: USER_SERVICE_URL, changeOri
 app.use('/api/admin', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 
 // 2. Doctor specific routes routing:
-// Profile, Workers, and Settings go to User Service
+// Profile, Workers, Settings, Health Records, and Prescriptions go to User Service
 app.use('/api/doctor/profile', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 app.use('/api/doctor/settings', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
+app.use('/api/doctor/health-records', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
+app.use('/api/doctor/prescriptions', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 app.use('/api/doctor/workers', (req, res, next) => {
   // If the path is workers/:workerId/qr, it should go to Health Service
   if (req.path.includes('/qr')) {
@@ -34,14 +36,16 @@ app.use('/api/doctor/workers', (req, res, next) => {
   }
   return createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true })(req, res, next);
 });
-// Other Doctor routes (appointments, health-records, prescriptions, risk-prediction) go to Health Service
+// Other Doctor routes (appointments, risk-prediction) go to Health Service
 app.use('/api/doctor', createProxyMiddleware({ target: HEALTH_SERVICE_URL, changeOrigin: true }));
 
 // 3. Worker specific routes routing:
-// Profiles and Settings go to User Service
+// Profiles, Settings, Health Records, and Prescriptions go to User Service
 app.use('/api/worker/profile', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
 app.use('/api/worker/settings', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
-// Other Worker routes (appointments, healthrecords, prescriptions, riskprediction, qr) go to Health Service
+app.use('/api/worker/healthrecords', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
+app.use('/api/worker/prescriptions', createProxyMiddleware({ target: USER_SERVICE_URL, changeOrigin: true }));
+// Other Worker routes (appointments, riskprediction, qr) go to Health Service
 app.use('/api/worker', createProxyMiddleware({ target: HEALTH_SERVICE_URL, changeOrigin: true }));
 
 // 4. Public API routes (e.g., QR profile view)

@@ -1,11 +1,13 @@
 package com.healthsync.userservice.controllers;
 
 import com.healthsync.userservice.entities.AuditLog;
+import com.healthsync.userservice.entities.ClinicalRecord;
 import com.healthsync.userservice.entities.Doctor;
 import com.healthsync.userservice.entities.DoctorApplication;
 import com.healthsync.userservice.entities.Setting;
 import com.healthsync.userservice.entities.Worker;
 import com.healthsync.userservice.repositories.AuditLogRepository;
+import com.healthsync.userservice.repositories.ClinicalRecordRepository;
 import com.healthsync.userservice.repositories.DoctorRepository;
 import com.healthsync.userservice.repositories.DoctorApplicationRepository;
 import com.healthsync.userservice.repositories.SettingRepository;
@@ -52,6 +54,9 @@ public class UserController {
 
     @Autowired
     private SettingRepository settingRepository;
+
+    @Autowired
+    private ClinicalRecordRepository clinicalRecordRepository;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -110,6 +115,44 @@ public class UserController {
             Doctor doc = new Doctor("Navaneetha M", "717824i335@kce.ac.in", passwordEncoder.encode("doctornavaneetha"), "9856324710", "Cardiology", "A.M. Hospital");
             doctorRepository.save(doc);
         }
+
+        // Ensure Bavana has health records and prescriptions if none exist
+        workerRepository.findByWorkerCode("MW001").ifPresent(bavana -> {
+            if (clinicalRecordRepository.findByWorkerId(bavana.getId()).isEmpty()) {
+                ClinicalRecord hr = new ClinicalRecord();
+                hr.setWorkerId(bavana.getId());
+                hr.setType("RECORD");
+                hr.setDate(new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()));
+                hr.setDiagnosis("Acute Upper Respiratory Tract Infection (Mild Viral Fever)");
+                hr.setSummary("Fever for 2 days, body pain, runny nose and sore throat.");
+                hr.setBloodPressure("118/76");
+                hr.setSugar("110");
+                hr.setBmi(22.0);
+                hr.setNotes("Paracetamol 650mg SOS after food, Cetirizine 10mg once daily at night for 3 days, warm water gargle and rest.");
+                hr.setDoctorName("Dr. Navaneetha M");
+                hr.setDoctorEmail("717824i335@kce.ac.in");
+                hr.setHospitalName("HealthSync Medical Center");
+                clinicalRecordRepository.save(hr);
+
+                ClinicalRecord pr = new ClinicalRecord();
+                pr.setWorkerId(bavana.getId());
+                pr.setType("PRESCRIPTION");
+                pr.setDate(new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()));
+                pr.setMedicine("1. Tab Paracetamol 650mg - 1 tablet - 3 times daily (after food)\n2. Tab Cetirizine 10mg - 1 tablet - once daily at night\n3. Tab Vitamin C 500mg - 1 tablet - once daily (after breakfast)");
+                pr.setDosage("-");
+                pr.setFrequency("-");
+                pr.setDuration("5 days");
+                pr.setInstructions("Acute Upper Respiratory Tract Infection (Viral Fever & Cold). Drink plenty of warm water (3 to 4 liters daily). Take adequate rest for 2 days. Avoid cold foods, oily items, and chilled drinks. If fever persists after 3 days, revisit the clinic.");
+                pr.setDoctorName("Dr. Navaneetha M");
+                pr.setDoctorEmail("717824i335@kce.ac.in");
+                pr.setHospitalName("HealthSync Medical Center");
+                clinicalRecordRepository.save(pr);
+
+                bavana.setDiseases("Acute Upper Respiratory Tract Infection");
+                bavana.setHealthHistory("Viral fever treated with Paracetamol");
+                workerRepository.save(bavana);
+            }
+        });
     }
 
     private boolean passwordMatches(String rawPassword, String storedPassword) {
@@ -1129,8 +1172,97 @@ public class UserController {
             map.put("diseases", w.getDiseases());
             map.put("healthHistory", w.getHealthHistory());
             map.put("riskLevel", w.getRiskLevel() == null ? "Not assessed" : w.getRiskLevel());
-            return ResponseEntity.ok(Map.of("worker", map, "healthRecords", List.of(), "prescriptions", List.of()));
+
+            List<ClinicalRecord> records = clinicalRecordRepository.findByWorkerIdAndType(w.getId(), "RECORD");
+            List<ClinicalRecord> prescriptions = clinicalRecordRepository.findByWorkerIdAndType(w.getId(), "PRESCRIPTION");
+
+            return ResponseEntity.ok(Map.of("worker", map, "healthRecords", records, "prescriptions", prescriptions));
         }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Worker not found.")));
+    }
+
+    @PostMapping("/doctor/health-records")
+    public ResponseEntity<?> addDoctorHealthRecord(@RequestHeader(value = "Authorization", required = false) String authHeader, @RequestBody Map<String, Object> payload) {
+        try {
+            Long workerId = Long.valueOf(payload.get("workerId").toString());
+            String diagnosis = (String) payload.get("diagnosis");
+            String summary = (String) payload.get("summary");
+            String bloodPressure = (String) payload.get("bloodPressure");
+            String sugar = (String) payload.get("sugar");
+            Double bmi = payload.get("bmi") != null ? Double.valueOf(payload.get("bmi").toString()) : 22.0;
+            String notes = (String) payload.get("notes");
+            String visitDate = String.valueOf(payload.getOrDefault("visitDate", new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date())));
+
+            ClinicalRecord cr = new ClinicalRecord();
+            cr.setWorkerId(workerId);
+            cr.setType("RECORD");
+            cr.setDiagnosis(diagnosis);
+            cr.setSummary(summary);
+            cr.setBloodPressure(bloodPressure);
+            cr.setSugar(sugar);
+            cr.setBmi(bmi);
+            cr.setNotes(notes);
+            cr.setDate(visitDate);
+            cr.setDoctorName("Dr. Navaneetha M");
+            cr.setDoctorEmail("717824i335@kce.ac.in");
+            cr.setHospitalName("HealthSync Medical Center");
+            clinicalRecordRepository.save(cr);
+
+            workerRepository.findById(workerId).ifPresent(w -> {
+                w.setDiseases(diagnosis);
+                w.setHealthHistory(summary + " | " + notes);
+                workerRepository.save(w);
+            });
+
+            return ResponseEntity.ok(cr);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/doctor/prescriptions")
+    public ResponseEntity<?> createDoctorPrescription(@RequestHeader(value = "Authorization", required = false) String authHeader, @RequestBody Map<String, Object> payload) {
+        try {
+            Long workerId = Long.valueOf(payload.get("workerId").toString());
+            String medicine = (String) payload.get("medicine");
+            String dosage = (String) payload.getOrDefault("dosage", "-");
+            String frequency = (String) payload.getOrDefault("frequency", "-");
+            String duration = (String) payload.get("duration");
+            String instructions = (String) payload.get("instructions");
+            String prescriptionDate = String.valueOf(payload.getOrDefault("prescriptionDate", new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date())));
+
+            ClinicalRecord cr = new ClinicalRecord();
+            cr.setWorkerId(workerId);
+            cr.setType("PRESCRIPTION");
+            cr.setMedicine(medicine);
+            cr.setDosage(dosage);
+            cr.setFrequency(frequency);
+            cr.setDuration(duration);
+            cr.setInstructions(instructions);
+            cr.setDate(prescriptionDate);
+            cr.setDoctorName("Dr. Navaneetha M");
+            cr.setDoctorEmail("717824i335@kce.ac.in");
+            cr.setHospitalName("HealthSync Medical Center");
+            clinicalRecordRepository.save(cr);
+
+            return ResponseEntity.ok(cr);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/doctor/health-records")
+    public ResponseEntity<?> getDoctorAllHealthRecords() {
+        return ResponseEntity.ok(clinicalRecordRepository.findByType("RECORD"));
+    }
+
+    @GetMapping("/worker/healthrecords/{workerId}")
+    public ResponseEntity<?> getWorkerHealthRecordsEndpoint(@PathVariable Long workerId) {
+        return ResponseEntity.ok(clinicalRecordRepository.findByWorkerIdAndType(workerId, "RECORD"));
+    }
+
+    @GetMapping("/worker/prescriptions/{workerId}")
+    public ResponseEntity<?> getWorkerPrescriptionsEndpoint(@PathVariable Long workerId) {
+        return ResponseEntity.ok(clinicalRecordRepository.findByWorkerIdAndType(workerId, "PRESCRIPTION"));
     }
 
     @PostMapping("/internal/workers/{id}/qr-otp/send")
