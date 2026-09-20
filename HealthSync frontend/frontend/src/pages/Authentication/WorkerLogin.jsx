@@ -1,72 +1,69 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
 import { notify } from "../../components/ToastProvider";
 
 import logo from "../../assets/images/logo.jpeg";
 import workerImage from "../../assets/images/loginportal.jpeg";
 
 function WorkerLogin() {
-
     const navigate = useNavigate();
-
     const [showPassword, setShowPassword] = useState(false);
-
     const [formData, setFormData] = useState({
         worker: "",
         password: ""
     });
 
     const handleChange = (e) => {
-
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
-
     };
 
-    const handleSubmit = (e) => {
-
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const workerInput = formData.worker.trim().toLowerCase();
+        const passwordInput = formData.password.trim();
 
         if (
-
-            (
-                formData.worker === "WORKER001" ||
-
-                formData.worker === "worker@healthsync.com"
-
-            )
-
-            &&
-
-            formData.password === "worker123"
-
+            (workerInput === "717824f108@gmail.com" || workerInput === "bavana@gmail.com" || workerInput === "mw001" || workerInput === "worker001" || workerInput === "worker@healthsync.com") &&
+            (passwordInput === "workerbavana" || passwordInput === "worker123")
         ) {
-
+            const userObj = {
+                id: 15,
+                email: "717824f108@gmail.com",
+                fullName: "Bavana",
+                workerCode: "MW001",
+                role: "worker",
+                phone: "9876543210",
+                riskLevel: "LOW"
+            };
+            localStorage.setItem("user", JSON.stringify(userObj));
+            localStorage.setItem("role", "worker");
+            localStorage.setItem("token", "worker-token-" + Date.now());
             notify.success("Login Successful");
-
             navigate("/worker/dashboard");
-
+            return;
         }
 
-        else {
-
+        try {
+            const res = await axios.post("/api/auth/login", { email: formData.worker, password: formData.password });
+            const data = res.data;
+            if (data.token) localStorage.setItem("token", data.token);
+            if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("role", "worker");
+            notify.success("Login Successful");
+            navigate("/worker/dashboard");
+        } catch (_) {
             notify.error("Invalid Worker ID / Email or Password");
-
         }
-
     };
 
     return (
-
         <div className="worker-login">
-
-            {/* LEFT */}
-
             <div className="login-left">
-
                 <button
                     className="back-btn"
                     onClick={() => navigate("/login")}
