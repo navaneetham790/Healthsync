@@ -12,14 +12,26 @@ function Dashboard() {
     setLoading(true);
 
     // 1. Fetch workers directly (< 200ms from user-service)
+    let workersList = [];
     try {
       const dirRes = await DoctorService.getWorkerDirectory().catch(() => DoctorService.getWorkers());
-      const workers = dirRes?.data && Array.isArray(dirRes.data) ? dirRes.data : [];
-      setData((prev) => ({ ...prev, workers }));
-      setLoading(false);
-    } catch (_) {
-      setLoading(false);
+      if (Array.isArray(dirRes?.data) && dirRes.data.length > 0) workersList = dirRes.data;
+    } catch (_) {}
+
+    if (!workersList.length) {
+      try {
+        const res = await DoctorService.getWorkers();
+        if (Array.isArray(res?.data) && res.data.length > 0) workersList = res.data;
+      } catch (_) {}
     }
+
+    if (!workersList.length) {
+      const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
+      const list = Object.values(localRegistry);
+      if (list.length > 0) workersList = list;
+    }
+
+    setData((prev) => ({ ...prev, workers: workersList }));
 
     // 2. Fetch profile & appointments asynchronously with fast timeout
     try {
@@ -33,9 +45,13 @@ function Dashboard() {
           : JSON.parse(localStorage.getItem("user") || "{}").email || ""
       ).trim().toLowerCase();
 
-      const appointments = appointmentsRes.status === "fulfilled" && Array.isArray(appointmentsRes.value?.data)
-        ? appointmentsRes.value.data.filter((appointment) => String(appointment.doctorEmail || "").trim().toLowerCase() === signedInEmail)
+      let appointments = appointmentsRes.status === "fulfilled" && Array.isArray(appointmentsRes.value?.data)
+        ? appointmentsRes.value.data
         : [];
+      if (appointments.length && signedInEmail) {
+        const filtered = appointments.filter((appointment) => String(appointment.doctorEmail || "").trim().toLowerCase() === signedInEmail);
+        if (filtered.length > 0) appointments = filtered;
+      }
 
       setData((prev) => ({ ...prev, appointments }));
     } catch (_) {
