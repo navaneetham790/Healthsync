@@ -88,3 +88,71 @@ export function getLocalPrescriptions(workerId) {
 export function getAllLocalPrescriptions() {
   return getStoredArray(PRESCRIPTIONS_KEY);
 }
+
+const APPOINTMENTS_KEY = "healthsync_local_appointments";
+
+const DEFAULT_APPOINTMENTS = [
+  {
+    id: "app-mw001",
+    workerId: 15,
+    workerCode: "MW001",
+    workerName: "Bavana",
+    doctor: "Dr. Navaneetha M",
+    doctorEmail: "717824i335@kce.ac.in",
+    appointmentAt: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
+    reason: "General Health Checkup & Vitals Assessment",
+    status: "PENDING",
+    doctorNotes: "",
+    followUpDate: "",
+    cancelReason: ""
+  }
+];
+
+export function getAllLocalAppointments() {
+  const list = getStoredArray(APPOINTMENTS_KEY);
+  if (!list || list.length === 0) {
+    setStoredArray(APPOINTMENTS_KEY, DEFAULT_APPOINTMENTS);
+    return DEFAULT_APPOINTMENTS;
+  }
+  return list;
+}
+
+export function saveLocalAppointment(data) {
+  const list = getAllLocalAppointments();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const newApp = {
+    id: "app-" + Date.now(),
+    workerId: data.workerId ? Number(data.workerId) : (user.id || 15),
+    workerCode: data.workerCode || "MW001",
+    workerName: data.workerName || user.fullName || "Worker",
+    doctor: data.doctor || "Dr. Navaneetha M",
+    doctorEmail: data.doctorEmail || "717824i335@kce.ac.in",
+    appointmentAt: data.appointmentAt || new Date(Date.now() + 86400000).toISOString(),
+    reason: data.reason || "General Consultation",
+    status: "PENDING",
+    doctorNotes: "",
+    followUpDate: "",
+    cancelReason: ""
+  };
+  list.unshift(newApp);
+  setStoredArray(APPOINTMENTS_KEY, list);
+  return newApp;
+}
+
+export function updateLocalAppointmentStatus(id, status, details = {}) {
+  const list = getAllLocalAppointments();
+  const updated = list.map((item) => {
+    if (String(item.id) === String(id)) {
+      return {
+        ...item,
+        status,
+        doctorNotes: details.doctorNotes !== undefined ? details.doctorNotes : item.doctorNotes,
+        followUpDate: details.followUpDate !== undefined ? details.followUpDate : item.followUpDate,
+        cancelReason: details.cancelReason !== undefined ? details.cancelReason : item.cancelReason,
+      };
+    }
+    return item;
+  });
+  setStoredArray(APPOINTMENTS_KEY, updated);
+  return updated.find((item) => String(item.id) === String(id));
+}

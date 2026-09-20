@@ -1,5 +1,10 @@
 import axios from "axios";
-import { getLocalHealthRecords, getLocalPrescriptions } from "../utils/clinicalStorage";
+import {
+  getLocalHealthRecords,
+  getLocalPrescriptions,
+  getAllLocalAppointments,
+  saveLocalAppointment
+} from "../utils/clinicalStorage";
 
 const BASE_URL = "/api/worker";
 
@@ -30,12 +35,30 @@ const WorkerService = {
     return { data: merged };
   },
 
-  getAppointments(id) {
-    return axios.get(`${BASE_URL}/appointments/${id}`, { timeout: 3500 });
+  async getAppointments(id) {
+    let backendAppointments = [];
+    try {
+      const res = await axios.get(`${BASE_URL}/appointments/${id}`, { timeout: 2500 });
+      if (Array.isArray(res.data)) backendAppointments = res.data;
+    } catch (_) {}
+    const local = getAllLocalAppointments().filter(
+      (a) =>
+        !id ||
+        String(a.workerId) === String(id) ||
+        String(a.workerCode || "").toLowerCase() === String(id).toLowerCase()
+    );
+    const merged = [...local, ...backendAppointments.filter((b) => !local.some((l) => String(l.id) === String(b.id)))];
+    return { data: merged };
   },
 
-  bookAppointment(data) {
-    return axios.post(`${BASE_URL}/appointments`, data);
+  async bookAppointment(data) {
+    const localDoc = saveLocalAppointment(data);
+    try {
+      const res = await axios.post(`${BASE_URL}/appointments`, data, { timeout: 2500 });
+      return res;
+    } catch (_) {
+      return { data: localDoc };
+    }
   },
 
   updateProfile(data) {

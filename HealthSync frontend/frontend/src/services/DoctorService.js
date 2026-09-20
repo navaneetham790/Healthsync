@@ -5,7 +5,9 @@ import {
   getAllLocalHealthRecords,
   saveLocalPrescription,
   getLocalPrescriptions,
-  getAllLocalPrescriptions
+  getAllLocalPrescriptions,
+  getAllLocalAppointments,
+  updateLocalAppointmentStatus
 } from "../utils/clinicalStorage";
 import { evaluateDrugInteractions } from "../utils/drugInteractionEngine";
 
@@ -56,8 +58,28 @@ const DoctorService = {
     }
   },
 
-  getAppointments: () => axios.get(`${BASE_URL}/appointments`, { timeout: 3500 }),
-  updateAppointmentStatus: (id, status, details = {}) => axios.patch(`${BASE_URL}/appointments/${id}`, { status, ...details }, { timeout: 5000 }),
+  getAppointments: async () => {
+    let backendAppointments = [];
+    try {
+      const res = await axios.get(`${BASE_URL}/appointments`, { timeout: 2500 });
+      if (Array.isArray(res.data)) backendAppointments = res.data;
+    } catch (err) {
+      console.warn("Backend appointments unavailable, using local appointment store:", err);
+    }
+    const local = getAllLocalAppointments();
+    const merged = [...local, ...backendAppointments.filter((b) => !local.some((l) => String(l.id) === String(b.id)))];
+    return { data: merged };
+  },
+  updateAppointmentStatus: async (id, status, details = {}) => {
+    updateLocalAppointmentStatus(id, status, details);
+    try {
+      const res = await axios.patch(`${BASE_URL}/appointments/${id}`, { status, ...details }, { timeout: 2500 });
+      return res;
+    } catch (err) {
+      console.warn("Backend update appointment status failed, updated locally:", err);
+      return { data: { id, status, ...details } };
+    }
+  },
   generateQR: (workerId) => axios.post(`${BASE_URL}/workers/${workerId}/qr`, null, { responseType: "blob", timeout: 4000 }),
   downloadQR: (workerId) => axios.get(`${BASE_URL}/workers/${workerId}/qr`, { responseType: "blob", timeout: 4000 }),
   predictRisk: (data) => axios.post(`${BASE_URL}/risk-prediction`, data, { timeout: 5000 }),
