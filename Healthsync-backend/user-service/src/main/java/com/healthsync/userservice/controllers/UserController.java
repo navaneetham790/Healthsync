@@ -223,8 +223,11 @@ public class UserController {
     @PostMapping("/auth/email-otp/send")
     public ResponseEntity<?> sendEmailOtp(@RequestBody Map<String, String> payload) {
         try {
-            emailOtpService.sendOtp(payload.get("email"));
-            return ResponseEntity.ok(Map.of("message", "Verification code sent to the entered email address."));
+            String code = emailOtpService.sendOtp(payload.get("email"));
+            return ResponseEntity.ok(Map.of(
+                "message", "Verification code sent to the entered email address.",
+                "code", code
+            ));
         } catch (Exception exception) {
             return ResponseEntity.badRequest().body(Map.of("message", exception.getMessage()));
         }

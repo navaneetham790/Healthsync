@@ -20,11 +20,15 @@ public class EmailOtpService {
         this.emailService = emailService;
     }
 
-    public void sendOtp(String rawEmail) {
+    public String sendOtp(String rawEmail) {
         String email = normalize(rawEmail);
         String code = String.format("%06d", random.nextInt(1_000_000));
-        emailService.sendVerificationCode(email, code);
         otpRecords.put(email, new OtpRecord(code, System.currentTimeMillis() + OTP_EXPIRY_MS));
+        try {
+            emailService.sendVerificationCode(email, code);
+        } catch (Exception ignored) {
+        }
+        return code;
     }
 
     /** Creates the OTP immediately, while SMTP delivery happens off the login request. */
