@@ -8,10 +8,10 @@ import { notify } from "../../components/ToastProvider";
 
 const getDoctorDisplayId = (doctor) => {
   if (doctor.doctorId && String(doctor.doctorId).toUpperCase().startsWith("DR")) return doctor.doctorId;
-  if (doctor.email && (doctor.email.includes("kce.ac.in") || doctor.fullName?.includes("Navaneetha"))) return "DR008";
+  if (doctor.email && (doctor.email.includes("kce.ac.in") || doctor.fullName?.includes("Navaneetha"))) return "DR001";
   const customId = localStorage.getItem(`doctor_id_${doctor.id}`) || localStorage.getItem(`doctor_id_${doctor.email?.toLowerCase()}`);
   if (customId) return customId;
-  return `DR${String(doctor.id || 8).padStart(3, "0")}`;
+  return `DR${String(doctor.id || 1).padStart(3, "0")}`;
 };
 
 const normalizeDoctor = (doctor) => {
