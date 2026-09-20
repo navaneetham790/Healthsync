@@ -103,37 +103,46 @@ public class UserController {
             doctorRepository.save(doctor);
         });
 
-        // Ensure Bavana worker has the exact email, password, phone, age, and history set by user
-        workerRepository.findByWorkerCode("MW001").ifPresent(bavana -> {
-            bavana.setEmail("717824f108@gmail.com");
-            bavana.setPassword(passwordEncoder.encode("workerbavana"));
-            if (bavana.getPhone() == null || bavana.getPhone().isBlank() || bavana.getPhone().equals("—")) {
-                bavana.setPhone("9876543210");
+        // Ensure ONLY Bavana (MW001) exists in the database as requested by user
+        workerRepository.findAll().forEach(w -> {
+            boolean isBavana = "MW001".equalsIgnoreCase(w.getWorkerCode())
+                    || "717824f108@gmail.com".equalsIgnoreCase(w.getEmail())
+                    || "Bavana".equalsIgnoreCase(w.getFullName());
+            if (!isBavana) {
+                try {
+                    clinicalRecordRepository.findByWorkerId(w.getId()).forEach(clinicalRecordRepository::delete);
+                    workerRepository.delete(w);
+                } catch (Exception ignored) {}
             }
-            if (bavana.getAge() == null || bavana.getAge() <= 0) {
-                bavana.setAge(25);
-            }
-            if (bavana.getHealthHistory() == null || bavana.getHealthHistory().isBlank() || bavana.getHealthHistory().equals("—")) {
-                bavana.setHealthHistory("Viral fever treated with Paracetamol");
-            }
-            if (bavana.getDiseases() == null || bavana.getDiseases().isBlank()) {
-                bavana.setDiseases("Acute Upper Respiratory Tract Infection");
-            }
-            if (bavana.getRiskLevel() == null || "Not assessed".equalsIgnoreCase(bavana.getRiskLevel())) {
-                bavana.setRiskLevel("LOW");
-            }
-            if (bavana.getAddress() == null || bavana.getAddress().isBlank() || bavana.getAddress().contains("Viral fever")) {
-                bavana.setAddress("Coimbatore, Tamil Nadu");
-            }
-            workerRepository.save(bavana);
         });
-        if (workerRepository.findByEmail("717824f108@gmail.com").isEmpty() && workerRepository.findByWorkerCode("MW001").isEmpty()) {
-            Worker bavana = new Worker("Bavana", "717824f108@gmail.com", passwordEncoder.encode("workerbavana"), "9876543210", "MW001", 25, "Acute Upper Respiratory Tract Infection", "Viral fever treated with Paracetamol");
-            bavana.setAddress("Coimbatore, Tamil Nadu");
-            bavana.setCreatedByDoctorEmail("717824i335@kce.ac.in");
-            bavana.setRiskLevel("LOW");
-            workerRepository.save(bavana);
-        }
+
+        // Ensure Bavana worker has the exact email, password, phone, age, and details set by user
+        Worker bavana = workerRepository.findByWorkerCode("MW001")
+                .or(() -> workerRepository.findByEmail("717824f108@gmail.com"))
+                .orElseGet(() -> new Worker("Bavana", "717824f108@gmail.com", passwordEncoder.encode("workerbavana"), "9876543210", "MW001", 25, "Acute Upper Respiratory Tract Infection", "Viral fever treated with Paracetamol"));
+
+        bavana.setFullName("Bavana");
+        bavana.setEmail("717824f108@gmail.com");
+        bavana.setPassword(passwordEncoder.encode("workerbavana"));
+        bavana.setPhone("9876543210");
+        bavana.setWorkerCode("MW001");
+        bavana.setAge(25);
+        bavana.setHealthHistory("Viral fever treated with Paracetamol");
+        bavana.setDiseases("Acute Upper Respiratory Tract Infection");
+        bavana.setRiskLevel("LOW");
+        bavana.setAddress("Coimbatore, Tamil Nadu");
+        bavana.setCreatedByDoctorEmail("717824i335@kce.ac.in");
+        workerRepository.save(bavana);
+
+        // Delete any redundant duplicate worker records
+        workerRepository.findAll().forEach(w -> {
+            if (!Objects.equals(w.getId(), bavana.getId())) {
+                try {
+                    clinicalRecordRepository.findByWorkerId(w.getId()).forEach(clinicalRecordRepository::delete);
+                    workerRepository.delete(w);
+                } catch (Exception ignored) {}
+            }
+        });
 
         // Ensure Navaneetha M doctor has the exact login email and password entered by user:
         doctorRepository.findAll().forEach(doc -> {
@@ -150,14 +159,6 @@ public class UserController {
         }
 
         // Ensure Bavana has health records and prescriptions if none exist
-        workerRepository.findByWorkerCode("MW001").ifPresent(bavana -> {
-            bavana.setFullName("Bavana");
-            bavana.setEmail("717824f108@gmail.com");
-            bavana.setAge(25);
-            bavana.setCreatedByDoctorEmail("717824i335@kce.ac.in");
-            bavana.setRiskLevel("LOW");
-            bavana.setAddress("Coimbatore, Tamil Nadu");
-            workerRepository.save(bavana);
             if (clinicalRecordRepository.findByWorkerId(bavana.getId()).isEmpty()) {
                 ClinicalRecord hr = new ClinicalRecord();
                 hr.setWorkerId(bavana.getId());
@@ -192,7 +193,6 @@ public class UserController {
                 bavana.setHealthHistory("Viral fever treated with Paracetamol");
                 workerRepository.save(bavana);
             }
-        });
     }
 
     private boolean passwordMatches(String rawPassword, String storedPassword) {
