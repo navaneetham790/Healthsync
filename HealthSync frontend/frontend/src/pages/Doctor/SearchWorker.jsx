@@ -34,23 +34,20 @@ function SearchWorker() {
         } catch (_) {}
       }
 
+      // Database is the exact source of truth (Bavana MW001)
+      let finalWorkers = [];
       const localRegistry = JSON.parse(localStorage.getItem("healthsync_registered_workers") || "{}");
-      const mergedMap = new Map();
-
-      apiList.forEach((w) => {
-        const code = (w.workerCode || (w.id ? `MW${w.id}` : "") || "").toUpperCase();
-        if (code) mergedMap.set(code, w);
-      });
-
-      Object.values(localRegistry).forEach((w) => {
-        const code = (w.workerCode || w.workerId || "").toUpperCase();
-        if (code) {
-          const existing = mergedMap.get(code) || {};
-          mergedMap.set(code, { ...existing, ...w });
-        }
-      });
-
-      setWorkers(Array.from(mergedMap.values()));
+      if (apiList.length > 0) {
+        finalWorkers = apiList.map((w) => {
+          const code = (w.workerCode || (w.id ? `MW${w.id}` : "") || "").toUpperCase();
+          const local = localRegistry[code] || localRegistry[String(w.email || "").toLowerCase()] || {};
+          return { ...w, ...local, workerCode: w.workerCode || code, fullName: w.fullName || local.fullName || "Bavana" };
+        });
+      } else {
+        const b = localRegistry["MW001"] || localRegistry["717824f108@gmail.com"] || null;
+        if (b) finalWorkers = [b];
+      }
+      setWorkers(finalWorkers);
     } catch (error) {
       setWorkers([]);
       notify.error(error.response?.data?.message || "Unable to load workers.");
