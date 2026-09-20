@@ -12,13 +12,6 @@ const SEVERITY_CONFIG = {
   None:     { color: "result-safe",   icon: <FaCheckCircle />,          label: "✅ No Known Interaction Found" },
 };
 
-const QUICK_PRESETS = [
-  { label: "Warfarin + Aspirin (High Risk)", meds: ["Warfarin 5mg", "Aspirin 75mg"] },
-  { label: "Lisinopril + Spironolactone (High Risk)", meds: ["Lisinopril 10mg", "Spironolactone 25mg"] },
-  { label: "Metformin + Metoprolol (Moderate)", meds: ["Metformin 500mg", "Metoprolol 50mg"] },
-  { label: "Paracetamol + Cetirizine (Safe)", meds: ["Paracetamol 650mg", "Cetirizine 10mg"] },
-];
-
 function DrugInteraction() {
   const [medicines, setMedicines] = useState(["", ""]);
   const [results, setResults]     = useState(null);
@@ -36,20 +29,6 @@ function DrugInteraction() {
     if (medicines.length <= 2) return;
     setMedicines(medicines.filter((_, idx) => idx !== i));
     setResults(null);
-  };
-
-  const applyPreset = async (presetMeds) => {
-    setMedicines(presetMeds);
-    setLoading(true);
-    try {
-      const { data } = await DoctorService.checkDrugInteraction(presetMeds);
-      setResults(data);
-    } catch {
-      const fallback = evaluateDrugInteractions(presetMeds);
-      setResults(fallback);
-    } finally {
-      setLoading(false);
-    }
   };
 
   const check = async () => {
@@ -84,22 +63,6 @@ function DrugInteraction() {
       </div>
 
       <div className="doctor-drug-card">
-        <div className="presets-container">
-          <span className="presets-label">⚡ Quick Presets:</span>
-          <div className="presets-pills">
-            {QUICK_PRESETS.map((p, idx) => (
-              <button
-                key={idx}
-                type="button"
-                className="preset-pill-btn"
-                onClick={() => applyPreset(p.meds)}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {medicines.map((medicine, index) => (
           <div className="doctor-form-group" key={index}>
             <div className="medicine-label">
