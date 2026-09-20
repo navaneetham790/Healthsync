@@ -413,4 +413,5 @@ if __name__ == "__main__":
     print("  POST /drug-interaction   — Drug interaction check (AI + DB)")
     print("  GET  /health             — Health check")
     print("=" * 50 + "\n")
-    app.run(host="127.0.0.1", port=8084, debug=False, threaded=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False, threaded=True)
+
